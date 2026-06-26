@@ -2,8 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <link rel="canonical" href="https://clumsyhero45-create.github.io/.--./">
-<meta name="description" content="استغل وقتك - تنظيم الوقت والمهام اليومية والمؤقتات ومواقيت الصلاة">
-    
+    <meta name="description" content="استغل وقتك - تنظيم الوقت والمهام اليومية والمؤقتات ومواقيت الصلاة">
     <meta name="google-site-verification" content="S0A75i2my4hfxMw63HENmdWRKvoghdN9zL_cd2LfoO4" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,9 +14,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
-
         :root {
             --bg-main: #f7f3ef;
             --bg-card: #ffffffdd;
@@ -36,7 +33,6 @@
             --font: 'Tajawal', sans-serif;
             --transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-
         body {
             font-family: var(--font);
             background: var(--bg-main);
@@ -47,7 +43,6 @@
             align-items: center;
             justify-content: center;
         }
-
         /* ===== SPLASH SCREEN ===== */
         #splash {
             position: fixed;
@@ -73,14 +68,8 @@
             animation: pulseGlow 2.4s ease-in-out infinite alternate;
         }
         @keyframes pulseGlow {
-            0% {
-                opacity: 0.7;
-                transform: scale(0.98);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.02);
-            }
+            0% { opacity: 0.7; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1.02); }
         }
         #splash .sub {
             font-size: 1.2rem;
@@ -89,11 +78,7 @@
             margin-top: 12px;
             letter-spacing: 6px;
         }
-
-        /* ===== SOUND PLAYER (hidden) ===== */
-        #sound-container {
-            display: none;
-        }
+        #sound-container { display: none; }
 
         /* ===== LOGIN SCREEN ===== */
         #login {
@@ -108,9 +93,7 @@
             padding: 20px;
             overflow-y: auto;
         }
-        #login.visible {
-            display: flex;
-        }
+        #login.visible { display: flex; }
         #login .box {
             background: var(--bg-card);
             backdrop-filter: blur(12px);
@@ -123,16 +106,8 @@
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        #login .box h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        #login .box p {
-            color: var(--text-secondary);
-            margin-bottom: 28px;
-            font-size: 1rem;
-        }
+        #login .box h2 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
+        #login .box p { color: var(--text-secondary); margin-bottom: 28px; font-size: 1rem; }
         .login-btn {
             display: block;
             width: 100%;
@@ -150,31 +125,12 @@
             color: var(--text-primary);
             border: 1px solid rgba(0, 0, 0, 0.04);
         }
-        .login-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
-        }
-        .login-btn.email {
-            background: #f0ecf5;
-            color: #3d3a4a;
-        }
-        .login-btn.phone {
-            background: #e8f2f0;
-            color: #2d5a55;
-        }
-        .login-btn.apple {
-            background: #2d2d2d;
-            color: #fff;
-        }
-        .login-btn.guest {
-            background: #f5ede8;
-            color: #6b4f3c;
-            border: 1px dashed #c9b8ab;
-        }
-        .login-btn .icon {
-            margin-left: 10px;
-            font-size: 1.3rem;
-        }
+        .login-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07); }
+        .login-btn.email { background: #f0ecf5; color: #3d3a4a; }
+        .login-btn.phone { background: #e8f2f0; color: #2d5a55; }
+        .login-btn.apple { background: #2d2d2d; color: #fff; }
+        .login-btn.guest { background: #f5ede8; color: #6b4f3c; border: 1px dashed #c9b8ab; }
+        .login-btn .icon { margin-left: 10px; font-size: 1.3rem; }
         .login-divider {
             display: flex;
             align-items: center;
@@ -183,39 +139,29 @@
             color: var(--text-secondary);
             font-size: 0.85rem;
         }
-        .login-divider::before,
-        .login-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.06);
-        }
-
-        /* ===== REAL LOGIN FORM ===== */
+        .login-divider::before, .login-divider::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.06); }
         .login-form {
             display: none;
             margin-top: 20px;
             text-align: right;
         }
-        .login-form.active {
-            display: block;
-        }
+        .login-form.active { display: block; }
         .login-form input {
             width: 100%;
             padding: 14px 18px;
             margin-bottom: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0,0,0,0.08);
             border-radius: var(--radius-small);
             font-family: var(--font);
             font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255,255,255,0.7);
             transition: var(--transition);
             direction: ltr;
         }
         .login-form input:focus {
             outline: none;
             border-color: var(--accent-soft);
-            box-shadow: 0 0 0 3px rgba(184, 169, 201, 0.15);
+            box-shadow: 0 0 0 3px rgba(184,169,201,0.15);
         }
         .login-form .login-submit {
             width: 100%;
@@ -230,10 +176,7 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        .login-form .login-submit:hover {
-            transform: scale(1.02);
-            background: #7a6e8e;
-        }
+        .login-form .login-submit:hover { transform: scale(1.02); background: #7a6e8e; }
         .login-form .login-back {
             background: none;
             border: none;
@@ -243,9 +186,7 @@
             margin-top: 8px;
             font-family: var(--font);
         }
-        .login-form .login-back:hover {
-            color: var(--text-primary);
-        }
+        .login-form .login-back:hover { color: var(--text-primary); }
 
         /* ===== MAIN APP ===== */
         #app {
@@ -256,9 +197,7 @@
             padding: 28px 32px 40px;
             margin: 0 auto;
         }
-        #app.visible {
-            display: block;
-        }
+        #app.visible { display: block; }
 
         /* ===== TOP BAR ===== */
         .app-header {
@@ -266,7 +205,7 @@
             justify-content: space-between;
             align-items: center;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
             margin-bottom: 28px;
             flex-wrap: wrap;
             gap: 12px;
@@ -275,7 +214,7 @@
             font-size: 1.6rem;
             font-weight: 700;
             background: linear-gradient(135deg, #3d3a4a, #8a7e9e);
-            webkit-background-clip: text;
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .app-header .greeting small {
@@ -309,7 +248,7 @@
         }
         .app-header .logout-btn {
             background: none;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0,0,0,0.06);
             padding: 8px 16px;
             border-radius: 40px;
             font-family: var(--font);
@@ -318,11 +257,22 @@
             transition: var(--transition);
             color: var(--text-secondary);
         }
-        .app-header .logout-btn:hover {
-            background: rgba(0, 0, 0, 0.04);
+        .app-header .logout-btn:hover { background: rgba(0,0,0,0.04); }
+        .lang-toggle {
+            background: none;
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-family: var(--font);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-secondary);
+            background: var(--bg-card-solid);
         }
+        .lang-toggle:hover { background: rgba(0,0,0,0.04); }
 
-        /* ===== 4 SQUARES (grid) ===== */
+        /* ===== 4 SQUARES ===== */
         .squares-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -336,25 +286,13 @@
             box-shadow: var(--shadow-soft);
             cursor: pointer;
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255,255,255,0.6);
             text-align: center;
             position: relative;
         }
-        .square:hover {
-            transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.07);
-        }
-        .square .num {
-            font-size: 2rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 2px;
-        }
-        .square .label {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
+        .square:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 48px rgba(0,0,0,0.07); }
+        .square .num { font-size: 2rem; font-weight: 700; display: block; margin-bottom: 2px; }
+        .square .label { font-size: 0.95rem; color: var(--text-secondary); font-weight: 400; }
         .square .badge {
             position: absolute;
             top: -6px;
@@ -366,57 +304,37 @@
             border-radius: 40px;
             font-weight: 700;
         }
-        .square.s1 .num {
-            color: #8a7e9e;
-        }
-        .square.s2 .num {
-            color: #7bb8b0;
-        }
-        .square.s3 .num {
-            color: #d4a88c;
-        }
-        .square.s4 .num {
-            color: #b8a9c9;
-        }
+        .square.s1 .num { color: #8a7e9e; }
+        .square.s2 .num { color: #7bb8b0; }
+        .square.s3 .num { color: #d4a88c; }
+        .square.s4 .num { color: #b8a9c9; }
 
-        /* ===== SECTION PANELS ===== */
+        /* ===== PANELS ===== */
         .panel {
             display: none;
             background: var(--bg-card);
             backdrop-filter: blur(6px);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255,255,255,0.7);
             border-radius: var(--radius-large);
             padding: 32px 32px 36px;
             margin-top: 8px;
             box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255,255,255,0.5);
             animation: fadeSlide 0.5s ease;
         }
-        .panel.active {
-            display: block;
-        }
+        .panel.active { display: block; }
         @keyframes fadeSlide {
-            0% {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(18px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-        .panel .panel-title {
-            font-size: 1.7rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
+        .panel .panel-title { font-size: 1.7rem; font-weight: 700; margin-bottom: 4px; }
         .panel .panel-desc {
             color: var(--text-secondary);
             font-size: 0.95rem;
             margin-bottom: 22px;
             border-right: 4px solid var(--accent-soft);
             padding-right: 16px;
-            background: rgba(184, 169, 201, 0.08);
+            background: rgba(184,169,201,0.08);
             border-radius: 0 12px 12px 0;
             padding: 12px 18px;
         }
@@ -431,29 +349,13 @@
             padding: 4px 10px;
             border-radius: 40px;
         }
-        .panel .panel-close:hover {
-            background: rgba(0, 0, 0, 0.04);
-            color: #000;
-        }
+        .panel .panel-close:hover { background: rgba(0,0,0,0.04); color: #000; }
+        .scrollable-list { max-height: 400px; overflow-y: auto; padding-left: 4px; }
+        .scrollable-list::-webkit-scrollbar { width: 4px; }
+        .scrollable-list::-webkit-scrollbar-track { background: transparent; }
+        .scrollable-list::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 40px; }
 
-        /* ===== SCROLLABLE LISTS ===== */
-        .scrollable-list {
-            max-height: 400px;
-            overflow-y: auto;
-            padding-left: 4px;
-        }
-        .scrollable-list::-webkit-scrollbar {
-            width: 4px;
-        }
-        .scrollable-list::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .scrollable-list::-webkit-scrollbar-thumb {
-            background: var(--accent-soft);
-            border-radius: 40px;
-        }
-
-        /* ===== TIMER SECTION ===== */
+        /* ===== TIMER ===== */
         .timer-display {
             font-size: 4.2rem;
             font-weight: 700;
@@ -462,7 +364,7 @@
             padding: 16px 0 6px;
             letter-spacing: 4px;
             color: #3d3a4a;
-            background: rgba(184, 169, 201, 0.06);
+            background: rgba(184,169,201,0.06);
             border-radius: var(--radius-medium);
             margin-bottom: 14px;
         }
@@ -485,18 +387,9 @@
             background: #f0ecf5;
             color: var(--text-primary);
         }
-        .timer-controls button:hover {
-            transform: scale(1.04);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-        }
-        .timer-controls button.primary {
-            background: #8a7e9e;
-            color: #fff;
-        }
-        .timer-controls button.danger {
-            background: #e8b4a9;
-            color: #fff;
-        }
+        .timer-controls button:hover { transform: scale(1.04); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .timer-controls button.primary { background: #8a7e9e; color: #fff; }
+        .timer-controls button.danger { background: #e8b4a9; color: #fff; }
         .alarm-sounds {
             display: flex;
             flex-wrap: wrap;
@@ -507,24 +400,17 @@
         .alarm-sounds button {
             padding: 8px 18px;
             border-radius: 40px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0,0,0,0.06);
             background: #fff;
             font-family: var(--font);
             font-size: 0.8rem;
             cursor: pointer;
             transition: var(--transition);
         }
-        .alarm-sounds button:hover {
-            background: #f0ecf5;
-            transform: scale(1.02);
-        }
-        .alarm-sounds button.active {
-            background: #8a7e9e;
-            color: #fff;
-            border-color: #8a7e9e;
-        }
+        .alarm-sounds button:hover { background: #f0ecf5; transform: scale(1.02); }
+        .alarm-sounds button.active { background: #8a7e9e; color: #fff; border-color: #8a7e9e; }
 
-        /* ===== PRAYER TIMES ===== */
+        /* ===== PRAYER ===== */
         .prayer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -532,17 +418,14 @@
             margin-top: 10px;
         }
         .prayer-item {
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.5);
             border-radius: var(--radius-small);
             padding: 16px 10px 14px;
             text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0,0,0,0.03);
             transition: var(--transition);
         }
-        .prayer-item .name {
-            font-weight: 600;
-            font-size: 1rem;
-        }
+        .prayer-item .name { font-weight: 600; font-size: 1rem; }
         .prayer-item .time {
             font-size: 1.3rem;
             font-weight: 700;
@@ -551,7 +434,7 @@
             font-feature-settings: "tnum";
         }
         .prayer-item .highlight {
-            background: rgba(184, 169, 201, 0.12);
+            background: rgba(184,169,201,0.12);
             border-radius: 40px;
             padding: 2px 12px;
             display: inline-block;
@@ -559,10 +442,7 @@
             margin-top: 4px;
             color: var(--text-secondary);
         }
-        .prayer-item.current {
-            background: rgba(142, 201, 192, 0.15);
-            border: 1px solid rgba(142, 201, 192, 0.3);
-        }
+        .prayer-item.current { background: rgba(142,201,192,0.15); border: 1px solid rgba(142,201,192,0.3); }
         .prayer-location {
             font-size: 0.85rem;
             color: var(--text-secondary);
@@ -573,7 +453,7 @@
             flex-wrap: wrap;
         }
 
-        /* ===== TASKS SECTION ===== */
+        /* ===== TASKS ===== */
         .task-input-row {
             display: flex;
             gap: 10px;
@@ -583,17 +463,14 @@
         .task-input-row input {
             flex: 1;
             padding: 14px 18px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0,0,0,0.06);
             border-radius: var(--radius-small);
             font-family: var(--font);
             font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255,255,255,0.6);
             min-width: 160px;
         }
-        .task-input-row input:focus {
-            outline: none;
-            border-color: var(--accent-soft);
-        }
+        .task-input-row input:focus { outline: none; border-color: var(--accent-soft); }
         .task-input-row button {
             padding: 14px 28px;
             border: none;
@@ -606,34 +483,25 @@
             transition: var(--transition);
             white-space: nowrap;
         }
-        .task-input-row button:hover {
-            transform: scale(1.03);
-        }
-        .task-list {
-            list-style: none;
-            padding: 0;
-        }
+        .task-input-row button:hover { transform: scale(1.03); }
+        .task-list { list-style: none; padding: 0; }
         .task-list li {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255,255,255,0.4);
             border-radius: var(--radius-small);
             margin-bottom: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0,0,0,0.03);
             transition: var(--transition);
         }
-        .task-list li:hover {
-            background: rgba(255, 255, 255, 0.7);
-        }
-        .task-list li .task-text {
-            flex: 1;
-        }
+        .task-list li:hover { background: rgba(255,255,255,0.7); }
+        .task-list li .task-text { flex: 1; }
         .task-list li .task-time {
             font-size: 0.8rem;
             color: var(--text-secondary);
-            background: rgba(0, 0, 0, 0.04);
+            background: rgba(0,0,0,0.04);
             padding: 2px 14px;
             border-radius: 40px;
         }
@@ -651,11 +519,7 @@
             font-size: 1rem;
             color: transparent;
         }
-        .task-list li .task-done.done {
-            background: #8ec9c0;
-            border-color: #8ec9c0;
-            color: #fff;
-        }
+        .task-list li .task-done.done { background: #8ec9c0; border-color: #8ec9c0; color: #fff; }
         .task-list li .task-delete {
             background: none;
             border: none;
@@ -665,20 +529,18 @@
             transition: var(--transition);
             padding: 0 6px;
         }
-        .task-list li .task-delete:hover {
-            color: #e8b4a9;
-        }
+        .task-list li .task-delete:hover { color: #e8b4a9; }
         .task-suggestion {
             font-size: 0.85rem;
             color: var(--text-secondary);
             padding: 6px 14px;
-            background: rgba(184, 169, 201, 0.08);
+            background: rgba(184,169,201,0.08);
             border-radius: 40px;
             display: inline-block;
             margin-bottom: 12px;
         }
 
-        /* ===== HABITS SECTION ===== */
+        /* ===== HABITS ===== */
         .habit-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -686,26 +548,17 @@
             margin: 10px 0 6px;
         }
         .habit-item {
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.5);
             border-radius: var(--radius-small);
             padding: 18px 12px 16px;
             text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0,0,0,0.03);
             transition: var(--transition);
             cursor: pointer;
         }
-        .habit-item:hover {
-            transform: translateY(-2px);
-        }
-        .habit-item .habit-icon {
-            font-size: 2.2rem;
-            display: block;
-            margin-bottom: 4px;
-        }
-        .habit-item .habit-name {
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
+        .habit-item:hover { transform: translateY(-2px); }
+        .habit-item .habit-icon { font-size: 2.2rem; display: block; margin-bottom: 4px; }
+        .habit-item .habit-name { font-weight: 500; font-size: 0.95rem; }
         .habit-item .habit-check {
             margin-top: 8px;
             width: 32px;
@@ -720,26 +573,18 @@
             color: transparent;
             background: transparent;
         }
-        .habit-item .habit-check.done {
-            background: #8ec9c0;
-            border-color: #8ec9c0;
-            color: #fff;
-        }
+        .habit-item .habit-check.done { background: #8ec9c0; border-color: #8ec9c0; color: #fff; }
 
-        /* ===== THANK YOU ===== */
         .thankyou {
             text-align: center;
             padding: 28px 12px 12px;
             font-size: 1.2rem;
             font-weight: 400;
             color: var(--text-secondary);
-            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            border-top: 1px solid rgba(0,0,0,0.04);
             margin-top: 20px;
         }
-        .thankyou strong {
-            color: var(--text-primary);
-            font-weight: 700;
-        }
+        .thankyou strong { color: var(--text-primary); font-weight: 700; }
 
         /* ===== POPUP REMINDER ===== */
         #reminder-popup {
@@ -749,8 +594,8 @@
             transform: translateX(-50%) translateY(120px);
             background: var(--bg-card-solid);
             backdrop-filter: blur(16px);
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+            background: rgba(255,255,255,0.92);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.10);
             border-radius: var(--radius-medium);
             padding: 20px 28px 20px 48px;
             max-width: 460px;
@@ -759,25 +604,14 @@
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
             opacity: 0;
             pointer-events: none;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255,255,255,0.3);
             display: flex;
             align-items: center;
             gap: 16px;
         }
-        #reminder-popup.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
-        #reminder-popup .reminder-icon {
-            font-size: 1.8rem;
-            flex-shrink: 0;
-        }
-        #reminder-popup .reminder-text {
-            flex: 1;
-            font-size: 0.98rem;
-            line-height: 1.5;
-        }
+        #reminder-popup.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+        #reminder-popup .reminder-icon { font-size: 1.8rem; flex-shrink: 0; }
+        #reminder-popup .reminder-text { flex: 1; font-size: 0.98rem; line-height: 1.5; }
         #reminder-popup .reminder-close {
             background: none;
             border: none;
@@ -788,1075 +622,1280 @@
             padding: 0 4px;
             flex-shrink: 0;
         }
-        #reminder-popup .reminder-close:hover {
-            color: #000;
-        }
+        #reminder-popup .reminder-close:hover { color: #000; }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 920px) {
-            .squares-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        @media (max-width: 920px) { .squares-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) {
-            #splash h1 {
-                font-size: 2.6rem;
-            }
-            #login .box {
-                padding: 32px 20px 28px;
-            }
-            #app {
-                padding: 16px 14px 30px;
-            }
-            .squares-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .square {
-                padding: 16px 10px 18px;
-            }
-            .square .num {
-                font-size: 1.6rem;
-            }
-            .panel {
-                padding: 22px 16px 26px;
-            }
-            .timer-display {
-                font-size: 2.8rem;
-            }
-            .prayer-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .habit-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .app-header .greeting {
-                font-size: 1.2rem;
-            }
-            #reminder-popup {
-                padding: 16px 18px 16px 28px;
-                bottom: 20px;
-            }
+            #splash h1 { font-size: 2.6rem; }
+            #login .box { padding: 32px 20px 28px; }
+            #app { padding: 16px 14px 30px; }
+            .squares-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .square { padding: 16px 10px 18px; }
+            .square .num { font-size: 1.6rem; }
+            .panel { padding: 22px 16px 26px; }
+            .timer-display { font-size: 2.8rem; }
+            .prayer-grid { grid-template-columns: repeat(3, 1fr); }
+            .habit-grid { grid-template-columns: 1fr 1fr; }
+            .app-header .greeting { font-size: 1.2rem; }
+            #reminder-popup { padding: 16px 18px 16px 28px; bottom: 20px; }
         }
         @media (max-width: 400px) {
-            .squares-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .prayer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .habit-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .timer-controls button {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-            }
+            .squares-grid { grid-template-columns: 1fr 1fr; }
+            .prayer-grid { grid-template-columns: 1fr 1fr; }
+            .habit-grid { grid-template-columns: 1fr 1fr; }
+            .timer-controls button { padding: 8px 16px; font-size: 0.8rem; }
         }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-soft);
-            border-radius: 40px;
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 40px; }
     </style>
 </head>
 <body>
 
-    <!-- ===== SPLASH ===== -->
-    <div id="splash">
-        <div style="text-align:center;">
-            <h1>⏳ استغل وقتك بنفسك</h1>
-            <div class="sub">كل ثانية فيها خير</div>
+<!-- ===== SPLASH ===== -->
+<div id="splash">
+    <div style="text-align:center;">
+        <h1 id="splashTitle">⏳ استغل وقتك بنفسك</h1>
+        <div class="sub" id="splashSub">كل ثانية فيها خير</div>
+    </div>
+</div>
+
+<div id="sound-container"></div>
+
+<!-- ===== LOGIN ===== -->
+<div id="login">
+    <div class="box">
+        <h2 id="loginTitle">✨ مرحباً بك</h2>
+        <p id="loginSub">اختر طريقة الدخول وابدأ رحلتك</p>
+
+        <button class="login-btn email" onclick="showLoginForm('email')">
+            <span class="icon">📧</span> <span id="loginEmailBtn">تسجيل الدخول بالإيميل</span>
+        </button>
+        <button class="login-btn phone" onclick="showLoginForm('phone')">
+            <span class="icon">📱</span> <span id="loginPhoneBtn">تسجيل الدخول برمز الهاتف</span>
+        </button>
+        <button class="login-btn apple" onclick="showLoginForm('apple')">
+            <span class="icon">🍎</span> <span id="loginAppleBtn">تسجيل الدخول بأبل</span>
+        </button>
+
+        <div class="login-divider"><span id="loginOr">أو</span></div>
+
+        <button class="login-btn guest" onclick="loginGuest()">
+            <span class="icon">👤</span> <span id="loginGuestBtn">دخول كضيف</span>
+        </button>
+
+        <div id="emailForm" class="login-form">
+            <input type="email" id="emailInput" placeholder="example@email.com" />
+            <input type="password" id="passwordInput" placeholder="كلمة المرور" />
+            <button class="login-submit" onclick="loginWithEmail()" id="loginSubmitBtn">تسجيل الدخول</button>
+            <button class="login-back" onclick="hideAllForms()" id="loginBackBtn">↩️ عودة</button>
+        </div>
+
+        <div id="phoneForm" class="login-form">
+            <input type="tel" id="phoneInput" placeholder="05xxxxxxxx" />
+            <input type="text" id="codeInput" placeholder="رمز التحقق" />
+            <button class="login-submit" onclick="loginWithPhone()" id="loginSubmitBtn2">تسجيل الدخول</button>
+            <button class="login-back" onclick="hideAllForms()" id="loginBackBtn2">↩️ عودة</button>
+        </div>
+
+        <div id="appleForm" class="login-form">
+            <input type="email" id="appleEmailInput" placeholder="apple@icloud.com" />
+            <input type="password" id="applePasswordInput" placeholder="كلمة المرور" />
+            <button class="login-submit" onclick="loginWithApple()" id="loginSubmitBtn3">تسجيل الدخول بأبل</button>
+            <button class="login-back" onclick="hideAllForms()" id="loginBackBtn3">↩️ عودة</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="app">
+
+    <div class="app-header">
+        <div class="greeting">
+            👋 <span id="greetingText">أهلاً بك</span> <span id="userName">صديقنا</span>
+            <small id="greetingSub">· لنستغل وقتنا معاً</small>
+        </div>
+        <div class="user-badge">
+            <span>⚡</span>
+            <span id="currentTimeDisplay">--:--</span>
+            <span class="avatar" id="userAvatar">ص</span>
+            <button class="lang-toggle" onclick="toggleLanguage()" id="langToggleBtn">🇬🇧 English</button>
+            <button class="logout-btn" onclick="logout()" id="logoutBtn">🚪 خروج</button>
         </div>
     </div>
 
-    <!-- ===== SOUND CONTAINER ===== -->
-    <div id="sound-container"></div>
-
-    <!-- ===== LOGIN ===== -->
-    <div id="login">
-        <div class="box">
-            <h2>✨ مرحباً بك</h2>
-            <p>اختر طريقة الدخول وابدأ رحلتك</p>
-
-            <!-- Email Login -->
-            <button class="login-btn email" onclick="showLoginForm('email')">
-                <span class="icon">📧</span> تسجيل الدخول بالإيميل
-            </button>
-
-            <!-- Phone Login -->
-            <button class="login-btn phone" onclick="showLoginForm('phone')">
-                <span class="icon">📱</span> تسجيل الدخول برمز الهاتف
-            </button>
-
-            <!-- Apple Login -->
-            <button class="login-btn apple" onclick="showLoginForm('apple')">
-                <span class="icon">🍎</span> تسجيل الدخول بأبل
-            </button>
-
-            <div class="login-divider">أو</div>
-
-            <!-- Guest Login -->
-            <button class="login-btn guest" onclick="loginGuest()">
-                <span class="icon">👤</span> دخول كضيف
-            </button>
-
-            <!-- ===== REAL LOGIN FORMS ===== -->
-            <div id="emailForm" class="login-form">
-                <input type="email" id="emailInput" placeholder="example@email.com" />
-                <input type="password" id="passwordInput" placeholder="كلمة المرور" />
-                <button class="login-submit" onclick="loginWithEmail()">تسجيل الدخول</button>
-                <button class="login-back" onclick="hideAllForms()">↩️ عودة</button>
-            </div>
-
-            <div id="phoneForm" class="login-form">
-                <input type="tel" id="phoneInput" placeholder="05xxxxxxxx" />
-                <input type="text" id="codeInput" placeholder="رمز التحقق" />
-                <button class="login-submit" onclick="loginWithPhone()">تسجيل الدخول</button>
-                <button class="login-back" onclick="hideAllForms()">↩️ عودة</button>
-            </div>
-
-            <div id="appleForm" class="login-form">
-                <input type="email" id="appleEmailInput" placeholder="apple@icloud.com" />
-                <input type="password" id="applePasswordInput" placeholder="كلمة المرور" />
-                <button class="login-submit" onclick="loginWithApple()">تسجيل الدخول بأبل</button>
-                <button class="login-back" onclick="hideAllForms()">↩️ عودة</button>
-            </div>
+    <div class="squares-grid">
+        <div class="square s1" onclick="showPanel(0)">
+            <span class="num">⏱️</span>
+            <span class="label" id="square1Label">المؤقتات</span>
+            <span class="badge" id="square1Badge">أصوات</span>
+        </div>
+        <div class="square s2" onclick="showPanel(1)">
+            <span class="num">🕌</span>
+            <span class="label" id="square2Label">مواقيت الصلاة</span>
+            <span class="badge" id="square2Badge">تلقائي</span>
+        </div>
+        <div class="square s3" onclick="showPanel(2)">
+            <span class="num">📋</span>
+            <span class="label" id="square3Label">المهام اليومية</span>
+            <span class="badge" id="square3Badge">ذكية</span>
+        </div>
+        <div class="square s4" onclick="showPanel(3)">
+            <span class="num">🌱</span>
+            <span class="label" id="square4Label">العادات اليومية</span>
+            <span class="badge" id="square4Badge">تتبع</span>
         </div>
     </div>
 
-    <!-- ===== MAIN APP ===== -->
-    <div id="app">
-
-        <!-- Header -->
-        <div class="app-header">
-            <div class="greeting">
-                👋 أهلاً بك <span id="userName">صديقنا</span>
-                <small>· لنستغل وقتنا معاً</small>
-            </div>
-            <div class="user-badge">
-                <span>⚡</span>
-                <span id="currentTimeDisplay">--:--</span>
-                <span class="avatar" id="userAvatar">ص</span>
-                <button class="logout-btn" onclick="logout()">🚪 خروج</button>
-            </div>
+    <!-- PANEL 0: TIMERS -->
+    <div class="panel" id="panel-0">
+        <button class="panel-close" onclick="hidePanel(0)">✕</button>
+        <div class="panel-title" id="panel0Title">⏱️ المؤقتات</div>
+        <div class="panel-desc" id="panel0Desc">📌 استخدم المؤقت لتنظيم وقتك. اختر صوت منبهك المفضل واضبط الوقت.</div>
+        <div class="timer-display" id="timerDisplay">00:00:00</div>
+        <div class="timer-controls">
+            <button onclick="timerControl('start')" class="primary" id="timerStartBtn">▶️ بدء</button>
+            <button onclick="timerControl('pause')" id="timerPauseBtn">⏸️ إيقاف مؤقت</button>
+            <button onclick="timerControl('reset')" class="danger" id="timerResetBtn">⏹️ إعادة</button>
+            <button onclick="timerControl('addMin')" id="timerAddMinBtn">➕ دقيقة</button>
+            <button onclick="timerControl('addSec')" id="timerAddSecBtn">➕ ثانية</button>
         </div>
-
-        <!-- 4 Squares -->
-        <div class="squares-grid">
-            <div class="square s1" onclick="showPanel(0)">
-                <span class="num">⏱️</span>
-                <span class="label">المؤقتات</span>
-                <span class="badge">أصوات</span>
-            </div>
-            <div class="square s2" onclick="showPanel(1)">
-                <span class="num">🕌</span>
-                <span class="label">مواقيت الصلاة</span>
-                <span class="badge">تلقائي</span>
-            </div>
-            <div class="square s3" onclick="showPanel(2)">
-                <span class="num">📋</span>
-                <span class="label">المهام اليومية</span>
-                <span class="badge">ذكية</span>
-            </div>
-            <div class="square s4" onclick="showPanel(3)">
-                <span class="num">🌱</span>
-                <span class="label">العادات اليومية</span>
-                <span class="badge">تتبع</span>
-            </div>
+        <div style="text-align:center; font-size:0.9rem; color:var(--text-secondary); margin-bottom:6px;" id="alarmLabel">
+            🔊 اختر صوت المنبه:
         </div>
-
-        <!-- ===== PANEL 0: TIMERS ===== -->
-        <div class="panel" id="panel-0">
-            <button class="panel-close" onclick="hidePanel(0)">✕</button>
-            <div class="panel-title">⏱️ المؤقتات</div>
-            <div class="panel-desc">
-                📌 استخدم المؤقت لتنظيم وقتك. اختر صوت منبهك المفضل واضبط الوقت.
-            </div>
-            <div class="timer-display" id="timerDisplay">00:00:00</div>
-            <div class="timer-controls">
-                <button onclick="timerControl('start')" class="primary">▶️ بدء</button>
-                <button onclick="timerControl('pause')">⏸️ إيقاف مؤقت</button>
-                <button onclick="timerControl('reset')" class="danger">⏹️ إعادة</button>
-                <button onclick="timerControl('addMin')">➕ دقيقة</button>
-                <button onclick="timerControl('addSec')">➕ ثانية</button>
-            </div>
-            <div style="text-align:center; font-size:0.9rem; color:var(--text-secondary); margin-bottom:6px;">
-                🔊 اختر صوت المنبه:
-            </div>
-            <div class="alarm-sounds" id="alarmSounds">
-                <button data-sound="chime" class="active">🔔 جرس</button>
-                <button data-sound="bell">🔔 ناقوس</button>
-                <button data-sound="soft">🎵 ناعم</button>
-                <button data-sound="buzzer">📳 تنبيه</button>
-                <button data-sound="nature">🌿 طبيعة</button>
-                <button data-sound="piano">🎹 بيانو</button>
-            </div>
-            <div style="margin-top:10px; font-size:0.85rem; color:var(--text-secondary);">
-                ⏳ الوقت المتبقي: <span id="timerRemaining">--</span>
-            </div>
+        <div class="alarm-sounds" id="alarmSounds">
+            <button data-sound="chime" class="active" id="alarmChime">🔔 جرس</button>
+            <button data-sound="bell" id="alarmBell">🔔 ناقوس</button>
+            <button data-sound="soft" id="alarmSoft">🎵 ناعم</button>
+            <button data-sound="buzzer" id="alarmBuzzer">📳 تنبيه</button>
+            <button data-sound="nature" id="alarmNature">🌿 طبيعة</button>
+            <button data-sound="piano" id="alarmPiano">🎹 بيانو</button>
         </div>
-
-        <!-- ===== PANEL 1: PRAYER ===== -->
-        <div class="panel" id="panel-1">
-            <button class="panel-close" onclick="hidePanel(1)">✕</button>
-            <div class="panel-title">🕌 مواقيت الصلاة</div>
-            <div class="panel-desc">
-                📍 يتم تحديد المواقيت تلقائياً حسب موقعك. بارك الله في وقتك.
-            </div>
-            <div class="prayer-location">
-                <span>📍 <span id="prayerLocation">جاري تحديد الموقع...</span></span>
-                <span style="margin-right:auto; font-size:0.8rem;" id="prayerDate"></span>
-            </div>
-            <div class="prayer-grid" id="prayerGrid">
-                <div class="prayer-item"><div class="name">الفجر</div><div class="time" id="p-fajr">--:--</div></div>
-                <div class="prayer-item"><div class="name">الظهر</div><div class="time" id="p-dhuhr">--:--</div></div>
-                <div class="prayer-item"><div class="name">العصر</div><div class="time" id="p-asr">--:--</div></div>
-                <div class="prayer-item"><div class="name">المغرب</div><div class="time" id="p-maghrib">--:--</div></div>
-                <div class="prayer-item"><div class="name">العشاء</div><div class="time" id="p-isha">--:--</div></div>
-            </div>
-            <div style="font-size:0.8rem; color:var(--text-secondary); margin-top:12px;">
-                🔄 يتم التحديث تلقائياً عند تغيير الموقع
-            </div>
+        <div style="margin-top:10px; font-size:0.85rem; color:var(--text-secondary);">
+            <span id="timerRemainingLabel">⏳ الوقت المتبقي:</span> <span id="timerRemaining">--</span>
         </div>
+    </div>
 
-        <!-- ===== PANEL 2: TASKS ===== -->
-        <div class="panel" id="panel-2">
-            <button class="panel-close" onclick="hidePanel(2)">✕</button>
-            <div class="panel-title">📋 المهام اليومية</div>
-            <div class="panel-desc">
-                🧠 أضف مهامك وسيقترح التطبيق وقتاً مناسباً لها بناءً على ذكاء بسيط.
-            </div>
-            <div class="task-input-row">
-                <input type="text" id="taskInput" placeholder="مثال: أريد الذهاب إلى المستشفى" />
-                <button onclick="addTask()">➕ أضف مهمة</button>
-            </div>
-            <div id="taskSuggestion" class="task-suggestion">💡 اكتب مهمة وسأقترح وقتاً لها</div>
-            <div class="scrollable-list">
-                <ul class="task-list" id="taskList">
-                    <li style="color:var(--text-secondary); justify-content:center; padding:20px;">
-                        ✨ لا توجد مهام بعد، أضف مهمتك الأولى!
-                    </li>
-                </ul>
-            </div>
+    <!-- PANEL 1: PRAYER -->
+    <div class="panel" id="panel-1">
+        <button class="panel-close" onclick="hidePanel(1)">✕</button>
+        <div class="panel-title" id="panel1Title">🕌 مواقيت الصلاة</div>
+        <div class="panel-desc" id="panel1Desc">📍 يتم تحديد المواقيت تلقائياً حسب موقعك. بارك الله في وقتك.</div>
+        <div class="prayer-location">
+            <span>📍 <span id="prayerLocation">جاري تحديد الموقع...</span></span>
+            <span style="margin-right:auto; font-size:0.8rem;" id="prayerDate"></span>
         </div>
+        <div class="prayer-grid" id="prayerGrid">
+            <div class="prayer-item"><div class="name" id="pFajrName">الفجر</div><div class="time" id="p-fajr">--:--</div></div>
+            <div class="prayer-item"><div class="name" id="pDhuhrName">الظهر</div><div class="time" id="p-dhuhr">--:--</div></div>
+            <div class="prayer-item"><div class="name" id="pAsrName">العصر</div><div class="time" id="p-asr">--:--</div></div>
+            <div class="prayer-item"><div class="name" id="pMaghribName">المغرب</div><div class="time" id="p-maghrib">--:--</div></div>
+            <div class="prayer-item"><div class="name" id="pIshaName">العشاء</div><div class="time" id="p-isha">--:--</div></div>
+        </div>
+        <div style="font-size:0.8rem; color:var(--text-secondary); margin-top:12px;" id="prayerUpdateNote">
+            🔄 يتم التحديث تلقائياً عند تغيير الموقع
+        </div>
+    </div>
 
-        <!-- ===== PANEL 3: HABITS ===== -->
-        <div class="panel" id="panel-3">
-            <button class="panel-close" onclick="hidePanel(3)">✕</button>
-            <div class="panel-title">🌱 العادات اليومية</div>
-            <div class="panel-desc">
-                ✅ تتبع عاداتك اليومية. اضغط على العادة لتسجيل إنجازها.
-            </div>
-            <div class="scrollable-list">
-                <div class="habit-grid" id="habitGrid">
-                    <div class="habit-item" data-habit="water" onclick="toggleHabit('water')">
-                        <span class="habit-icon">💧</span>
-                        <div class="habit-name">شرب الماء</div>
-                        <div class="habit-check" id="habit-water">✓</div>
-                    </div>
-                    <div class="habit-item" data-habit="sleep" onclick="toggleHabit('sleep')">
-                        <span class="habit-icon">😴</span>
-                        <div class="habit-name">النوم الكافي</div>
-                        <div class="habit-check" id="habit-sleep">✓</div>
-                    </div>
-                    <div class="habit-item" data-habit="exercise" onclick="toggleHabit('exercise')">
-                        <span class="habit-icon">🏃</span>
-                        <div class="habit-name">رياضة</div>
-                        <div class="habit-check" id="habit-exercise">✓</div>
-                    </div>
-                    <div class="habit-item" data-habit="read" onclick="toggleHabit('read')">
-                        <span class="habit-icon">📖</span>
-                        <div class="habit-name">قراءة</div>
-                        <div class="habit-check" id="habit-read">✓</div>
-                    </div>
-                    <div class="habit-item" data-habit="prayer" onclick="toggleHabit('prayer')">
-                        <span class="habit-icon">🕌</span>
-                        <div class="habit-name">صلاة النوافل</div>
-                        <div class="habit-check" id="habit-prayer">✓</div>
-                    </div>
-                    <div class="habit-item" data-habit="fast" onclick="toggleHabit('fast')">
-                        <span class="habit-icon">🌙</span>
-                        <div class="habit-name">صيام التطوع</div>
-                        <div class="habit-check" id="habit-fast">✓</div>
-                    </div>
-                    <div class="habit-item" data-habit="dhikr" onclick="toggleHabit('dhikr')">
-                        <span class="habit-icon">📿</span>
-                        <div class="habit-name">أذكار الصباح</div>
-                        <div class="habit-check" id="habit-dhikr">✓</div>
-                    </div>
-                    <div class="habit-item" data-habit="charity" onclick="toggleHabit('charity')">
-                        <span class="habit-icon">🤲</span>
-                        <div class="habit-name">صدقة يومية</div>
-                        <div class="habit-check" id="habit-charity">✓</div>
-                    </div>
+    <!-- PANEL 2: TASKS -->
+    <div class="panel" id="panel-2">
+        <button class="panel-close" onclick="hidePanel(2)">✕</button>
+        <div class="panel-title" id="panel2Title">📋 المهام اليومية</div>
+        <div class="panel-desc" id="panel2Desc">🧠 أضف مهامك وسيقترح التطبيق وقتاً مناسباً لها بناءً على ذكاء بسيط.</div>
+        <div class="task-input-row">
+            <input type="text" id="taskInput" placeholder="مثال: أريد الذهاب إلى المستشفى" />
+            <button onclick="addTask()" id="addTaskBtn">➕ أضف مهمة</button>
+        </div>
+        <div id="taskSuggestion" class="task-suggestion">💡 اكتب مهمة وسأقترح وقتاً لها</div>
+        <div class="scrollable-list">
+            <ul class="task-list" id="taskList">
+                <li style="color:var(--text-secondary); justify-content:center; padding:20px;" id="noTasksMsg">
+                    ✨ لا توجد مهام بعد، أضف مهمتك الأولى!
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PANEL 3: HABITS -->
+    <div class="panel" id="panel-3">
+        <button class="panel-close" onclick="hidePanel(3)">✕</button>
+        <div class="panel-title" id="panel3Title">🌱 العادات اليومية</div>
+        <div class="panel-desc" id="panel3Desc">✅ تتبع عاداتك اليومية. اضغط على العادة لتسجيل إنجازها.</div>
+        <div class="scrollable-list">
+            <div class="habit-grid" id="habitGrid">
+                <div class="habit-item" data-habit="water" onclick="toggleHabit('water')">
+                    <span class="habit-icon">💧</span>
+                    <div class="habit-name" id="habitWaterName">شرب الماء</div>
+                    <div class="habit-check" id="habit-water">✓</div>
+                </div>
+                <div class="habit-item" data-habit="sleep" onclick="toggleHabit('sleep')">
+                    <span class="habit-icon">😴</span>
+                    <div class="habit-name" id="habitSleepName">النوم الكافي</div>
+                    <div class="habit-check" id="habit-sleep">✓</div>
+                </div>
+                <div class="habit-item" data-habit="exercise" onclick="toggleHabit('exercise')">
+                    <span class="habit-icon">🏃</span>
+                    <div class="habit-name" id="habitExerciseName">رياضة</div>
+                    <div class="habit-check" id="habit-exercise">✓</div>
+                </div>
+                <div class="habit-item" data-habit="read" onclick="toggleHabit('read')">
+                    <span class="habit-icon">📖</span>
+                    <div class="habit-name" id="habitReadName">قراءة</div>
+                    <div class="habit-check" id="habit-read">✓</div>
+                </div>
+                <div class="habit-item" data-habit="prayer" onclick="toggleHabit('prayer')">
+                    <span class="habit-icon">🕌</span>
+                    <div class="habit-name" id="habitPrayerName">صلاة النوافل</div>
+                    <div class="habit-check" id="habit-prayer">✓</div>
+                </div>
+                <div class="habit-item" data-habit="fast" onclick="toggleHabit('fast')">
+                    <span class="habit-icon">🌙</span>
+                    <div class="habit-name" id="habitFastName">صيام التطوع</div>
+                    <div class="habit-check" id="habit-fast">✓</div>
+                </div>
+                <div class="habit-item" data-habit="dhikr" onclick="toggleHabit('dhikr')">
+                    <span class="habit-icon">📿</span>
+                    <div class="habit-name" id="habitDhikrName">أذكار الصباح</div>
+                    <div class="habit-check" id="habit-dhikr">✓</div>
+                </div>
+                <div class="habit-item" data-habit="charity" onclick="toggleHabit('charity')">
+                    <span class="habit-icon">🤲</span>
+                    <div class="habit-name" id="habitCharityName">صدقة يومية</div>
+                    <div class="habit-check" id="habit-charity">✓</div>
                 </div>
             </div>
-            <div style="margin-top:14px; text-align:center; font-size:0.9rem; color:var(--text-secondary);">
-                🎯 أنجزت <span id="habitsDone">0</span> من <span id="habitsTotal">8</span> عادات اليوم
-            </div>
         </div>
-
-        <!-- Thank You -->
-        <div class="thankyou">
-            🙏 شكراً لك <strong>على استخدامك</strong> هذا التطبيق 🌟<br />
-            <span style="font-size:0.85rem;">نسأل الله أن يبارك في وقتك وعملك</span>
+        <div style="margin-top:14px; text-align:center; font-size:0.9rem; color:var(--text-secondary);">
+            <span id="habitsProgress">🎯 أنجزت <span id="habitsDone">0</span> من <span id="habitsTotal">8</span> عادات اليوم</span>
         </div>
     </div>
 
-    <!-- ===== REMINDER POPUP ===== -->
-    <div id="reminder-popup">
-        <div class="reminder-icon">💡</div>
-        <div class="reminder-text" id="reminderText">لا تنسى صلاتك يا عزيزي</div>
-        <button class="reminder-close" onclick="closeReminder()">✕</button>
+    <div class="thankyou">
+        <span id="thankyouText">🙏 شكراً لك <strong>على استخدامك</strong> هذا التطبيق 🌟</span><br />
+        <span style="font-size:0.85rem;" id="thankyouSub">نسأل الله أن يبارك في وقتك وعملك</span>
     </div>
+</div>
 
-    <script>
-        // ============================================================
-        //  GLOBALS
-        // ============================================================
-        let timerInterval = null;
-        let timerSeconds = 0;
-        let timerRunning = false;
-        let selectedAlarm = 'chime';
-        let reminderInterval = null;
-        let reminderVisible = false;
-        let currentUser = 'صديقنا';
+<!-- ===== REMINDER POPUP ===== -->
+<div id="reminder-popup">
+    <div class="reminder-icon">💡</div>
+    <div class="reminder-text" id="reminderText">لا تنسى صلاتك يا عزيزي</div>
+    <button class="reminder-close" onclick="closeReminder()">✕</button>
+</div>
 
-        const reminders = [
-            "🌿 لا تنسى صلاتك يا عزيزي",
-            "💧 اشرب كوب ماء الآن",
-            "🧘 خذ نفساً عميقاً واهدأ",
-            "📖 اقرأ ورداً من القرآن",
-            "🙏 استغفر الله وتب إليه",
-            "🌅 سبح الله مئة مرة",
-            "💪 تحرك وتمدد قليلاً",
-            "🌙 صلِّ ركعتين لله",
-            "🍎 تناول فاكهة صحية",
-            "☕ خذ قسطاً من الراحة",
-            "📝 راجع أهدافك اليومية",
-            "🤝 ابتسم في وجه من ترى",
-            "🌳 اخرج إلى الطبيعة",
-            "🎧 استمع إلى شيء مفيد",
-            "✍️ اكتب شيئاً تشكره عليه"
-        ];
+<script>
+    // ============================================================
+    //  GLOBALS
+    // ============================================================
+    let timerInterval = null;
+    let timerSeconds = 0;
+    let timerRunning = false;
+    let selectedAlarm = 'chime';
+    let reminderInterval = null;
+    let reminderVisible = false;
+    let currentUser = 'صديقنا';
+    let currentLang = 'ar'; // 'ar' or 'en'
 
-        // ============================================================
-        //  SPLASH → SOUND → LOGIN
-        // ============================================================
-        let splashEl = document.getElementById('splash');
-        let loginEl = document.getElementById('login');
-        let appEl = document.getElementById('app');
+    const reminders = [
+        "🌿 لا تنسى صلاتك يا عزيزي",
+        "💧 اشرب كوب ماء الآن",
+        "🧘 خذ نفساً عميقاً واهدأ",
+        "📖 اقرأ ورداً من القرآن",
+        "🙏 استغفر الله وتب إليه",
+        "🌅 سبح الله مئة مرة",
+        "💪 تحرك وتمدد قليلاً",
+        "🌙 صلِّ ركعتين لله",
+        "🍎 تناول فاكهة صحية",
+        "☕ خذ قسطاً من الراحة",
+        "📝 راجع أهدافك اليومية",
+        "🤝 ابتسم في وجه من ترى",
+        "🌳 اخرج إلى الطبيعة",
+        "🎧 استمع إلى شيء مفيد",
+        "✍️ اكتب شيئاً تشكره عليه"
+    ];
 
-        // Play a beautiful sound after splash
-        function playWelcomeSound() {
-            try {
-                const ctx = new(window.AudioContext || window.webkitAudioContext)();
+    const remindersEn = [
+        "🌿 Don't forget your prayer, dear",
+        "💧 Drink a glass of water now",
+        "🧘 Take a deep breath and relax",
+        "📖 Read a portion of the Quran",
+        "🙏 Ask for forgiveness",
+        "🌅 Glorify Allah 100 times",
+        "💪 Move and stretch a bit",
+        "🌙 Pray two rak'ahs for Allah",
+        "🍎 Eat a healthy fruit",
+        "☕ Take a break",
+        "📝 Review your daily goals",
+        "🤝 Smile at those around you",
+        "🌳 Go out into nature",
+        "🎧 Listen to something beneficial",
+        "✍️ Write something you're grateful for"
+    ];
 
-                // Soft arpeggio
-                const notes = [523.25, 659.25, 783.99, 1046.50];
-                notes.forEach((freq, i) => {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = 'sine';
-                    osc.frequency.value = freq;
-                    gain.gain.setValueAtTime(0.08, ctx.currentTime + i * 0.12);
-                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.12 + 0.6);
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.start(ctx.currentTime + i * 0.12);
-                    osc.stop(ctx.currentTime + i * 0.12 + 0.6);
-                });
+    // ============================================================
+    //  LANGUAGE STRINGS
+    // ============================================================
+    const lang = {
+        ar: {
+            splashTitle: '⏳ استغل وقتك بنفسك',
+            splashSub: 'كل ثانية فيها خير',
+            loginTitle: '✨ مرحباً بك',
+            loginSub: 'اختر طريقة الدخول وابدأ رحلتك',
+            loginEmail: 'تسجيل الدخول بالإيميل',
+            loginPhone: 'تسجيل الدخول برمز الهاتف',
+            loginApple: 'تسجيل الدخول بأبل',
+            loginOr: 'أو',
+            loginGuest: 'دخول كضيف',
+            loginSubmit: 'تسجيل الدخول',
+            loginBack: '↩️ عودة',
+            loginSubmitApple: 'تسجيل الدخول بأبل',
+            greeting: 'أهلاً بك',
+            greetingSub: '· لنستغل وقتنا معاً',
+            logout: '🚪 خروج',
+            langToggle: '🇬🇧 English',
+            square1: 'المؤقتات',
+            square1Badge: 'أصوات',
+            square2: 'مواقيت الصلاة',
+            square2Badge: 'تلقائي',
+            square3: 'المهام اليومية',
+            square3Badge: 'ذكية',
+            square4: 'العادات اليومية',
+            square4Badge: 'تتبع',
+            panel0Title: '⏱️ المؤقتات',
+            panel0Desc: '📌 استخدم المؤقت لتنظيم وقتك. اختر صوت منبهك المفضل واضبط الوقت.',
+            timerStart: '▶️ بدء',
+            timerPause: '⏸️ إيقاف مؤقت',
+            timerReset: '⏹️ إعادة',
+            timerAddMin: '➕ دقيقة',
+            timerAddSec: '➕ ثانية',
+            alarmLabel: '🔊 اختر صوت المنبه:',
+            alarmChime: '🔔 جرس',
+            alarmBell: '🔔 ناقوس',
+            alarmSoft: '🎵 ناعم',
+            alarmBuzzer: '📳 تنبيه',
+            alarmNature: '🌿 طبيعة',
+            alarmPiano: '🎹 بيانو',
+            timerRemaining: '⏳ الوقت المتبقي:',
+            panel1Title: '🕌 مواقيت الصلاة',
+            panel1Desc: '📍 يتم تحديد المواقيت تلقائياً حسب موقعك. بارك الله في وقتك.',
+            prayerFajr: 'الفجر',
+            prayerDhuhr: 'الظهر',
+            prayerAsr: 'العصر',
+            prayerMaghrib: 'المغرب',
+            prayerIsha: 'العشاء',
+            prayerUpdate: '🔄 يتم التحديث تلقائياً عند تغيير الموقع',
+            panel2Title: '📋 المهام اليومية',
+            panel2Desc: '🧠 أضف مهامك وسيقترح التطبيق وقتاً مناسباً لها بناءً على ذكاء بسيط.',
+            taskPlaceholder: 'مثال: أريد الذهاب إلى المستشفى',
+            addTask: '➕ أضف مهمة',
+            taskSuggestion: '💡 اكتب مهمة وسأقترح وقتاً لها',
+            noTasks: '✨ لا توجد مهام بعد، أضف مهمتك الأولى!',
+            panel3Title: '🌱 العادات اليومية',
+            panel3Desc: '✅ تتبع عاداتك اليومية. اضغط على العادة لتسجيل إنجازها.',
+            habitWater: 'شرب الماء',
+            habitSleep: 'النوم الكافي',
+            habitExercise: 'رياضة',
+            habitRead: 'قراءة',
+            habitPrayer: 'صلاة النوافل',
+            habitFast: 'صيام التطوع',
+            habitDhikr: 'أذكار الصباح',
+            habitCharity: 'صدقة يومية',
+            habitsProgress: '🎯 أنجزت {done} من {total} عادات اليوم',
+            thankyou: '🙏 شكراً لك <strong>على استخدامك</strong> هذا التطبيق 🌟',
+            thankyouSub: 'نسأل الله أن يبارك في وقتك وعملك',
+            reminderDefault: 'لا تنسى صلاتك يا عزيزي',
+            locationDefault: 'جاري تحديد الموقع...',
+            locationFallback: '📍 مكة المكرمة (افتراضي)',
+            emailPlaceholder: 'example@email.com',
+            passwordPlaceholder: 'كلمة المرور',
+            phonePlaceholder: '05xxxxxxxx',
+            codePlaceholder: 'رمز التحقق',
+            appleEmailPlaceholder: 'apple@icloud.com',
+            applePasswordPlaceholder: 'كلمة المرور',
+            alertEmail: 'الرجاء إدخال الإيميل وكلمة المرور',
+            alertPhone: 'الرجاء إدخال رقم الهاتف ورمز التحقق',
+            alertApple: 'الرجاء إدخال البريد الإلكتروني وكلمة المرور',
+            confirmLogout: 'هل تريد تسجيل الخروج؟'
+        },
+        en: {
+            splashTitle: '⏳ Make the Most of Your Time',
+            splashSub: 'Every second holds good',
+            loginTitle: '✨ Welcome',
+            loginSub: 'Choose how to sign in and start your journey',
+            loginEmail: 'Sign in with Email',
+            loginPhone: 'Sign in with Phone Code',
+            loginApple: 'Sign in with Apple',
+            loginOr: 'Or',
+            loginGuest: 'Continue as Guest',
+            loginSubmit: 'Sign In',
+            loginBack: '↩️ Back',
+            loginSubmitApple: 'Sign in with Apple',
+            greeting: 'Welcome',
+            greetingSub: '· Let\'s make the most of our time',
+            logout: '🚪 Logout',
+            langToggle: '🇸🇦 العربية',
+            square1: 'Timers',
+            square1Badge: 'Sounds',
+            square2: 'Prayer Times',
+            square2Badge: 'Auto',
+            square3: 'Daily Tasks',
+            square3Badge: 'Smart',
+            square4: 'Daily Habits',
+            square4Badge: 'Track',
+            panel0Title: '⏱️ Timers',
+            panel0Desc: '📌 Use the timer to organize your time. Choose your favorite alarm sound and set the time.',
+            timerStart: '▶️ Start',
+            timerPause: '⏸️ Pause',
+            timerReset: '⏹️ Reset',
+            timerAddMin: '➕ Minute',
+            timerAddSec: '➕ Second',
+            alarmLabel: '🔊 Choose alarm sound:',
+            alarmChime: '🔔 Chime',
+            alarmBell: '🔔 Bell',
+            alarmSoft: '🎵 Soft',
+            alarmBuzzer: '📳 Buzzer',
+            alarmNature: '🌿 Nature',
+            alarmPiano: '🎹 Piano',
+            timerRemaining: '⏳ Time remaining:',
+            panel1Title: '🕌 Prayer Times',
+            panel1Desc: '📍 Prayer times are determined automatically based on your location. May Allah bless your time.',
+            prayerFajr: 'Fajr',
+            prayerDhuhr: 'Dhuhr',
+            prayerAsr: 'Asr',
+            prayerMaghrib: 'Maghrib',
+            prayerIsha: 'Isha',
+            prayerUpdate: '🔄 Updates automatically when location changes',
+            panel2Title: '📋 Daily Tasks',
+            panel2Desc: '🧠 Add your tasks and the app will suggest a suitable time based on simple intelligence.',
+            taskPlaceholder: 'Example: I need to go to the hospital',
+            addTask: '➕ Add Task',
+            taskSuggestion: '💡 Write a task and I\'ll suggest a time',
+            noTasks: '✨ No tasks yet, add your first task!',
+            panel3Title: '🌱 Daily Habits',
+            panel3Desc: '✅ Track your daily habits. Click on a habit to mark it as done.',
+            habitWater: 'Drink Water',
+            habitSleep: 'Get Enough Sleep',
+            habitExercise: 'Exercise',
+            habitRead: 'Reading',
+            habitPrayer: 'Sunnah Prayers',
+            habitFast: 'Voluntary Fasting',
+            habitDhikr: 'Morning Dhikr',
+            habitCharity: 'Daily Charity',
+            habitsProgress: '🎯 Completed {done} out of {total} habits today',
+            thankyou: '🙏 Thank you <strong>for using</strong> this app 🌟',
+            thankyouSub: 'May Allah bless your time and efforts',
+            reminderDefault: 'Don\'t forget your prayer, dear',
+            locationDefault: 'Determining location...',
+            locationFallback: '📍 Makkah (default)',
+            emailPlaceholder: 'example@email.com',
+            passwordPlaceholder: 'Password',
+            phonePlaceholder: '05xxxxxxxx',
+            codePlaceholder: 'Verification code',
+            appleEmailPlaceholder: 'apple@icloud.com',
+            applePasswordPlaceholder: 'Password',
+            alertEmail: 'Please enter email and password',
+            alertPhone: 'Please enter phone number and verification code',
+            alertApple: 'Please enter email and password',
+            confirmLogout: 'Do you want to logout?'
+        }
+    };
 
-                // Gentle pad
-                const osc2 = ctx.createOscillator();
-                const gain2 = ctx.createGain();
-                osc2.type = 'sine';
-                osc2.frequency.value = 440;
-                gain2.gain.setValueAtTime(0.04, ctx.currentTime + 0.3);
-                gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.6);
-                osc2.connect(gain2);
-                gain2.connect(ctx.destination);
-                osc2.start(ctx.currentTime + 0.3);
-                osc2.stop(ctx.currentTime + 1.6);
+    // ============================================================
+    //  LANGUAGE FUNCTIONS
+    // ============================================================
+    function toggleLanguage() {
+        currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+        updateLanguage();
+    }
 
-            } catch (e) { /* fallback silent */ }
+    function updateLanguage() {
+        const t = lang[currentLang];
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+        // Splash
+        document.getElementById('splashTitle').textContent = t.splashTitle;
+        document.getElementById('splashSub').textContent = t.splashSub;
+
+        // Login
+        document.getElementById('loginTitle').textContent = t.loginTitle;
+        document.getElementById('loginSub').textContent = t.loginSub;
+        document.getElementById('loginEmailBtn').textContent = t.loginEmail;
+        document.getElementById('loginPhoneBtn').textContent = t.loginPhone;
+        document.getElementById('loginAppleBtn').textContent = t.loginApple;
+        document.getElementById('loginOr').textContent = t.loginOr;
+        document.getElementById('loginGuestBtn').textContent = t.loginGuest;
+        document.getElementById('loginSubmitBtn').textContent = t.loginSubmit;
+        document.getElementById('loginSubmitBtn2').textContent = t.loginSubmit;
+        document.getElementById('loginSubmitBtn3').textContent = t.loginSubmitApple;
+        document.querySelectorAll('.login-back').forEach(el => el.textContent = t.loginBack);
+        document.getElementById('emailInput').placeholder = t.emailPlaceholder;
+        document.getElementById('passwordInput').placeholder = t.passwordPlaceholder;
+        document.getElementById('phoneInput').placeholder = t.phonePlaceholder;
+        document.getElementById('codeInput').placeholder = t.codePlaceholder;
+        document.getElementById('appleEmailInput').placeholder = t.appleEmailPlaceholder;
+        document.getElementById('applePasswordInput').placeholder = t.applePasswordPlaceholder;
+
+        // App Header
+        document.getElementById('greetingText').textContent = t.greeting;
+        document.getElementById('greetingSub').textContent = t.greetingSub;
+        document.getElementById('logoutBtn').textContent = t.logout;
+        document.getElementById('langToggleBtn').textContent = t.langToggle;
+
+        // Squares
+        document.getElementById('square1Label').textContent = t.square1;
+        document.getElementById('square1Badge').textContent = t.square1Badge;
+        document.getElementById('square2Label').textContent = t.square2;
+        document.getElementById('square2Badge').textContent = t.square2Badge;
+        document.getElementById('square3Label').textContent = t.square3;
+        document.getElementById('square3Badge').textContent = t.square3Badge;
+        document.getElementById('square4Label').textContent = t.square4;
+        document.getElementById('square4Badge').textContent = t.square4Badge;
+
+        // Panel 0
+        document.getElementById('panel0Title').textContent = t.panel0Title;
+        document.getElementById('panel0Desc').textContent = t.panel0Desc;
+        document.getElementById('timerStartBtn').textContent = t.timerStart;
+        document.getElementById('timerPauseBtn').textContent = t.timerPause;
+        document.getElementById('timerResetBtn').textContent = t.timerReset;
+        document.getElementById('timerAddMinBtn').textContent = t.timerAddMin;
+        document.getElementById('timerAddSecBtn').textContent = t.timerAddSec;
+        document.getElementById('alarmLabel').textContent = t.alarmLabel;
+        document.getElementById('alarmChime').textContent = t.alarmChime;
+        document.getElementById('alarmBell').textContent = t.alarmBell;
+        document.getElementById('alarmSoft').textContent = t.alarmSoft;
+        document.getElementById('alarmBuzzer').textContent = t.alarmBuzzer;
+        document.getElementById('alarmNature').textContent = t.alarmNature;
+        document.getElementById('alarmPiano').textContent = t.alarmPiano;
+        document.getElementById('timerRemainingLabel').textContent = t.timerRemaining;
+
+        // Panel 1
+        document.getElementById('panel1Title').textContent = t.panel1Title;
+        document.getElementById('panel1Desc').textContent = t.panel1Desc;
+        document.getElementById('pFajrName').textContent = t.prayerFajr;
+        document.getElementById('pDhuhrName').textContent = t.prayerDhuhr;
+        document.getElementById('pAsrName').textContent = t.prayerAsr;
+        document.getElementById('pMaghribName').textContent = t.prayerMaghrib;
+        document.getElementById('pIshaName').textContent = t.prayerIsha;
+        document.getElementById('prayerUpdateNote').textContent = t.prayerUpdate;
+
+        // Panel 2
+        document.getElementById('panel2Title').textContent = t.panel2Title;
+        document.getElementById('panel2Desc').textContent = t.panel2Desc;
+        document.getElementById('taskInput').placeholder = t.taskPlaceholder;
+        document.getElementById('addTaskBtn').textContent = t.addTask;
+        document.getElementById('taskSuggestion').textContent = t.taskSuggestion;
+        document.getElementById('noTasksMsg').textContent = t.noTasks;
+
+        // Panel 3
+        document.getElementById('panel3Title').textContent = t.panel3Title;
+        document.getElementById('panel3Desc').textContent = t.panel3Desc;
+        document.getElementById('habitWaterName').textContent = t.habitWater;
+        document.getElementById('habitSleepName').textContent = t.habitSleep;
+        document.getElementById('habitExerciseName').textContent = t.habitExercise;
+        document.getElementById('habitReadName').textContent = t.habitRead;
+        document.getElementById('habitPrayerName').textContent = t.habitPrayer;
+        document.getElementById('habitFastName').textContent = t.habitFast;
+        document.getElementById('habitDhikrName').textContent = t.habitDhikr;
+        document.getElementById('habitCharityName').textContent = t.habitCharity;
+        updateHabitProgressText();
+
+        // Thank you
+        document.getElementById('thankyouText').innerHTML = t.thankyou;
+        document.getElementById('thankyouSub').textContent = t.thankyouSub;
+
+        // Reminder default
+        if (!reminderVisible) {
+            document.getElementById('reminderText').textContent = t.reminderDefault;
         }
 
-        // Splash timer
-        setTimeout(() => {
-            splashEl.classList.add('hidden');
-            playWelcomeSound();
-            setTimeout(() => {
-                splashEl.style.display = 'none';
-                loginEl.classList.add('visible');
-            }, 1400);
-        }, 2800);
-
-        // ============================================================
-        //  LOGIN FUNCTIONS
-        // ============================================================
-        function showLoginForm(type) {
-            hideAllForms();
-            if (type === 'email') {
-                document.getElementById('emailForm').classList.add('active');
-            } else if (type === 'phone') {
-                document.getElementById('phoneForm').classList.add('active');
-            } else if (type === 'apple') {
-                document.getElementById('appleForm').classList.add('active');
-            }
+        // Location fallback
+        const locEl = document.getElementById('prayerLocation');
+        if (locEl.textContent.includes('جاري') || locEl.textContent.includes('Determining')) {
+            locEl.textContent = currentLang === 'ar' ? t.locationDefault : t.locationDefault;
+        }
+        if (locEl.textContent.includes('مكة') || locEl.textContent.includes('Makkah')) {
+            locEl.textContent = t.locationFallback;
         }
 
-        function hideAllForms() {
-            document.querySelectorAll('.login-form').forEach(f => f.classList.remove('active'));
-        }
+        // Update task list items
+        renderTasks();
 
-        function loginWithEmail() {
-            const email = document.getElementById('emailInput').value.trim();
-            const pass = document.getElementById('passwordInput').value.trim();
-            if (!email || !pass) {
-                alert('الرجاء إدخال الإيميل وكلمة المرور');
-                return;
-            }
-            // Simulate login
-            const name = email.split('@')[0] || 'مستخدم';
-            currentUser = name;
-            enterApp(name);
-        }
+        // Update habits progress
+        updateHabitProgressText();
+    }
 
-        function loginWithPhone() {
-            const phone = document.getElementById('phoneInput').value.trim();
-            const code = document.getElementById('codeInput').value.trim();
-            if (!phone || !code) {
-                alert('الرجاء إدخال رقم الهاتف ورمز التحقق');
-                return;
-            }
-            currentUser = 'مستخدم';
-            enterApp('مستخدم');
-        }
+    function updateHabitProgressText() {
+        const t = lang[currentLang];
+        const done = document.getElementById('habitsDone').textContent;
+        const total = document.getElementById('habitsTotal').textContent;
+        document.getElementById('habitsProgress').innerHTML = t.habitsProgress.replace('{done}', done).replace('{total}', total);
+    }
 
-        function loginWithApple() {
-            const email = document.getElementById('appleEmailInput').value.trim();
-            const pass = document.getElementById('applePasswordInput').value.trim();
-            if (!email || !pass) {
-                alert('الرجاء إدخال البريد الإلكتروني وكلمة المرور');
-                return;
-            }
-            const name = email.split('@')[0] || 'أبل';
-            currentUser = name;
-            enterApp(name);
-        }
+    // ============================================================
+    //  SPLASH → SOUND → LOGIN
+    // ============================================================
+    let splashEl = document.getElementById('splash');
+    let loginEl = document.getElementById('login');
+    let appEl = document.getElementById('app');
 
-        function loginGuest() {
-            const name = 'ضيف_' + Math.floor(Math.random() * 1000);
-            currentUser = name;
-            enterApp(name);
-        }
-
-        function enterApp(name) {
-            document.getElementById('userName').textContent = name;
-            document.getElementById('userAvatar').textContent = name.charAt(0).toUpperCase();
-
-            loginEl.classList.remove('visible');
-            loginEl.style.display = 'none';
-            appEl.classList.add('visible');
-
-            // Start clock
-            updateClock();
-            setInterval(updateClock, 1000);
-
-            // Init prayer times
-            initPrayerTimes();
-
-            // Init habits
-            updateHabitCount();
-
-            // Start reminders
-            startReminders();
-
-            // Show first panel (timers) automatically
-            showPanel(0);
-
-            // Focus task input
-            document.getElementById('taskInput').addEventListener('input', suggestTaskTime);
-
-            // Pre-fill tasks
-            if (tasks.length === 0) {
-                tasks.push({ text: 'أريد الذهاب إلى المستشفى', time: '8:00 صباحاً', done: false });
-                tasks.push({ text: 'أريد الذهاب إلى الحلاق', time: '9:00 صباحاً', done: false });
-                tasks.push({ text: 'أريد أن أنام مبكراً', time: '10:00 مساءً', done: false });
-                tasks.push({ text: 'أريد أن أدرس ساعتين', time: '7:00 مساءً', done: false });
-                renderTasks();
-            }
-        }
-
-        function logout() {
-            if (confirm('هل تريد تسجيل الخروج؟')) {
-                appEl.classList.remove('visible');
-                appEl.style.display = 'none';
-                loginEl.style.display = 'flex';
-                loginEl.classList.add('visible');
-                hideAllForms();
-                // Reset timer
-                clearInterval(timerInterval);
-                timerRunning = false;
-                timerSeconds = 0;
-                updateTimerDisplay();
-                // Reset reminders
-                clearInterval(reminderInterval);
-                closeReminder();
-            }
-        }
-
-        // ============================================================
-        //  CLOCK
-        // ============================================================
-        function updateClock() {
-            const now = new Date();
-            const h = String(now.getHours()).padStart(2, '0');
-            const m = String(now.getMinutes()).padStart(2, '0');
-            document.getElementById('currentTimeDisplay').textContent = h + ':' + m;
-        }
-
-        // ============================================================
-        //  PANELS
-        // ============================================================
-        function showPanel(idx) {
-            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-            const panel = document.getElementById('panel-' + idx);
-            if (panel) panel.classList.add('active');
-            // scroll to panel
-            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function hidePanel(idx) {
-            document.getElementById('panel-' + idx).classList.remove('active');
-        }
-
-        // ============================================================
-        //  TIMER
-        // ============================================================
-        function updateTimerDisplay() {
-            const h = String(Math.floor(timerSeconds / 3600)).padStart(2, '0');
-            const m = String(Math.floor((timerSeconds % 3600) / 60)).padStart(2, '0');
-            const s = String(timerSeconds % 60).padStart(2, '0');
-            document.getElementById('timerDisplay').textContent = h + ':' + m + ':' + s;
-            document.getElementById('timerRemaining').textContent = h + ':' + m + ':' + s;
-        }
-
-        function timerControl(action) {
-            if (action === 'start') {
-                if (!timerRunning) {
-                    if (timerSeconds <= 0) timerSeconds = 300;
-                    timerRunning = true;
-                    timerInterval = setInterval(() => {
-                        if (timerSeconds > 0) {
-                            timerSeconds--;
-                            updateTimerDisplay();
-                        } else {
-                            timerControl('reset');
-                            playAlarmSound();
-                            if (navigator.vibrate) navigator.vibrate([300, 200, 300]);
-                            alert('⏰ الوقت انتهى!');
-                        }
-                    }, 1000);
-                }
-            } else if (action === 'pause') {
-                if (timerRunning) {
-                    clearInterval(timerInterval);
-                    timerRunning = false;
-                }
-            } else if (action === 'reset') {
-                clearInterval(timerInterval);
-                timerRunning = false;
-                timerSeconds = 0;
-                updateTimerDisplay();
-            } else if (action === 'addMin') {
-                timerSeconds += 60;
-                updateTimerDisplay();
-            } else if (action === 'addSec') {
-                timerSeconds += 10;
-                updateTimerDisplay();
-            }
-        }
-
-        // ============================================================
-        //  ALARM SOUNDS
-        // ============================================================
-        document.querySelectorAll('#alarmSounds button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('#alarmSounds button').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                selectedAlarm = this.dataset.sound;
-                playAlarmSound(selectedAlarm, true);
+    function playWelcomeSound() {
+        try {
+            const ctx = new(window.AudioContext || window.webkitAudioContext)();
+            const notes = [523.25, 659.25, 783.99, 1046.50];
+            notes.forEach((freq, i) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.08, ctx.currentTime + i * 0.12);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.12 + 0.6);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(ctx.currentTime + i * 0.12);
+                osc.stop(ctx.currentTime + i * 0.12 + 0.6);
             });
+            const osc2 = ctx.createOscillator();
+            const gain2 = ctx.createGain();
+            osc2.type = 'sine';
+            osc2.frequency.value = 440;
+            gain2.gain.setValueAtTime(0.04, ctx.currentTime + 0.3);
+            gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.6);
+            osc2.connect(gain2);
+            gain2.connect(ctx.destination);
+            osc2.start(ctx.currentTime + 0.3);
+            osc2.stop(ctx.currentTime + 1.6);
+        } catch (e) { /* fallback silent */ }
+    }
+
+    setTimeout(() => {
+        splashEl.classList.add('hidden');
+        playWelcomeSound();
+        setTimeout(() => {
+            splashEl.style.display = 'none';
+            loginEl.classList.add('visible');
+        }, 1400);
+    }, 2800);
+
+    // ============================================================
+    //  LOGIN FUNCTIONS
+    // ============================================================
+    function showLoginForm(type) {
+        hideAllForms();
+        if (type === 'email') document.getElementById('emailForm').classList.add('active');
+        else if (type === 'phone') document.getElementById('phoneForm').classList.add('active');
+        else if (type === 'apple') document.getElementById('appleForm').classList.add('active');
+    }
+
+    function hideAllForms() {
+        document.querySelectorAll('.login-form').forEach(f => f.classList.remove('active'));
+    }
+
+    function loginWithEmail() {
+        const email = document.getElementById('emailInput').value.trim();
+        const pass = document.getElementById('passwordInput').value.trim();
+        if (!email || !pass) {
+            alert(lang[currentLang].alertEmail);
+            return;
+        }
+        const name = email.split('@')[0] || 'مستخدم';
+        currentUser = name;
+        enterApp(name);
+    }
+
+    function loginWithPhone() {
+        const phone = document.getElementById('phoneInput').value.trim();
+        const code = document.getElementById('codeInput').value.trim();
+        if (!phone || !code) {
+            alert(lang[currentLang].alertPhone);
+            return;
+        }
+        currentUser = 'مستخدم';
+        enterApp('مستخدم');
+    }
+
+    function loginWithApple() {
+        const email = document.getElementById('appleEmailInput').value.trim();
+        const pass = document.getElementById('applePasswordInput').value.trim();
+        if (!email || !pass) {
+            alert(lang[currentLang].alertApple);
+            return;
+        }
+        const name = email.split('@')[0] || 'أبل';
+        currentUser = name;
+        enterApp(name);
+    }
+
+    function loginGuest() {
+        const name = 'ضيف_' + Math.floor(Math.random() * 1000);
+        currentUser = name;
+        enterApp(name);
+    }
+
+    function enterApp(name) {
+        document.getElementById('userName').textContent = name;
+        document.getElementById('userAvatar').textContent = name.charAt(0).toUpperCase();
+
+        loginEl.classList.remove('visible');
+        loginEl.style.display = 'none';
+        appEl.classList.add('visible');
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        initPrayerTimes();
+        updateHabitCount();
+        startReminders();
+        showPanel(0);
+        document.getElementById('taskInput').addEventListener('input', suggestTaskTime);
+
+        if (tasks.length === 0) {
+            tasks.push({ text: 'أريد الذهاب إلى المستشفى', time: '8:00 صباحاً', done: false });
+            tasks.push({ text: 'أريد الذهاب إلى الحلاق', time: '9:00 صباحاً', done: false });
+            tasks.push({ text: 'أريد أن أنام مبكراً', time: '10:00 مساءً', done: false });
+            tasks.push({ text: 'أريد أن أدرس ساعتين', time: '7:00 مساءً', done: false });
+            renderTasks();
+        }
+
+        // Set language to Arabic by default
+        currentLang = 'ar';
+        updateLanguage();
+    }
+
+    function logout() {
+        if (confirm(lang[currentLang].confirmLogout)) {
+            appEl.classList.remove('visible');
+            appEl.style.display = 'none';
+            loginEl.style.display = 'flex';
+            loginEl.classList.add('visible');
+            hideAllForms();
+            clearInterval(timerInterval);
+            timerRunning = false;
+            timerSeconds = 0;
+            updateTimerDisplay();
+            clearInterval(reminderInterval);
+            closeReminder();
+        }
+    }
+
+    // ============================================================
+    //  CLOCK
+    // ============================================================
+    function updateClock() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById('currentTimeDisplay').textContent = h + ':' + m;
+    }
+
+    // ============================================================
+    //  PANELS
+    // ============================================================
+    function showPanel(idx) {
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        const panel = document.getElementById('panel-' + idx);
+        if (panel) panel.classList.add('active');
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function hidePanel(idx) {
+        document.getElementById('panel-' + idx).classList.remove('active');
+    }
+
+    // ============================================================
+    //  TIMER
+    // ============================================================
+    function updateTimerDisplay() {
+        const h = String(Math.floor(timerSeconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((timerSeconds % 3600) / 60)).padStart(2, '0');
+        const s = String(timerSeconds % 60).padStart(2, '0');
+        document.getElementById('timerDisplay').textContent = h + ':' + m + ':' + s;
+        document.getElementById('timerRemaining').textContent = h + ':' + m + ':' + s;
+    }
+
+    function timerControl(action) {
+        if (action === 'start') {
+            if (!timerRunning) {
+                if (timerSeconds <= 0) timerSeconds = 300;
+                timerRunning = true;
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateTimerDisplay();
+                    } else {
+                        timerControl('reset');
+                        playAlarmSound();
+                        if (navigator.vibrate) navigator.vibrate([300, 200, 300]);
+                        alert('⏰ الوقت انتهى!');
+                    }
+                }, 1000);
+            }
+        } else if (action === 'pause') {
+            if (timerRunning) {
+                clearInterval(timerInterval);
+                timerRunning = false;
+            }
+        } else if (action === 'reset') {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            timerSeconds = 0;
+            updateTimerDisplay();
+        } else if (action === 'addMin') {
+            timerSeconds += 60;
+            updateTimerDisplay();
+        } else if (action === 'addSec') {
+            timerSeconds += 10;
+            updateTimerDisplay();
+        }
+    }
+
+    // ============================================================
+    //  ALARM SOUNDS
+    // ============================================================
+    document.querySelectorAll('#alarmSounds button').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#alarmSounds button').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            selectedAlarm = this.dataset.sound;
+            playAlarmSound(selectedAlarm, true);
         });
+    });
 
-        function playAlarmSound(type, preview = false) {
-            try {
-                const ctx = new(window.AudioContext || window.webkitAudioContext)();
-                const now = ctx.currentTime;
-                const duration = preview ? 0.3 : 0.8;
-                const vol = preview ? 0.08 : 0.15;
+    function playAlarmSound(type, preview = false) {
+        try {
+            const ctx = new(window.AudioContext || window.webkitAudioContext)();
+            const now = ctx.currentTime;
+            const duration = preview ? 0.3 : 0.8;
+            const vol = preview ? 0.08 : 0.15;
 
-                switch (type) {
-                    case 'chime':
-                        [523, 659, 784, 1047].forEach((f, i) => {
-                            const o = ctx.createOscillator();
-                            const g = ctx.createGain();
-                            o.type = 'sine';
-                            o.frequency.value = f;
-                            g.gain.setValueAtTime(vol * 0.7, now + i * 0.1);
-                            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + duration);
-                            o.connect(g);
-                            g.connect(ctx.destination);
-                            o.start(now + i * 0.1);
-                            o.stop(now + i * 0.1 + duration);
-                        });
-                        break;
-                    case 'bell':
-                        [440, 554, 659].forEach((f, i) => {
-                            const o = ctx.createOscillator();
-                            const g = ctx.createGain();
-                            o.type = 'square';
-                            o.frequency.value = f;
-                            g.gain.setValueAtTime(vol * 0.5, now + i * 0.15);
-                            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.15 + duration);
-                            o.connect(g);
-                            g.connect(ctx.destination);
-                            o.start(now + i * 0.15);
-                            o.stop(now + i * 0.15 + duration);
-                        });
-                        break;
-                    case 'soft':
-                        [330, 392, 523, 659].forEach((f, i) => {
-                            const o = ctx.createOscillator();
-                            const g = ctx.createGain();
-                            o.type = 'sine';
-                            o.frequency.value = f;
-                            g.gain.setValueAtTime(vol * 0.6, now + i * 0.08);
-                            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + duration * 1.2);
-                            o.connect(g);
-                            g.connect(ctx.destination);
-                            o.start(now + i * 0.08);
-                            o.stop(now + i * 0.08 + duration * 1.2);
-                        });
-                        break;
-                    case 'buzzer':
+            switch (type) {
+                case 'chime':
+                    [523, 659, 784, 1047].forEach((f, i) => {
                         const o = ctx.createOscillator();
                         const g = ctx.createGain();
-                        o.type = 'sawtooth';
-                        o.frequency.value = 180;
-                        g.gain.setValueAtTime(vol * 0.6, now);
-                        g.gain.exponentialRampToValueAtTime(0.001, now + duration * 2);
+                        o.type = 'sine';
+                        o.frequency.value = f;
+                        g.gain.setValueAtTime(vol * 0.7, now + i * 0.1);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + duration);
                         o.connect(g);
                         g.connect(ctx.destination);
-                        o.start(now);
-                        o.stop(now + duration * 2);
-                        break;
-                    case 'nature':
-                        [440, 880, 440, 880].forEach((f, i) => {
-                            const o = ctx.createOscillator();
-                            const g = ctx.createGain();
-                            o.type = 'sine';
-                            o.frequency.value = f;
-                            g.gain.setValueAtTime(vol * 0.3, now + i * 0.25);
-                            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.25 + 0.3);
-                            o.connect(g);
-                            g.connect(ctx.destination);
-                            o.start(now + i * 0.25);
-                            o.stop(now + i * 0.25 + 0.3);
-                        });
-                        break;
-                    case 'piano':
-                        [262, 330, 392, 523, 659, 784].forEach((f, i) => {
-                            const o = ctx.createOscillator();
-                            const g = ctx.createGain();
-                            o.type = 'sine';
-                            o.frequency.value = f;
-                            g.gain.setValueAtTime(vol * 0.5, now + i * 0.07);
-                            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.07 + 0.25);
-                            o.connect(g);
-                            g.connect(ctx.destination);
-                            o.start(now + i * 0.07);
-                            o.stop(now + i * 0.07 + 0.25);
-                        });
-                        break;
-                    default:
-                        const o2 = ctx.createOscillator();
-                        const g2 = ctx.createGain();
-                        o2.type = 'sine';
-                        o2.frequency.value = 880;
-                        g2.gain.setValueAtTime(vol, now);
-                        g2.gain.exponentialRampToValueAtTime(0.001, now + duration);
-                        o2.connect(g2);
-                        g2.connect(ctx.destination);
-                        o2.start(now);
-                        o2.stop(now + duration);
-                }
-            } catch (e) { /* silent */ }
-        }
-
-        // ============================================================
-        //  PRAYER TIMES
-        // ============================================================
-        let userLat = 21.4225;
-        let userLon = 39.8262;
-        let userCity = 'مكة المكرمة';
-
-        function initPrayerTimes() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    pos => {
-                        userLat = pos.coords.latitude;
-                        userLon = pos.coords.longitude;
-                        getCityName(userLat, userLon);
-                        calculatePrayerTimes();
-                    },
-                    err => {
-                        calculatePrayerTimes();
-                        document.getElementById('prayerLocation').textContent = '📍 مكة المكرمة (افتراضي)';
-                    }, { timeout: 8000 }
-                );
-            } else {
-                calculatePrayerTimes();
-                document.getElementById('prayerLocation').textContent = '📍 مكة المكرمة (افتراضي)';
-            }
-            setInterval(() => { calculatePrayerTimes(); }, 300000);
-        }
-
-        function getCityName(lat, lon) {
-            try {
-                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&accept-language=ar`)
-                    .then(r => r.json())
-                    .then(data => {
-                        const place = data.address?.city || data.address?.town || data.address?.village || 'موقعك';
-                        userCity = place;
-                        document.getElementById('prayerLocation').textContent = '📍 ' + place;
-                    })
-                    .catch(() => {});
-            } catch (e) {}
-        }
-
-        function calculatePrayerTimes() {
-            const date = new Date();
-            const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
-            const lat = userLat;
-            const lon = userLon;
-            const tz = -date.getTimezoneOffset() / 60;
-
-            const solarDeclination = 23.44 * Math.sin((360 / 365) * (dayOfYear - 81) * Math.PI / 180);
-            const hourAngleSunset = Math.acos(Math.tan(lat * Math.PI / 180) * Math.tan(solarDeclination * Math.PI / 180));
-            const sunsetUTC = 12 - hourAngleSunset * 180 / (15 * Math.PI) - lon / 15;
-            const sunriseUTC = 12 + hourAngleSunset * 180 / (15 * Math.PI) - lon / 15;
-
-            const fajrAngle = 18;
-            const ishaAngle = 18;
-
-            const fajrUTC = sunriseUTC - (fajrAngle / 15);
-            const dhuhrUTC = 12 - lon / 15 + 0.0167;
-            const asrUTC = dhuhrUTC + (1 / 15) * Math.acos((Math.sin(0.0) - Math.sin(lat * Math.PI / 180) * Math.sin(solarDeclination *
-                Math.PI / 180)) / (Math.cos(lat * Math.PI / 180) * Math.cos(solarDeclination * Math.PI / 180))) * 180 / Math.PI;
-            const maghribUTC = sunsetUTC;
-            const ishaUTC = sunsetUTC + (ishaAngle / 15);
-
-            function toLocal(utc) {
-                let h = utc + tz;
-                while (h < 0) h += 24;
-                while (h >= 24) h -= 24;
-                const hr = Math.floor(h);
-                const mn = Math.floor((h - hr) * 60);
-                return String(hr).padStart(2, '0') + ':' + String(mn).padStart(2, '0');
-            }
-
-            document.getElementById('p-fajr').textContent = toLocal(fajrUTC);
-            document.getElementById('p-dhuhr').textContent = toLocal(dhuhrUTC);
-            document.getElementById('p-asr').textContent = toLocal(asrUTC);
-            document.getElementById('p-maghrib').textContent = toLocal(maghribUTC);
-            document.getElementById('p-isha').textContent = toLocal(ishaUTC);
-
-            const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('prayerDate').textContent = date.toLocaleDateString('ar-SA', opts);
-
-            highlightCurrentPrayer();
-        }
-
-        function highlightCurrentPrayer() {
-            const now = new Date();
-            const h = now.getHours();
-            const m = now.getMinutes();
-            const total = h * 60 + m;
-
-            const prayers = ['p-fajr', 'p-dhuhr', 'p-asr', 'p-maghrib', 'p-isha'];
-            let currentIdx = 0;
-            let minDiff = Infinity;
-
-            prayers.forEach((id, i) => {
-                const timeStr = document.getElementById(id).textContent;
-                if (timeStr && timeStr !== '--:--') {
-                    const [ph, pm] = timeStr.split(':').map(Number);
-                    const pt = ph * 60 + pm;
-                    let diff = pt - total;
-                    if (diff < 0) diff += 1440;
-                    if (diff < minDiff) {
-                        minDiff = diff;
-                        currentIdx = i;
-                    }
-                }
-            });
-
-            document.querySelectorAll('.prayer-item').forEach(el => el.classList.remove('current'));
-            const items = document.querySelectorAll('.prayer-item');
-            if (items[currentIdx]) items[currentIdx].classList.add('current');
-        }
-
-        // ============================================================
-        //  TASKS
-        // ============================================================
-        let tasks = [];
-
-        function suggestTaskTime() {
-            const input = document.getElementById('taskInput').value.trim();
-            const el = document.getElementById('taskSuggestion');
-            if (!input) {
-                el.textContent = '💡 اكتب مهمة وسأقترح وقتاً لها';
-                return;
-            }
-
-            const keywords = {
-                'مستشفى': '8:00 صباحاً',
-                'دكتور': '8:00 صباحاً',
-                'حلاق': '9:00 صباحاً',
-                'صالون': '9:00 صباحاً',
-                'دراسة': '7:00 مساءً',
-                'درس': '7:00 مساءً',
-                'مذاكرة': '7:00 مساءً',
-                'نوم': '10:00 مساءً',
-                'أنام': '10:00 مساءً',
-                'رياضة': '6:00 مساءً',
-                'جيم': '6:00 مساءً',
-                'مشي': '5:00 مساءً',
-                'عمل': '8:00 صباحاً',
-                'شغل': '8:00 صباحاً',
-                'اجتماع': '10:00 صباحاً',
-                'مقابلة': '11:00 صباحاً',
-                'غداء': '1:00 ظهراً',
-                'عشاء': '8:00 مساءً',
-                'فطور': '7:00 صباحاً',
-                'قراءة': '9:00 مساءً',
-                'كتاب': '9:00 مساءً'
-            };
-
-            let suggestion = '⏰ أقترح: ';
-            let found = false;
-            for (const [key, val] of Object.entries(keywords)) {
-                if (input.includes(key)) {
-                    suggestion += val;
-                    found = true;
+                        o.start(now + i * 0.1);
+                        o.stop(now + i * 0.1 + duration);
+                    });
                     break;
+                case 'bell':
+                    [440, 554, 659].forEach((f, i) => {
+                        const o = ctx.createOscillator();
+                        const g = ctx.createGain();
+                        o.type = 'square';
+                        o.frequency.value = f;
+                        g.gain.setValueAtTime(vol * 0.5, now + i * 0.15);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.15 + duration);
+                        o.connect(g);
+                        g.connect(ctx.destination);
+                        o.start(now + i * 0.15);
+                        o.stop(now + i * 0.15 + duration);
+                    });
+                    break;
+                case 'soft':
+                    [330, 392, 523, 659].forEach((f, i) => {
+                        const o = ctx.createOscillator();
+                        const g = ctx.createGain();
+                        o.type = 'sine';
+                        o.frequency.value = f;
+                        g.gain.setValueAtTime(vol * 0.6, now + i * 0.08);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + duration * 1.2);
+                        o.connect(g);
+                        g.connect(ctx.destination);
+                        o.start(now + i * 0.08);
+                        o.stop(now + i * 0.08 + duration * 1.2);
+                    });
+                    break;
+                case 'buzzer':
+                    const o = ctx.createOscillator();
+                    const g = ctx.createGain();
+                    o.type = 'sawtooth';
+                    o.frequency.value = 180;
+                    g.gain.setValueAtTime(vol * 0.6, now);
+                    g.gain.exponentialRampToValueAtTime(0.001, now + duration * 2);
+                    o.connect(g);
+                    g.connect(ctx.destination);
+                    o.start(now);
+                    o.stop(now + duration * 2);
+                    break;
+                case 'nature':
+                    [440, 880, 440, 880].forEach((f, i) => {
+                        const o = ctx.createOscillator();
+                        const g = ctx.createGain();
+                        o.type = 'sine';
+                        o.frequency.value = f;
+                        g.gain.setValueAtTime(vol * 0.3, now + i * 0.25);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.25 + 0.3);
+                        o.connect(g);
+                        g.connect(ctx.destination);
+                        o.start(now + i * 0.25);
+                        o.stop(now + i * 0.25 + 0.3);
+                    });
+                    break;
+                case 'piano':
+                    [262, 330, 392, 523, 659, 784].forEach((f, i) => {
+                        const o = ctx.createOscillator();
+                        const g = ctx.createGain();
+                        o.type = 'sine';
+                        o.frequency.value = f;
+                        g.gain.setValueAtTime(vol * 0.5, now + i * 0.07);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.07 + 0.25);
+                        o.connect(g);
+                        g.connect(ctx.destination);
+                        o.start(now + i * 0.07);
+                        o.stop(now + i * 0.07 + 0.25);
+                    });
+                    break;
+                default:
+                    const o2 = ctx.createOscillator();
+                    const g2 = ctx.createGain();
+                    o2.type = 'sine';
+                    o2.frequency.value = 880;
+                    g2.gain.setValueAtTime(vol, now);
+                    g2.gain.exponentialRampToValueAtTime(0.001, now + duration);
+                    o2.connect(g2);
+                    g2.connect(ctx.destination);
+                    o2.start(now);
+                    o2.stop(now + duration);
+            }
+        } catch (e) { /* silent */ }
+    }
+
+    // ============================================================
+    //  PRAYER TIMES
+    // ============================================================
+    let userLat = 21.4225;
+    let userLon = 39.8262;
+    let userCity = 'مكة المكرمة';
+
+    function initPrayerTimes() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                pos => {
+                    userLat = pos.coords.latitude;
+                    userLon = pos.coords.longitude;
+                    getCityName(userLat, userLon);
+                    calculatePrayerTimes();
+                },
+                err => {
+                    calculatePrayerTimes();
+                    document.getElementById('prayerLocation').textContent = lang[currentLang].locationFallback;
+                }, { timeout: 8000 }
+            );
+        } else {
+            calculatePrayerTimes();
+            document.getElementById('prayerLocation').textContent = lang[currentLang].locationFallback;
+        }
+        setInterval(() => { calculatePrayerTimes(); }, 300000);
+    }
+
+    function getCityName(lat, lon) {
+        try {
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&accept-language=ar`)
+                .then(r => r.json())
+                .then(data => {
+                    const place = data.address?.city || data.address?.town || data.address?.village || 'موقعك';
+                    userCity = place;
+                    document.getElementById('prayerLocation').textContent = '📍 ' + place;
+                })
+                .catch(() => {});
+        } catch (e) {}
+    }
+
+    function calculatePrayerTimes() {
+        const date = new Date();
+        const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
+        const lat = userLat;
+        const lon = userLon;
+        const tz = -date.getTimezoneOffset() / 60;
+
+        const solarDeclination = 23.44 * Math.sin((360 / 365) * (dayOfYear - 81) * Math.PI / 180);
+        const hourAngleSunset = Math.acos(Math.tan(lat * Math.PI / 180) * Math.tan(solarDeclination * Math.PI / 180));
+        const sunsetUTC = 12 - hourAngleSunset * 180 / (15 * Math.PI) - lon / 15;
+        const sunriseUTC = 12 + hourAngleSunset * 180 / (15 * Math.PI) - lon / 15;
+
+        const fajrAngle = 18;
+        const ishaAngle = 18;
+
+        const fajrUTC = sunriseUTC - (fajrAngle / 15);
+        const dhuhrUTC = 12 - lon / 15 + 0.0167;
+        const asrUTC = dhuhrUTC + (1 / 15) * Math.acos((Math.sin(0.0) - Math.sin(lat * Math.PI / 180) * Math.sin(solarDeclination *
+            Math.PI / 180)) / (Math.cos(lat * Math.PI / 180) * Math.cos(solarDeclination * Math.PI / 180))) * 180 / Math.PI;
+        const maghribUTC = sunsetUTC;
+        const ishaUTC = sunsetUTC + (ishaAngle / 15);
+
+        function toLocal(utc) {
+            let h = utc + tz;
+            while (h < 0) h += 24;
+            while (h >= 24) h -= 24;
+            const hr = Math.floor(h);
+            const mn = Math.floor((h - hr) * 60);
+            return String(hr).padStart(2, '0') + ':' + String(mn).padStart(2, '0');
+        }
+
+        document.getElementById('p-fajr').textContent = toLocal(fajrUTC);
+        document.getElementById('p-dhuhr').textContent = toLocal(dhuhrUTC);
+        document.getElementById('p-asr').textContent = toLocal(asrUTC);
+        document.getElementById('p-maghrib').textContent = toLocal(maghribUTC);
+        document.getElementById('p-isha').textContent = toLocal(ishaUTC);
+
+        const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('prayerDate').textContent = date.toLocaleDateString(currentLang === 'ar' ? 'ar-SA' : 'en-US', opts);
+
+        highlightCurrentPrayer();
+    }
+
+    function highlightCurrentPrayer() {
+        const now = new Date();
+        const h = now.getHours();
+        const m = now.getMinutes();
+        const total = h * 60 + m;
+
+        const prayers = ['p-fajr', 'p-dhuhr', 'p-asr', 'p-maghrib', 'p-isha'];
+        let currentIdx = 0;
+        let minDiff = Infinity;
+
+        prayers.forEach((id, i) => {
+            const timeStr = document.getElementById(id).textContent;
+            if (timeStr && timeStr !== '--:--') {
+                const [ph, pm] = timeStr.split(':').map(Number);
+                const pt = ph * 60 + pm;
+                let diff = pt - total;
+                if (diff < 0) diff += 1440;
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    currentIdx = i;
                 }
             }
-            if (!found) {
-                const rand = ['8:00 صباحاً', '9:00 صباحاً', '10:00 صباحاً', '1:00 ظهراً', '4:00 مساءً', '7:00 مساءً', '9:00 مساءً'];
-                suggestion += rand[Math.floor(Math.random() * rand.length)] + ' (اقتراح تلقائي)';
-            }
-            el.textContent = '💡 ' + suggestion;
-        }
-
-        function addTask() {
-            const input = document.getElementById('taskInput');
-            const text = input.value.trim();
-            if (!text) return;
-
-            let suggestedTime = '--:--';
-            const keywords = {
-                'مستشفى': '8:00 صباحاً',
-                'دكتور': '8:00 صباحاً',
-                'حلاق': '9:00 صباحاً',
-                'دراسة': '7:00 مساءً',
-                'نوم': '10:00 مساءً',
-                'رياضة': '6:00 مساءً',
-                'عمل': '8:00 صباحاً',
-                'اجتماع': '10:00 صباحاً',
-                'غداء': '1:00 ظهراً',
-                'عشاء': '8:00 مساءً',
-                'فطور': '7:00 صباحاً',
-                'قراءة': '9:00 مساءً'
-            };
-            for (const [key, val] of Object.entries(keywords)) {
-                if (text.includes(key)) { suggestedTime = val; break; }
-            }
-            if (suggestedTime === '--:--') {
-                const rand = ['8:00 صباحاً', '9:00 صباحاً', '10:00 صباحاً', '1:00 ظهراً', '4:00 مساءً', '7:00 مساءً', '9:00 مساءً'];
-                suggestedTime = rand[Math.floor(Math.random() * rand.length)];
-            }
-
-            tasks.push({ text, time: suggestedTime, done: false });
-            renderTasks();
-            input.value = '';
-            document.getElementById('taskSuggestion').textContent = '💡 اكتب مهمة وسأقترح وقتاً لها';
-        }
-
-        function renderTasks() {
-            const list = document.getElementById('taskList');
-            if (tasks.length === 0) {
-                list.innerHTML =
-                    '<li style="color:var(--text-secondary); justify-content:center; padding:20px;">✨ لا توجد مهام بعد، أضف مهمتك الأولى!</li>';
-                return;
-            }
-            list.innerHTML = '';
-            tasks.forEach((task, i) => {
-                const li = document.createElement('li');
-                const check = document.createElement('button');
-                check.className = 'task-done' + (task.done ? ' done' : '');
-                check.textContent = '✓';
-                check.onclick = () => { toggleTask(i); };
-                const textSpan = document.createElement('span');
-                textSpan.className = 'task-text';
-                textSpan.textContent = task.text;
-                const timeSpan = document.createElement('span');
-                timeSpan.className = 'task-time';
-                timeSpan.textContent = '⏰ ' + task.time;
-                const del = document.createElement('button');
-                del.className = 'task-delete';
-                del.textContent = '✕';
-                del.onclick = () => { deleteTask(i); };
-                li.appendChild(check);
-                li.appendChild(textSpan);
-                li.appendChild(timeSpan);
-                li.appendChild(del);
-                list.appendChild(li);
-            });
-        }
-
-        function toggleTask(i) {
-            tasks[i].done = !tasks[i].done;
-            renderTasks();
-        }
-
-        function deleteTask(i) {
-            tasks.splice(i, 1);
-            renderTasks();
-        }
-
-        document.getElementById('taskInput').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') addTask();
         });
 
-        // ============================================================
-        //  HABITS
-        // ============================================================
-        let habits = {
-            water: false,
-            sleep: false,
-            exercise: false,
-            read: false,
-            prayer: false,
-            fast: false,
-            dhikr: false,
-            charity: false
+        document.querySelectorAll('.prayer-item').forEach(el => el.classList.remove('current'));
+        const items = document.querySelectorAll('.prayer-item');
+        if (items[currentIdx]) items[currentIdx].classList.add('current');
+    }
+
+    // ============================================================
+    //  TASKS
+    // ============================================================
+    let tasks = [];
+
+    function suggestTaskTime() {
+        const input = document.getElementById('taskInput').value.trim();
+        const el = document.getElementById('taskSuggestion');
+        const t = lang[currentLang];
+        if (!input) {
+            el.textContent = t.taskSuggestion;
+            return;
+        }
+
+        const keywords = {
+            'مستشفى': '8:00 صباحاً', 'دكتور': '8:00 صباحاً', 'حلاق': '9:00 صباحاً',
+            'صالون': '9:00 صباحاً', 'دراسة': '7:00 مساءً', 'درس': '7:00 مساءً',
+            'مذاكرة': '7:00 مساءً', 'نوم': '10:00 مساءً', 'أنام': '10:00 مساءً',
+            'رياضة': '6:00 مساءً', 'جيم': '6:00 مساءً', 'مشي': '5:00 مساءً',
+            'عمل': '8:00 صباحاً', 'شغل': '8:00 صباحاً', 'اجتماع': '10:00 صباحاً',
+            'مقابلة': '11:00 صباحاً', 'غداء': '1:00 ظهراً', 'عشاء': '8:00 مساءً',
+            'فطور': '7:00 صباحاً', 'قراءة': '9:00 مساءً', 'كتاب': '9:00 مساءً'
         };
 
-        function toggleHabit(name) {
-            habits[name] = !habits[name];
-            const el = document.getElementById('habit-' + name);
-            if (habits[name]) {
-                el.classList.add('done');
-                el.textContent = '✓';
-            } else {
-                el.classList.remove('done');
-                el.textContent = '✓';
+        let suggestion = currentLang === 'ar' ? '⏰ أقترح: ' : '⏰ I suggest: ';
+        let found = false;
+        for (const [key, val] of Object.entries(keywords)) {
+            if (input.includes(key)) {
+                suggestion += val;
+                found = true;
+                break;
             }
-            updateHabitCount();
-            try { localStorage.setItem('habits', JSON.stringify(habits)); } catch (e) {}
+        }
+        if (!found) {
+            const rand = ['8:00 صباحاً', '9:00 صباحاً', '10:00 صباحاً', '1:00 ظهراً', '4:00 مساءً', '7:00 مساءً', '9:00 مساءً'];
+            suggestion += rand[Math.floor(Math.random() * rand.length)] + (currentLang === 'ar' ? ' (اقتراح تلقائي)' : ' (auto-suggest)');
+        }
+        el.textContent = '💡 ' + suggestion;
+    }
+
+    function addTask() {
+        const input = document.getElementById('taskInput');
+        const text = input.value.trim();
+        if (!text) return;
+
+        let suggestedTime = '--:--';
+        const keywords = {
+            'مستشفى': '8:00 صباحاً', 'دكتور': '8:00 صباحاً', 'حلاق': '9:00 صباحاً',
+            'دراسة': '7:00 مساءً', 'نوم': '10:00 مساءً', 'رياضة': '6:00 مساءً',
+            'عمل': '8:00 صباحاً', 'اجتماع': '10:00 صباحاً', 'غداء': '1:00 ظهراً',
+            'عشاء': '8:00 مساءً', 'فطور': '7:00 صباحاً', 'قراءة': '9:00 مساءً'
+        };
+        for (const [key, val] of Object.entries(keywords)) {
+            if (text.includes(key)) { suggestedTime = val; break; }
+        }
+        if (suggestedTime === '--:--') {
+            const rand = ['8:00 صباحاً', '9:00 صباحاً', '10:00 صباحاً', '1:00 ظهراً', '4:00 مساءً', '7:00 مساءً', '9:00 مساءً'];
+            suggestedTime = rand[Math.floor(Math.random() * rand.length)];
         }
 
-        function updateHabitCount() {
-            const total = Object.keys(habits).length;
-            const done = Object.values(habits).filter(v => v).length;
-            document.getElementById('habitsDone').textContent = done;
-            document.getElementById('habitsTotal').textContent = total;
-        }
+        tasks.push({ text, time: suggestedTime, done: false });
+        renderTasks();
+        input.value = '';
+        document.getElementById('taskSuggestion').textContent = lang[currentLang].taskSuggestion;
+    }
 
-        try {
-            const saved = localStorage.getItem('habits');
-            if (saved) {
-                const parsed = JSON.parse(saved);
-                for (const key in parsed) {
-                    if (key in habits) {
-                        habits[key] = parsed[key];
-                        const el = document.getElementById('habit-' + key);
-                        if (parsed[key]) {
-                            el.classList.add('done');
-                            el.textContent = '✓';
-                        } else {
-                            el.classList.remove('done');
-                            el.textContent = '✓';
-                        }
+    function renderTasks() {
+        const list = document.getElementById('taskList');
+        const t = lang[currentLang];
+        if (tasks.length === 0) {
+            list.innerHTML =
+                `<li style="color:var(--text-secondary); justify-content:center; padding:20px;">${t.noTasks}</li>`;
+            return;
+        }
+        list.innerHTML = '';
+        tasks.forEach((task, i) => {
+            const li = document.createElement('li');
+            const check = document.createElement('button');
+            check.className = 'task-done' + (task.done ? ' done' : '');
+            check.textContent = '✓';
+            check.onclick = () => { toggleTask(i); };
+            const textSpan = document.createElement('span');
+            textSpan.className = 'task-text';
+            textSpan.textContent = task.text;
+            const timeSpan = document.createElement('span');
+            timeSpan.className = 'task-time';
+            timeSpan.textContent = '⏰ ' + task.time;
+            const del = document.createElement('button');
+            del.className = 'task-delete';
+            del.textContent = '✕';
+            del.onclick = () => { deleteTask(i); };
+            li.appendChild(check);
+            li.appendChild(textSpan);
+            li.appendChild(timeSpan);
+            li.appendChild(del);
+            list.appendChild(li);
+        });
+    }
+
+    function toggleTask(i) {
+        tasks[i].done = !tasks[i].done;
+        renderTasks();
+    }
+
+    function deleteTask(i) {
+        tasks.splice(i, 1);
+        renderTasks();
+    }
+
+    document.getElementById('taskInput').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') addTask();
+    });
+
+    // ============================================================
+    //  HABITS
+    // ============================================================
+    let habits = {
+        water: false, sleep: false, exercise: false, read: false,
+        prayer: false, fast: false, dhikr: false, charity: false
+    };
+
+    function toggleHabit(name) {
+        habits[name] = !habits[name];
+        const el = document.getElementById('habit-' + name);
+        if (habits[name]) {
+            el.classList.add('done');
+            el.textContent = '✓';
+        } else {
+            el.classList.remove('done');
+            el.textContent = '✓';
+        }
+        updateHabitCount();
+        try { localStorage.setItem('habits', JSON.stringify(habits)); } catch (e) {}
+    }
+
+    function updateHabitCount() {
+        const total = Object.keys(habits).length;
+        const done = Object.values(habits).filter(v => v).length;
+        document.getElementById('habitsDone').textContent = done;
+        document.getElementById('habitsTotal').textContent = total;
+        updateHabitProgressText();
+    }
+
+    try {
+        const saved = localStorage.getItem('habits');
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            for (const key in parsed) {
+                if (key in habits) {
+                    habits[key] = parsed[key];
+                    const el = document.getElementById('habit-' + key);
+                    if (parsed[key]) {
+                        el.classList.add('done');
+                        el.textContent = '✓';
+                    } else {
+                        el.classList.remove('done');
+                        el.textContent = '✓';
                     }
                 }
-                updateHabitCount();
             }
-        } catch (e) {}
-
-        // ============================================================
-        //  REMINDERS
-        // ============================================================
-        function startReminders() {
-            setTimeout(() => { showRandomReminder(); }, 10000);
-            reminderInterval = setInterval(() => {
-                showRandomReminder();
-            }, getRandomInterval());
+            updateHabitCount();
         }
+    } catch (e) {}
 
-        function getRandomInterval() {
-            return 180000 + Math.random() * 120000;
+    // ============================================================
+    //  REMINDERS
+    // ============================================================
+    function startReminders() {
+        setTimeout(() => { showRandomReminder(); }, 10000);
+        reminderInterval = setInterval(() => {
+            showRandomReminder();
+        }, getRandomInterval());
+    }
+
+    function getRandomInterval() {
+        return 180000 + Math.random() * 120000;
+    }
+
+    function showRandomReminder() {
+        if (reminderVisible) return;
+        const list = currentLang === 'ar' ? reminders : remindersEn;
+        const text = list[Math.floor(Math.random() * list.length)];
+        document.getElementById('reminderText').textContent = text;
+        const popup = document.getElementById('reminder-popup');
+        popup.classList.add('show');
+        reminderVisible = true;
+
+        clearTimeout(popup._autoHide);
+        popup._autoHide = setTimeout(() => {
+            closeReminder();
+        }, 12000);
+
+        clearInterval(reminderInterval);
+        reminderInterval = setInterval(() => {
+            showRandomReminder();
+        }, getRandomInterval());
+    }
+
+    function closeReminder() {
+        const popup = document.getElementById('reminder-popup');
+        popup.classList.remove('show');
+        reminderVisible = false;
+        clearTimeout(popup._autoHide);
+    }
+
+    // ============================================================
+    //  INIT
+    // ============================================================
+    setInterval(() => {
+        if (appEl.classList.contains('visible')) {
+            highlightCurrentPrayer();
         }
+    }, 60000);
 
-        function showRandomReminder() {
-            if (reminderVisible) return;
-            const text = reminders[Math.floor(Math.random() * reminders.length)];
-            document.getElementById('reminderText').textContent = text;
-            const popup = document.getElementById('reminder-popup');
-            popup.classList.add('show');
-            reminderVisible = true;
-
-            clearTimeout(popup._autoHide);
-            popup._autoHide = setTimeout(() => {
-                closeReminder();
-            }, 12000);
-
-            clearInterval(reminderInterval);
-            reminderInterval = setInterval(() => {
-                showRandomReminder();
-            }, getRandomInterval());
-        }
-
-        function closeReminder() {
-            const popup = document.getElementById('reminder-popup');
-            popup.classList.remove('show');
-            reminderVisible = false;
-            clearTimeout(popup._autoHide);
-        }
-
-        // ============================================================
-        //  INIT
-        // ============================================================
-        setInterval(() => {
-            if (appEl.classList.contains('visible')) {
-                highlightCurrentPrayer();
-            }
-        }, 60000);
-
-        console.log('🌟 تطبيق "استغل وقتك بنفسك" جاهز!');
-        console.log('💡 جميع المميزات مجانية بالكامل');
-    </script>
+    console.log('🌟 تطبيق "استغل وقتك بنفسك" جاهز!');
+    console.log('💡 جميع المميزات مجانية بالكامل - مع دعم اللغات');
+</script>
 </body>
 </html>
