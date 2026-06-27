@@ -105,9 +105,29 @@
             width: 100%;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
         }
         #login .box h2 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
         #login .box p { color: var(--text-secondary); margin-bottom: 28px; font-size: 1rem; }
+        
+        /* Login language toggle */
+        .login-lang-toggle {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            background: none;
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-family: var(--font);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.5);
+        }
+        .login-lang-toggle:hover { background: rgba(255,255,255,0.9); }
+        
         .login-btn {
             display: block;
             width: 100%;
@@ -233,6 +253,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
         .app-header .user-badge .avatar {
             width: 36px;
@@ -355,41 +376,57 @@
         .scrollable-list::-webkit-scrollbar-track { background: transparent; }
         .scrollable-list::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 40px; }
 
-        /* ===== TIMER ===== */
+        /* ===== TIMER SECTION - IMPROVED ===== */
+        .timer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
         .timer-display {
-            font-size: 4.2rem;
-            font-weight: 700;
+            font-size: 5.5rem;
+            font-weight: 800;
             font-feature-settings: "tnum";
             text-align: center;
-            padding: 16px 0 6px;
-            letter-spacing: 4px;
+            padding: 20px 30px;
+            letter-spacing: 6px;
             color: #3d3a4a;
-            background: rgba(184,169,201,0.06);
-            border-radius: var(--radius-medium);
-            margin-bottom: 14px;
+            background: rgba(184,169,201,0.08);
+            border-radius: var(--radius-large);
+            margin-bottom: 20px;
+            min-width: 320px;
+            border: 2px solid rgba(184,169,201,0.15);
+            font-family: 'Courier New', monospace;
+            box-shadow: inset 0 4px 20px rgba(0,0,0,0.03);
         }
         .timer-controls {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
         .timer-controls button {
-            padding: 10px 26px;
+            padding: 12px 28px;
             border: none;
             border-radius: 40px;
             font-family: var(--font);
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
             transition: var(--transition);
             background: #f0ecf5;
             color: var(--text-primary);
+            min-width: 80px;
         }
-        .timer-controls button:hover { transform: scale(1.04); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .timer-controls button:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
         .timer-controls button.primary { background: #8a7e9e; color: #fff; }
+        .timer-controls button.primary:hover { background: #7a6e8e; }
         .timer-controls button.danger { background: #e8b4a9; color: #fff; }
+        .timer-controls button.danger:hover { background: #dba094; }
+        .timer-controls button.success { background: #8ec9c0; color: #fff; }
+        .timer-controls button.success:hover { background: #7ab8af; }
         .alarm-sounds {
             display: flex;
             flex-wrap: wrap;
@@ -409,8 +446,18 @@
         }
         .alarm-sounds button:hover { background: #f0ecf5; transform: scale(1.02); }
         .alarm-sounds button.active { background: #8a7e9e; color: #fff; border-color: #8a7e9e; }
+        .timer-status {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 40px;
+            display: inline-block;
+        }
+        .timer-status .highlight { color: #8a7e9e; font-weight: 700; }
 
-        /* ===== PRAYER ===== */
+        /* ===== PRAYER TIMES ===== */
         .prayer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -453,7 +500,7 @@
             flex-wrap: wrap;
         }
 
-        /* ===== TASKS ===== */
+        /* ===== TASKS SECTION ===== */
         .task-input-row {
             display: flex;
             gap: 10px;
@@ -540,7 +587,7 @@
             margin-bottom: 12px;
         }
 
-        /* ===== HABITS ===== */
+        /* ===== HABITS SECTION ===== */
         .habit-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -634,17 +681,19 @@
             .square { padding: 16px 10px 18px; }
             .square .num { font-size: 1.6rem; }
             .panel { padding: 22px 16px 26px; }
-            .timer-display { font-size: 2.8rem; }
+            .timer-display { font-size: 3.2rem; min-width: auto; padding: 15px 20px; }
             .prayer-grid { grid-template-columns: repeat(3, 1fr); }
             .habit-grid { grid-template-columns: 1fr 1fr; }
             .app-header .greeting { font-size: 1.2rem; }
             #reminder-popup { padding: 16px 18px 16px 28px; bottom: 20px; }
+            .timer-controls button { padding: 10px 18px; font-size: 0.85rem; min-width: 60px; }
         }
         @media (max-width: 400px) {
             .squares-grid { grid-template-columns: 1fr 1fr; }
             .prayer-grid { grid-template-columns: 1fr 1fr; }
             .habit-grid { grid-template-columns: 1fr 1fr; }
-            .timer-controls button { padding: 8px 16px; font-size: 0.8rem; }
+            .timer-controls button { padding: 8px 14px; font-size: 0.75rem; min-width: 50px; }
+            .timer-display { font-size: 2.6rem; padding: 12px 16px; letter-spacing: 3px; }
         }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -666,6 +715,7 @@
 <!-- ===== LOGIN ===== -->
 <div id="login">
     <div class="box">
+        <button class="login-lang-toggle" onclick="toggleLoginLanguage()" id="loginLangToggle">🇬🇧 English</button>
         <h2 id="loginTitle">✨ مرحباً بك</h2>
         <p id="loginSub">اختر طريقة الدخول وابدأ رحلتك</p>
 
@@ -748,32 +798,35 @@
         </div>
     </div>
 
-    <!-- PANEL 0: TIMERS -->
+    <!-- PANEL 0: TIMERS - IMPROVED -->
     <div class="panel" id="panel-0">
         <button class="panel-close" onclick="hidePanel(0)">✕</button>
         <div class="panel-title" id="panel0Title">⏱️ المؤقتات</div>
         <div class="panel-desc" id="panel0Desc">📌 استخدم المؤقت لتنظيم وقتك. اختر صوت منبهك المفضل واضبط الوقت.</div>
-        <div class="timer-display" id="timerDisplay">00:00:00</div>
-        <div class="timer-controls">
-            <button onclick="timerControl('start')" class="primary" id="timerStartBtn">▶️ بدء</button>
-            <button onclick="timerControl('pause')" id="timerPauseBtn">⏸️ إيقاف مؤقت</button>
-            <button onclick="timerControl('reset')" class="danger" id="timerResetBtn">⏹️ إعادة</button>
-            <button onclick="timerControl('addMin')" id="timerAddMinBtn">➕ دقيقة</button>
-            <button onclick="timerControl('addSec')" id="timerAddSecBtn">➕ ثانية</button>
-        </div>
-        <div style="text-align:center; font-size:0.9rem; color:var(--text-secondary); margin-bottom:6px;" id="alarmLabel">
-            🔊 اختر صوت المنبه:
-        </div>
-        <div class="alarm-sounds" id="alarmSounds">
-            <button data-sound="chime" class="active" id="alarmChime">🔔 جرس</button>
-            <button data-sound="bell" id="alarmBell">🔔 ناقوس</button>
-            <button data-sound="soft" id="alarmSoft">🎵 ناعم</button>
-            <button data-sound="buzzer" id="alarmBuzzer">📳 تنبيه</button>
-            <button data-sound="nature" id="alarmNature">🌿 طبيعة</button>
-            <button data-sound="piano" id="alarmPiano">🎹 بيانو</button>
-        </div>
-        <div style="margin-top:10px; font-size:0.85rem; color:var(--text-secondary);">
-            <span id="timerRemainingLabel">⏳ الوقت المتبقي:</span> <span id="timerRemaining">--</span>
+        <div class="timer-container">
+            <div class="timer-display" id="timerDisplay">00:00:00</div>
+            <div class="timer-controls">
+                <button onclick="timerControl('start')" class="primary" id="timerStartBtn">▶️ بدء</button>
+                <button onclick="timerControl('pause')" id="timerPauseBtn">⏸️ إيقاف</button>
+                <button onclick="timerControl('reset')" class="danger" id="timerResetBtn">⏹️ إعادة</button>
+                <button onclick="timerControl('addMin')" class="success" id="timerAddMinBtn">➕ دقيقة</button>
+                <button onclick="timerControl('addSec')" class="success" id="timerAddSecBtn">➕ ثانية</button>
+            </div>
+            <div class="timer-status" id="timerStatus">⏳ الحالة: <span class="highlight" id="timerStateText">متوقف</span></div>
+            <div style="text-align:center; font-size:0.9rem; color:var(--text-secondary); margin-top:12px;" id="alarmLabel">
+                🔊 اختر صوت المنبه:
+            </div>
+            <div class="alarm-sounds" id="alarmSounds">
+                <button data-sound="chime" class="active" id="alarmChime">🔔 جرس</button>
+                <button data-sound="bell" id="alarmBell">🔔 ناقوس</button>
+                <button data-sound="soft" id="alarmSoft">🎵 ناعم</button>
+                <button data-sound="buzzer" id="alarmBuzzer">📳 تنبيه</button>
+                <button data-sound="nature" id="alarmNature">🌿 طبيعة</button>
+                <button data-sound="piano" id="alarmPiano">🎹 بيانو</button>
+            </div>
+            <div style="margin-top:10px; font-size:0.85rem; color:var(--text-secondary);">
+                <span id="timerRemainingLabel">⏳ الوقت المتبقي:</span> <span id="timerRemaining">00:00</span>
+            </div>
         </div>
     </div>
 
@@ -896,6 +949,7 @@
     let reminderVisible = false;
     let currentUser = 'صديقنا';
     let currentLang = 'ar'; // 'ar' or 'en'
+    let loginLang = 'ar';
 
     const reminders = [
         "🌿 لا تنسى صلاتك يا عزيزي",
@@ -965,10 +1019,13 @@
             panel0Title: '⏱️ المؤقتات',
             panel0Desc: '📌 استخدم المؤقت لتنظيم وقتك. اختر صوت منبهك المفضل واضبط الوقت.',
             timerStart: '▶️ بدء',
-            timerPause: '⏸️ إيقاف مؤقت',
+            timerPause: '⏸️ إيقاف',
             timerReset: '⏹️ إعادة',
             timerAddMin: '➕ دقيقة',
             timerAddSec: '➕ ثانية',
+            timerStatus: '⏳ الحالة:',
+            timerStopped: 'متوقف',
+            timerRunning: 'يعمل',
             alarmLabel: '🔊 اختر صوت المنبه:',
             alarmChime: '🔔 جرس',
             alarmBell: '🔔 ناقوس',
@@ -1050,6 +1107,9 @@
             timerReset: '⏹️ Reset',
             timerAddMin: '➕ Minute',
             timerAddSec: '➕ Second',
+            timerStatus: '⏳ Status:',
+            timerStopped: 'Stopped',
+            timerRunning: 'Running',
             alarmLabel: '🔊 Choose alarm sound:',
             alarmChime: '🔔 Chime',
             alarmBell: '🔔 Bell',
@@ -1104,21 +1164,14 @@
     // ============================================================
     //  LANGUAGE FUNCTIONS
     // ============================================================
-    function toggleLanguage() {
-        currentLang = (currentLang === 'ar') ? 'en' : 'ar';
-        updateLanguage();
+    function toggleLoginLanguage() {
+        loginLang = (loginLang === 'ar') ? 'en' : 'ar';
+        updateLoginLanguage();
     }
 
-    function updateLanguage() {
-        const t = lang[currentLang];
-        document.documentElement.lang = currentLang;
-        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
-        // Splash
-        document.getElementById('splashTitle').textContent = t.splashTitle;
-        document.getElementById('splashSub').textContent = t.splashSub;
-
-        // Login
+    function updateLoginLanguage() {
+        const t = lang[loginLang];
+        document.getElementById('loginLangToggle').textContent = loginLang === 'ar' ? '🇬🇧 English' : '🇸🇦 العربية';
         document.getElementById('loginTitle').textContent = t.loginTitle;
         document.getElementById('loginSub').textContent = t.loginSub;
         document.getElementById('loginEmailBtn').textContent = t.loginEmail;
@@ -1136,6 +1189,21 @@
         document.getElementById('codeInput').placeholder = t.codePlaceholder;
         document.getElementById('appleEmailInput').placeholder = t.appleEmailPlaceholder;
         document.getElementById('applePasswordInput').placeholder = t.applePasswordPlaceholder;
+    }
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+        updateLanguage();
+    }
+
+    function updateLanguage() {
+        const t = lang[currentLang];
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+        // Splash
+        document.getElementById('splashTitle').textContent = t.splashTitle;
+        document.getElementById('splashSub').textContent = t.splashSub;
 
         // App Header
         document.getElementById('greetingText').textContent = t.greeting;
@@ -1161,6 +1229,7 @@
         document.getElementById('timerResetBtn').textContent = t.timerReset;
         document.getElementById('timerAddMinBtn').textContent = t.timerAddMin;
         document.getElementById('timerAddSecBtn').textContent = t.timerAddSec;
+        document.getElementById('timerStatus').innerHTML = t.timerStatus + ' <span class="highlight" id="timerStateText">' + (timerRunning ? t.timerRunning : t.timerStopped) + '</span>';
         document.getElementById('alarmLabel').textContent = t.alarmLabel;
         document.getElementById('alarmChime').textContent = t.alarmChime;
         document.getElementById('alarmBell').textContent = t.alarmBell;
@@ -1210,20 +1279,22 @@
             document.getElementById('reminderText').textContent = t.reminderDefault;
         }
 
-        // Location fallback
+        // Location
         const locEl = document.getElementById('prayerLocation');
         if (locEl.textContent.includes('جاري') || locEl.textContent.includes('Determining')) {
-            locEl.textContent = currentLang === 'ar' ? t.locationDefault : t.locationDefault;
+            locEl.textContent = t.locationDefault;
         }
         if (locEl.textContent.includes('مكة') || locEl.textContent.includes('Makkah')) {
             locEl.textContent = t.locationFallback;
         }
 
-        // Update task list items
         renderTasks();
+        updateTimerStateText();
+    }
 
-        // Update habits progress
-        updateHabitProgressText();
+    function updateTimerStateText() {
+        const t = lang[currentLang];
+        document.getElementById('timerStateText').textContent = timerRunning ? t.timerRunning : t.timerStopped;
     }
 
     function updateHabitProgressText() {
@@ -1275,6 +1346,7 @@
         setTimeout(() => {
             splashEl.style.display = 'none';
             loginEl.classList.add('visible');
+            updateLoginLanguage();
         }, 1400);
     }, 2800);
 
@@ -1358,7 +1430,6 @@
             renderTasks();
         }
 
-        // Set language to Arabic by default
         currentLang = 'ar';
         updateLanguage();
     }
@@ -1376,6 +1447,7 @@
             updateTimerDisplay();
             clearInterval(reminderInterval);
             closeReminder();
+            updateLoginLanguage();
         }
     }
 
@@ -1412,6 +1484,7 @@
         const s = String(timerSeconds % 60).padStart(2, '0');
         document.getElementById('timerDisplay').textContent = h + ':' + m + ':' + s;
         document.getElementById('timerRemaining').textContent = h + ':' + m + ':' + s;
+        updateTimerStateText();
     }
 
     function timerControl(action) {
@@ -1427,20 +1500,25 @@
                         timerControl('reset');
                         playAlarmSound();
                         if (navigator.vibrate) navigator.vibrate([300, 200, 300]);
-                        alert('⏰ الوقت انتهى!');
+                        // Show alert with sound
+                        const msg = currentLang === 'ar' ? '⏰ الوقت انتهى!' : '⏰ Time is up!';
+                        alert(msg);
                     }
                 }, 1000);
+                updateTimerStateText();
             }
         } else if (action === 'pause') {
             if (timerRunning) {
                 clearInterval(timerInterval);
                 timerRunning = false;
+                updateTimerStateText();
             }
         } else if (action === 'reset') {
             clearInterval(timerInterval);
             timerRunning = false;
             timerSeconds = 0;
             updateTimerDisplay();
+            updateTimerStateText();
         } else if (action === 'addMin') {
             timerSeconds += 60;
             updateTimerDisplay();
