@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <link rel="canonical" href="https://clumsyhero45-create.github.io/.--./">
-    <meta name="description" content="استغل وقتك - تنظيم الوقت والمهام اليومية والمؤقتات ومواقيت الصلاة">
-    <meta name="google-site-verification" content="S0A75i2my4hfxMw63HENmdWRKvoghdN9zL_cd2LfoO4" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>استغل وقتك بنفسك</title>
@@ -15,6 +12,7 @@
             box-sizing: border-box;
         }
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
         :root {
             --bg-main: #f7f3ef;
             --bg-card: #ffffffdd;
@@ -32,7 +30,24 @@
             --radius-small: 14px;
             --font: 'Tajawal', sans-serif;
             --transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --border-color: rgba(0, 0, 0, 0.06);
         }
+
+        [data-theme="dark"] {
+            --bg-main: #1a1a2e;
+            --bg-card: #2d2d44dd;
+            --bg-card-solid: #2d2d44;
+            --text-primary: #e8e8f0;
+            --text-secondary: #a8a8b8;
+            --accent-soft: #6b5b8a;
+            --accent-teal: #5a9e96;
+            --accent-coral: #a87a6e;
+            --accent-gold: #8a7a5a;
+            --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.2);
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
         body {
             font-family: var(--font);
             background: var(--bg-main);
@@ -42,7 +57,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background 0.3s, color 0.3s;
         }
+
         /* ===== SPLASH SCREEN ===== */
         #splash {
             position: fixed;
@@ -54,6 +71,9 @@
             z-index: 9999;
             transition: opacity 1.2s ease, transform 1.2s ease;
         }
+        [data-theme="dark"] #splash {
+            background: linear-gradient(145deg, #1a1a2e 0%, #2d2d44 100%);
+        }
         #splash.hidden {
             opacity: 0;
             transform: scale(1.04);
@@ -62,7 +82,7 @@
         #splash h1 {
             font-size: 4.2rem;
             font-weight: 800;
-            color: #3d3a4a;
+            color: var(--text-primary);
             letter-spacing: 2px;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             animation: pulseGlow 2.4s ease-in-out infinite alternate;
@@ -74,17 +94,16 @@
         #splash .sub {
             font-size: 1.2rem;
             font-weight: 300;
-            color: #8a8393;
+            color: var(--text-secondary);
             margin-top: 12px;
             letter-spacing: 6px;
         }
-        #sound-container { display: none; }
 
         /* ===== LOGIN SCREEN ===== */
         #login {
             position: fixed;
             inset: 0;
-            background: linear-gradient(145deg, #f7f0ea 0%, #e8dfd8 100%);
+            background: var(--bg-main);
             display: none;
             align-items: center;
             justify-content: center;
@@ -92,31 +111,28 @@
             flex-direction: column;
             padding: 20px;
             overflow-y: auto;
+            transition: background 0.3s;
         }
         #login.visible { display: flex; }
         #login .box {
             background: var(--bg-card);
             backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.85);
             box-shadow: var(--shadow-soft);
             border-radius: var(--radius-large);
             padding: 48px 40px 40px;
             max-width: 480px;
             width: 100%;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--border-color);
             position: relative;
+            transition: background 0.3s, border-color 0.3s;
         }
         #login .box h2 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
         #login .box p { color: var(--text-secondary); margin-bottom: 28px; font-size: 1rem; }
-        
-        /* Login language toggle */
-        .login-lang-toggle {
-            position: absolute;
-            top: 16px;
-            left: 20px;
+
+        .login-lang-toggle, .theme-toggle {
             background: none;
-            border: 1px solid rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
             padding: 6px 14px;
             border-radius: 40px;
             font-family: var(--font);
@@ -124,10 +140,12 @@
             cursor: pointer;
             transition: var(--transition);
             color: var(--text-secondary);
-            background: rgba(255,255,255,0.5);
+            background: var(--bg-card-solid);
         }
-        .login-lang-toggle:hover { background: rgba(255,255,255,0.9); }
-        
+        .login-lang-toggle:hover, .theme-toggle:hover { opacity: 0.8; }
+        .login-lang-toggle { position: absolute; top: 16px; left: 20px; }
+        .theme-toggle { position: absolute; top: 16px; right: 20px; }
+
         .login-btn {
             display: block;
             width: 100%;
@@ -140,16 +158,19 @@
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
-            background: #fff;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            background: var(--bg-card-solid);
+            box-shadow: var(--shadow-soft);
             color: var(--text-primary);
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
         }
-        .login-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07); }
+        .login-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-medium); }
         .login-btn.email { background: #f0ecf5; color: #3d3a4a; }
+        [data-theme="dark"] .login-btn.email { background: #3d3a5a; color: #e8e8f0; }
         .login-btn.phone { background: #e8f2f0; color: #2d5a55; }
+        [data-theme="dark"] .login-btn.phone { background: #2d4a4a; color: #8ec9c0; }
         .login-btn.apple { background: #2d2d2d; color: #fff; }
         .login-btn.guest { background: #f5ede8; color: #6b4f3c; border: 1px dashed #c9b8ab; }
+        [data-theme="dark"] .login-btn.guest { background: #3d2d28; color: #d4b896; border-color: #6b5a4a; }
         .login-btn .icon { margin-left: 10px; font-size: 1.3rem; }
         .login-divider {
             display: flex;
@@ -159,7 +180,7 @@
             color: var(--text-secondary);
             font-size: 0.85rem;
         }
-        .login-divider::before, .login-divider::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.06); }
+        .login-divider::before, .login-divider::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
         .login-form {
             display: none;
             margin-top: 20px;
@@ -170,13 +191,14 @@
             width: 100%;
             padding: 14px 18px;
             margin-bottom: 12px;
-            border: 1px solid rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-small);
             font-family: var(--font);
             font-size: 0.95rem;
-            background: rgba(255,255,255,0.7);
+            background: var(--bg-card-solid);
             transition: var(--transition);
             direction: ltr;
+            color: var(--text-primary);
         }
         .login-form input:focus {
             outline: none;
@@ -212,9 +234,9 @@
         #app {
             display: none;
             width: 100%;
-            max-width: 1320px;
+            max-width: 1400px;
             min-height: 100vh;
-            padding: 28px 32px 40px;
+            padding: 20px 24px 40px;
             margin: 0 auto;
         }
         #app.visible { display: block; }
@@ -224,302 +246,278 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(0,0,0,0.04);
-            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
         }
         .app-header .greeting {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #3d3a4a, #8a7e9e);
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-soft));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .app-header .greeting small {
             font-weight: 300;
-            font-size: 1rem;
+            font-size: 0.9rem;
             -webkit-text-fill-color: var(--text-secondary);
             background: none;
             color: var(--text-secondary);
         }
         .app-header .user-badge {
             background: var(--bg-card-solid);
-            padding: 10px 22px;
+            padding: 8px 16px;
             border-radius: 40px;
             box-shadow: var(--shadow-soft);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
+            border: 1px solid var(--border-color);
+            transition: background 0.3s, border-color 0.3s;
         }
         .app-header .user-badge .avatar {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: var(--accent-soft);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #fff;
         }
-        .app-header .logout-btn {
+        .app-header .user-badge button {
             background: none;
-            border: 1px solid rgba(0,0,0,0.06);
-            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
             border-radius: 40px;
             font-family: var(--font);
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--text-secondary);
-        }
-        .app-header .logout-btn:hover { background: rgba(0,0,0,0.04); }
-        .lang-toggle {
-            background: none;
-            border: 1px solid rgba(0,0,0,0.06);
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-family: var(--font);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: var(--transition);
             color: var(--text-secondary);
             background: var(--bg-card-solid);
         }
-        .lang-toggle:hover { background: rgba(0,0,0,0.04); }
+        .app-header .user-badge button:hover { opacity: 0.7; }
 
-        /* ===== 4 SQUARES ===== */
-        .squares-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-bottom: 24px;
+        /* ===== SIDEBAR LAYOUT ===== */
+        .app-layout {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
         }
-        .square {
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 220px;
+            min-width: 200px;
             background: var(--bg-card-solid);
-            border-radius: var(--radius-medium);
-            padding: 20px 18px 22px;
+            border-radius: var(--radius-large);
+            padding: 16px 12px;
             box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .sidebar::-webkit-scrollbar { width: 3px; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 40px; }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-radius: var(--radius-small);
             cursor: pointer;
             transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.6);
-            text-align: center;
-            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            border: 1px solid transparent;
         }
-        .square:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 48px rgba(0,0,0,0.07); }
-        .square .num { font-size: 2rem; font-weight: 700; display: block; margin-bottom: 2px; }
-        .square .label { font-size: 0.95rem; color: var(--text-secondary); font-weight: 400; }
-        .square .badge {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: var(--accent-coral);
+        .sidebar-item:hover { background: var(--bg-main); color: var(--text-primary); }
+        .sidebar-item.active {
+            background: var(--accent-soft);
             color: #fff;
-            font-size: 0.6rem;
-            padding: 4px 10px;
-            border-radius: 40px;
-            font-weight: 700;
+            border-color: var(--accent-soft);
         }
-        .square.s1 .num { color: #8a7e9e; }
-        .square.s2 .num { color: #7bb8b0; }
-        .square.s3 .num { color: #d4a88c; }
-        .square.s4 .num { color: #b8a9c9; }
+        [data-theme="dark"] .sidebar-item.active { background: #4a3a6a; border-color: #4a3a6a; }
+        .sidebar-item .icon { font-size: 1.3rem; }
+        .sidebar-item .label { font-weight: 500; }
+
+        /* ===== CONTENT ===== */
+        .content {
+            flex: 1;
+            min-width: 0;
+        }
 
         /* ===== PANELS ===== */
         .panel {
             display: none;
             background: var(--bg-card);
             backdrop-filter: blur(6px);
-            background: rgba(255,255,255,0.7);
             border-radius: var(--radius-large);
-            padding: 32px 32px 36px;
-            margin-top: 8px;
+            padding: 28px 30px 32px;
             box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255,255,255,0.5);
-            animation: fadeSlide 0.5s ease;
+            border: 1px solid var(--border-color);
+            animation: fadeSlide 0.4s ease;
+            transition: background 0.3s, border-color 0.3s;
         }
         .panel.active { display: block; }
         @keyframes fadeSlide {
-            0% { opacity: 0; transform: translateY(18px); }
+            0% { opacity: 0; transform: translateY(12px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-        .panel .panel-title { font-size: 1.7rem; font-weight: 700; margin-bottom: 4px; }
+        .panel .panel-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; }
         .panel .panel-desc {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 22px;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
             border-right: 4px solid var(--accent-soft);
-            padding-right: 16px;
-            background: rgba(184,169,201,0.08);
-            border-radius: 0 12px 12px 0;
-            padding: 12px 18px;
+            padding-right: 14px;
+            background: rgba(184,169,201,0.06);
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
         }
-        .panel .panel-close {
-            float: left;
-            background: none;
-            border: none;
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: var(--transition);
-            padding: 4px 10px;
-            border-radius: 40px;
-        }
-        .panel .panel-close:hover { background: rgba(0,0,0,0.04); color: #000; }
-        .scrollable-list { max-height: 400px; overflow-y: auto; padding-left: 4px; }
-        .scrollable-list::-webkit-scrollbar { width: 4px; }
-        .scrollable-list::-webkit-scrollbar-track { background: transparent; }
-        .scrollable-list::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 40px; }
 
-        /* ===== TIMER SECTION - IMPROVED ===== */
+        /* ===== TIMER ===== */
         .timer-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px 0;
+            padding: 10px 0;
         }
         .timer-display {
-            font-size: 5.5rem;
+            font-size: 4.5rem;
             font-weight: 800;
             font-feature-settings: "tnum";
             text-align: center;
-            padding: 20px 30px;
-            letter-spacing: 6px;
-            color: #3d3a4a;
-            background: rgba(184,169,201,0.08);
+            padding: 16px 28px;
+            letter-spacing: 4px;
+            color: var(--text-primary);
+            background: rgba(184,169,201,0.06);
             border-radius: var(--radius-large);
-            margin-bottom: 20px;
-            min-width: 320px;
-            border: 2px solid rgba(184,169,201,0.15);
+            margin-bottom: 16px;
+            min-width: 280px;
+            border: 2px solid var(--border-color);
             font-family: 'Courier New', monospace;
-            box-shadow: inset 0 4px 20px rgba(0,0,0,0.03);
+            transition: border-color 0.3s;
         }
         .timer-controls {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 18px;
+            margin-bottom: 14px;
         }
         .timer-controls button {
-            padding: 12px 28px;
+            padding: 10px 22px;
             border: none;
             border-radius: 40px;
             font-family: var(--font);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: var(--transition);
-            background: #f0ecf5;
+            background: var(--bg-main);
             color: var(--text-primary);
-            min-width: 80px;
+            border: 1px solid var(--border-color);
         }
-        .timer-controls button:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-        .timer-controls button.primary { background: #8a7e9e; color: #fff; }
-        .timer-controls button.primary:hover { background: #7a6e8e; }
-        .timer-controls button.danger { background: #e8b4a9; color: #fff; }
-        .timer-controls button.danger:hover { background: #dba094; }
-        .timer-controls button.success { background: #8ec9c0; color: #fff; }
-        .timer-controls button.success:hover { background: #7ab8af; }
+        .timer-controls button:hover { transform: scale(1.04); box-shadow: var(--shadow-soft); }
+        .timer-controls button.primary { background: #8a7e9e; color: #fff; border-color: #8a7e9e; }
+        .timer-controls button.danger { background: #e8b4a9; color: #fff; border-color: #e8b4a9; }
+        .timer-controls button.success { background: #8ec9c0; color: #fff; border-color: #8ec9c0; }
+        [data-theme="dark"] .timer-controls button.primary { background: #5a4a7a; border-color: #5a4a7a; }
+        [data-theme="dark"] .timer-controls button.danger { background: #8a5a4a; border-color: #8a5a4a; }
+        [data-theme="dark"] .timer-controls button.success { background: #3a7a72; border-color: #3a7a72; }
+
         .alarm-sounds {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin: 12px 0 8px;
+            gap: 6px;
+            margin: 10px 0 6px;
             justify-content: center;
         }
         .alarm-sounds button {
-            padding: 8px 18px;
+            padding: 6px 14px;
             border-radius: 40px;
-            border: 1px solid rgba(0,0,0,0.06);
-            background: #fff;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card-solid);
             font-family: var(--font);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: var(--transition);
+            color: var(--text-primary);
         }
-        .alarm-sounds button:hover { background: #f0ecf5; transform: scale(1.02); }
+        .alarm-sounds button:hover { background: var(--bg-main); transform: scale(1.02); }
         .alarm-sounds button.active { background: #8a7e9e; color: #fff; border-color: #8a7e9e; }
-        .timer-status {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-top: 8px;
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 40px;
-            display: inline-block;
-        }
-        .timer-status .highlight { color: #8a7e9e; font-weight: 700; }
+        [data-theme="dark"] .alarm-sounds button.active { background: #5a4a7a; border-color: #5a4a7a; }
 
-        /* ===== PRAYER TIMES ===== */
+        /* ===== PRAYER ===== */
         .prayer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 14px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+            margin-top: 8px;
         }
         .prayer-item {
-            background: rgba(255,255,255,0.5);
+            background: var(--bg-card-solid);
             border-radius: var(--radius-small);
-            padding: 16px 10px 14px;
+            padding: 14px 8px 12px;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
             transition: var(--transition);
         }
-        .prayer-item .name { font-weight: 600; font-size: 1rem; }
+        .prayer-item .name { font-weight: 600; font-size: 0.9rem; }
         .prayer-item .time {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #3d3a4a;
-            margin-top: 4px;
+            color: var(--text-primary);
+            margin-top: 3px;
             font-feature-settings: "tnum";
         }
-        .prayer-item .highlight {
-            background: rgba(184,169,201,0.12);
-            border-radius: 40px;
-            padding: 2px 12px;
-            display: inline-block;
-            font-size: 0.7rem;
-            margin-top: 4px;
-            color: var(--text-secondary);
-        }
-        .prayer-item.current { background: rgba(142,201,192,0.15); border: 1px solid rgba(142,201,192,0.3); }
+        .prayer-item.current { background: rgba(142,201,192,0.15); border-color: var(--accent-teal); }
+        [data-theme="dark"] .prayer-item.current { background: rgba(90,158,150,0.2); }
         .prayer-location {
             font-size: 0.85rem;
             color: var(--text-secondary);
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
             flex-wrap: wrap;
         }
 
-        /* ===== TASKS SECTION ===== */
+        /* ===== TASKS ===== */
         .task-input-row {
             display: flex;
             gap: 10px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             flex-wrap: wrap;
         }
         .task-input-row input {
             flex: 1;
-            padding: 14px 18px;
-            border: 1px solid rgba(0,0,0,0.06);
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-small);
             font-family: var(--font);
-            font-size: 0.95rem;
-            background: rgba(255,255,255,0.6);
-            min-width: 160px;
+            font-size: 0.9rem;
+            background: var(--bg-card-solid);
+            min-width: 140px;
+            color: var(--text-primary);
+            transition: border-color 0.3s, background 0.3s;
         }
         .task-input-row input:focus { outline: none; border-color: var(--accent-soft); }
         .task-input-row button {
-            padding: 14px 28px;
+            padding: 12px 24px;
             border: none;
             border-radius: var(--radius-small);
             background: #8a7e9e;
@@ -535,26 +533,26 @@
         .task-list li {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            background: rgba(255,255,255,0.4);
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--bg-card-solid);
             border-radius: var(--radius-small);
-            margin-bottom: 8px;
-            border: 1px solid rgba(0,0,0,0.03);
+            margin-bottom: 6px;
+            border: 1px solid var(--border-color);
             transition: var(--transition);
         }
-        .task-list li:hover { background: rgba(255,255,255,0.7); }
-        .task-list li .task-text { flex: 1; }
+        .task-list li:hover { background: var(--bg-main); }
+        .task-list li .task-text { flex: 1; font-size: 0.9rem; }
         .task-list li .task-time {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
-            background: rgba(0,0,0,0.04);
-            padding: 2px 14px;
+            background: var(--bg-main);
+            padding: 2px 12px;
             border-radius: 40px;
         }
         .task-list li .task-done {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             border: 2px solid var(--accent-soft);
             background: transparent;
@@ -563,141 +561,164 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: transparent;
         }
         .task-list li .task-done.done { background: #8ec9c0; border-color: #8ec9c0; color: #fff; }
         .task-list li .task-delete {
             background: none;
             border: none;
-            color: #ccc;
+            color: var(--text-secondary);
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: var(--transition);
-            padding: 0 6px;
+            padding: 0 4px;
         }
-        .task-list li .task-delete:hover { color: #e8b4a9; }
+        .task-list li .task-delete:hover { color: var(--accent-coral); }
         .task-suggestion {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             padding: 6px 14px;
-            background: rgba(184,169,201,0.08);
+            background: rgba(184,169,201,0.06);
             border-radius: 40px;
             display: inline-block;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        /* ===== HABITS SECTION ===== */
+        /* ===== HABITS ===== */
         .habit-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 14px;
-            margin: 10px 0 6px;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 8px 0 4px;
         }
         .habit-item {
-            background: rgba(255,255,255,0.5);
+            background: var(--bg-card-solid);
             border-radius: var(--radius-small);
-            padding: 18px 12px 16px;
+            padding: 16px 10px 14px;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
             transition: var(--transition);
             cursor: pointer;
         }
-        .habit-item:hover { transform: translateY(-2px); }
-        .habit-item .habit-icon { font-size: 2.2rem; display: block; margin-bottom: 4px; }
-        .habit-item .habit-name { font-weight: 500; font-size: 0.95rem; }
+        .habit-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+        .habit-item .habit-icon { font-size: 2rem; display: block; margin-bottom: 2px; }
+        .habit-item .habit-name { font-weight: 500; font-size: 0.85rem; }
         .habit-item .habit-check {
-            margin-top: 8px;
-            width: 32px;
-            height: 32px;
+            margin-top: 6px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             border: 2px solid var(--accent-soft);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: transparent;
             background: transparent;
         }
         .habit-item .habit-check.done { background: #8ec9c0; border-color: #8ec9c0; color: #fff; }
 
+        /* ===== SCROLLABLE ===== */
+        .scrollable-list { max-height: 350px; overflow-y: auto; padding-left: 2px; }
+        .scrollable-list::-webkit-scrollbar { width: 4px; }
+        .scrollable-list::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 40px; }
+
+        /* ===== THANK YOU ===== */
         .thankyou {
             text-align: center;
-            padding: 28px 12px 12px;
-            font-size: 1.2rem;
+            padding: 24px 12px 10px;
+            font-size: 1.1rem;
             font-weight: 400;
             color: var(--text-secondary);
-            border-top: 1px solid rgba(0,0,0,0.04);
-            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 16px;
         }
         .thankyou strong { color: var(--text-primary); font-weight: 700; }
 
-        /* ===== POPUP REMINDER ===== */
+        /* ===== REMINDER POPUP ===== */
         #reminder-popup {
             position: fixed;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(120px);
             background: var(--bg-card-solid);
             backdrop-filter: blur(16px);
-            background: rgba(255,255,255,0.92);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+            box-shadow: var(--shadow-medium);
             border-radius: var(--radius-medium);
-            padding: 20px 28px 20px 48px;
-            max-width: 460px;
+            padding: 16px 24px 16px 40px;
+            max-width: 420px;
             width: 90%;
             z-index: 500;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
             opacity: 0;
             pointer-events: none;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
         }
         #reminder-popup.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
-        #reminder-popup .reminder-icon { font-size: 1.8rem; flex-shrink: 0; }
-        #reminder-popup .reminder-text { flex: 1; font-size: 0.98rem; line-height: 1.5; }
+        #reminder-popup .reminder-icon { font-size: 1.6rem; flex-shrink: 0; }
+        #reminder-popup .reminder-text { flex: 1; font-size: 0.9rem; line-height: 1.4; }
         #reminder-popup .reminder-close {
             background: none;
             border: none;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            color: #ccc;
+            color: var(--text-secondary);
             transition: var(--transition);
             padding: 0 4px;
-            flex-shrink: 0;
         }
-        #reminder-popup .reminder-close:hover { color: #000; }
+        #reminder-popup .reminder-close:hover { color: var(--text-primary); }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 920px) { .squares-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 920px) {
+            .app-layout { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                min-width: unset;
+                position: static;
+                max-height: none;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 12px 10px;
+                gap: 4px;
+                overflow-y: visible;
+            }
+            .sidebar-item {
+                flex: 1;
+                min-width: 80px;
+                justify-content: center;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            .sidebar-item .label { font-size: 0.75rem; }
+            .sidebar-item .icon { font-size: 1.1rem; }
+        }
         @media (max-width: 600px) {
-            #splash h1 { font-size: 2.6rem; }
-            #login .box { padding: 32px 20px 28px; }
-            #app { padding: 16px 14px 30px; }
-            .squares-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .square { padding: 16px 10px 18px; }
-            .square .num { font-size: 1.6rem; }
-            .panel { padding: 22px 16px 26px; }
-            .timer-display { font-size: 3.2rem; min-width: auto; padding: 15px 20px; }
+            #splash h1 { font-size: 2.4rem; }
+            #login .box { padding: 32px 16px 24px; }
+            #app { padding: 12px 10px 24px; }
+            .panel { padding: 18px 14px 22px; }
+            .timer-display { font-size: 2.8rem; min-width: auto; padding: 12px 16px; letter-spacing: 2px; }
+            .timer-controls button { padding: 8px 14px; font-size: 0.75rem; }
             .prayer-grid { grid-template-columns: repeat(3, 1fr); }
             .habit-grid { grid-template-columns: 1fr 1fr; }
-            .app-header .greeting { font-size: 1.2rem; }
-            #reminder-popup { padding: 16px 18px 16px 28px; bottom: 20px; }
-            .timer-controls button { padding: 10px 18px; font-size: 0.85rem; min-width: 60px; }
+            .app-header .greeting { font-size: 1.1rem; }
+            .app-header .user-badge { padding: 6px 12px; font-size: 0.75rem; }
+            .app-header .user-badge button { padding: 4px 8px; font-size: 0.65rem; }
+            .sidebar-item { min-width: 60px; padding: 6px 8px; font-size: 0.7rem; }
+            .sidebar-item .label { display: none; }
+            .sidebar-item .icon { font-size: 1.2rem; }
+            #reminder-popup { padding: 12px 16px 12px 28px; bottom: 16px; }
         }
         @media (max-width: 400px) {
-            .squares-grid { grid-template-columns: 1fr 1fr; }
             .prayer-grid { grid-template-columns: 1fr 1fr; }
             .habit-grid { grid-template-columns: 1fr 1fr; }
-            .timer-controls button { padding: 8px 14px; font-size: 0.75rem; min-width: 50px; }
-            .timer-display { font-size: 2.6rem; padding: 12px 16px; letter-spacing: 3px; }
+            .timer-display { font-size: 2.2rem; padding: 10px 12px; }
         }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 40px; }
     </style>
 </head>
 <body>
@@ -710,12 +731,11 @@
     </div>
 </div>
 
-<div id="sound-container"></div>
-
 <!-- ===== LOGIN ===== -->
 <div id="login">
     <div class="box">
         <button class="login-lang-toggle" onclick="toggleLoginLanguage()" id="loginLangToggle">🇬🇧 English</button>
+        <button class="theme-toggle" onclick="toggleTheme()" id="loginThemeToggle">🌙</button>
         <h2 id="loginTitle">✨ مرحباً بك</h2>
         <p id="loginSub">اختر طريقة الدخول وابدأ رحلتك</p>
 
@@ -741,14 +761,12 @@
             <button class="login-submit" onclick="loginWithEmail()" id="loginSubmitBtn">تسجيل الدخول</button>
             <button class="login-back" onclick="hideAllForms()" id="loginBackBtn">↩️ عودة</button>
         </div>
-
         <div id="phoneForm" class="login-form">
             <input type="tel" id="phoneInput" placeholder="05xxxxxxxx" />
             <input type="text" id="codeInput" placeholder="رمز التحقق" />
             <button class="login-submit" onclick="loginWithPhone()" id="loginSubmitBtn2">تسجيل الدخول</button>
             <button class="login-back" onclick="hideAllForms()" id="loginBackBtn2">↩️ عودة</button>
         </div>
-
         <div id="appleForm" class="login-form">
             <input type="email" id="appleEmailInput" placeholder="apple@icloud.com" />
             <input type="password" id="applePasswordInput" placeholder="كلمة المرور" />
@@ -771,162 +789,198 @@
             <span id="currentTimeDisplay">--:--</span>
             <span class="avatar" id="userAvatar">ص</span>
             <button class="lang-toggle" onclick="toggleLanguage()" id="langToggleBtn">🇬🇧 English</button>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeToggleBtn">🌙</button>
             <button class="logout-btn" onclick="logout()" id="logoutBtn">🚪 خروج</button>
         </div>
     </div>
 
-    <div class="squares-grid">
-        <div class="square s1" onclick="showPanel(0)">
-            <span class="num">⏱️</span>
-            <span class="label" id="square1Label">المؤقتات</span>
-            <span class="badge" id="square1Badge">أصوات</span>
-        </div>
-        <div class="square s2" onclick="showPanel(1)">
-            <span class="num">🕌</span>
-            <span class="label" id="square2Label">مواقيت الصلاة</span>
-            <span class="badge" id="square2Badge">تلقائي</span>
-        </div>
-        <div class="square s3" onclick="showPanel(2)">
-            <span class="num">📋</span>
-            <span class="label" id="square3Label">المهام اليومية</span>
-            <span class="badge" id="square3Badge">ذكية</span>
-        </div>
-        <div class="square s4" onclick="showPanel(3)">
-            <span class="num">🌱</span>
-            <span class="label" id="square4Label">العادات اليومية</span>
-            <span class="badge" id="square4Badge">تتبع</span>
-        </div>
-    </div>
-
-    <!-- PANEL 0: TIMERS - IMPROVED -->
-    <div class="panel" id="panel-0">
-        <button class="panel-close" onclick="hidePanel(0)">✕</button>
-        <div class="panel-title" id="panel0Title">⏱️ المؤقتات</div>
-        <div class="panel-desc" id="panel0Desc">📌 استخدم المؤقت لتنظيم وقتك. اختر صوت منبهك المفضل واضبط الوقت.</div>
-        <div class="timer-container">
-            <div class="timer-display" id="timerDisplay">00:00:00</div>
-            <div class="timer-controls">
-                <button onclick="timerControl('start')" class="primary" id="timerStartBtn">▶️ بدء</button>
-                <button onclick="timerControl('pause')" id="timerPauseBtn">⏸️ إيقاف</button>
-                <button onclick="timerControl('reset')" class="danger" id="timerResetBtn">⏹️ إعادة</button>
-                <button onclick="timerControl('addMin')" class="success" id="timerAddMinBtn">➕ دقيقة</button>
-                <button onclick="timerControl('addSec')" class="success" id="timerAddSecBtn">➕ ثانية</button>
+    <div class="app-layout">
+        <!-- ===== SIDEBAR ===== -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-item active" data-panel="0" onclick="showPanel(0)">
+                <span class="icon">⏱️</span>
+                <span class="label" id="sideTimers">المؤقتات</span>
             </div>
-            <div class="timer-status" id="timerStatus">⏳ الحالة: <span class="highlight" id="timerStateText">متوقف</span></div>
-            <div style="text-align:center; font-size:0.9rem; color:var(--text-secondary); margin-top:12px;" id="alarmLabel">
-                🔊 اختر صوت المنبه:
+            <div class="sidebar-item" data-panel="1" onclick="showPanel(1)">
+                <span class="icon">🕌</span>
+                <span class="label" id="sidePrayer">مواقيت الصلاة</span>
             </div>
-            <div class="alarm-sounds" id="alarmSounds">
-                <button data-sound="chime" class="active" id="alarmChime">🔔 جرس</button>
-                <button data-sound="bell" id="alarmBell">🔔 ناقوس</button>
-                <button data-sound="soft" id="alarmSoft">🎵 ناعم</button>
-                <button data-sound="buzzer" id="alarmBuzzer">📳 تنبيه</button>
-                <button data-sound="nature" id="alarmNature">🌿 طبيعة</button>
-                <button data-sound="piano" id="alarmPiano">🎹 بيانو</button>
+            <div class="sidebar-item" data-panel="2" onclick="showPanel(2)">
+                <span class="icon">📋</span>
+                <span class="label" id="sideTasks">المهام اليومية</span>
             </div>
-            <div style="margin-top:10px; font-size:0.85rem; color:var(--text-secondary);">
-                <span id="timerRemainingLabel">⏳ الوقت المتبقي:</span> <span id="timerRemaining">00:00</span>
+            <div class="sidebar-item" data-panel="3" onclick="showPanel(3)">
+                <span class="icon">🌱</span>
+                <span class="label" id="sideHabits">العادات اليومية</span>
+            </div>
+            <div class="sidebar-item" data-panel="4" onclick="showPanel(4)">
+                <span class="icon">🍹</span>
+                <span class="label" id="sideDrinks">المرطبات</span>
+            </div>
+            <div class="sidebar-item" data-panel="5" onclick="showPanel(5)">
+                <span class="icon">📿</span>
+                <span class="label" id="sideDhikr">الأذكار</span>
+            </div>
+            <div class="sidebar-item" data-panel="6" onclick="showPanel(6)">
+                <span class="icon">📖</span>
+                <span class="label" id="sideReading">القراءة اليومية</span>
+            </div>
+            <div class="sidebar-item" data-panel="7" onclick="showPanel(7)">
+                <span class="icon">💪</span>
+                <span class="label" id="sideFitness">الرياضة</span>
             </div>
         </div>
-    </div>
 
-    <!-- PANEL 1: PRAYER -->
-    <div class="panel" id="panel-1">
-        <button class="panel-close" onclick="hidePanel(1)">✕</button>
-        <div class="panel-title" id="panel1Title">🕌 مواقيت الصلاة</div>
-        <div class="panel-desc" id="panel1Desc">📍 يتم تحديد المواقيت تلقائياً حسب موقعك. بارك الله في وقتك.</div>
-        <div class="prayer-location">
-            <span>📍 <span id="prayerLocation">جاري تحديد الموقع...</span></span>
-            <span style="margin-right:auto; font-size:0.8rem;" id="prayerDate"></span>
-        </div>
-        <div class="prayer-grid" id="prayerGrid">
-            <div class="prayer-item"><div class="name" id="pFajrName">الفجر</div><div class="time" id="p-fajr">--:--</div></div>
-            <div class="prayer-item"><div class="name" id="pDhuhrName">الظهر</div><div class="time" id="p-dhuhr">--:--</div></div>
-            <div class="prayer-item"><div class="name" id="pAsrName">العصر</div><div class="time" id="p-asr">--:--</div></div>
-            <div class="prayer-item"><div class="name" id="pMaghribName">المغرب</div><div class="time" id="p-maghrib">--:--</div></div>
-            <div class="prayer-item"><div class="name" id="pIshaName">العشاء</div><div class="time" id="p-isha">--:--</div></div>
-        </div>
-        <div style="font-size:0.8rem; color:var(--text-secondary); margin-top:12px;" id="prayerUpdateNote">
-            🔄 يتم التحديث تلقائياً عند تغيير الموقع
-        </div>
-    </div>
+        <!-- ===== CONTENT ===== -->
+        <div class="content">
 
-    <!-- PANEL 2: TASKS -->
-    <div class="panel" id="panel-2">
-        <button class="panel-close" onclick="hidePanel(2)">✕</button>
-        <div class="panel-title" id="panel2Title">📋 المهام اليومية</div>
-        <div class="panel-desc" id="panel2Desc">🧠 أضف مهامك وسيقترح التطبيق وقتاً مناسباً لها بناءً على ذكاء بسيط.</div>
-        <div class="task-input-row">
-            <input type="text" id="taskInput" placeholder="مثال: أريد الذهاب إلى المستشفى" />
-            <button onclick="addTask()" id="addTaskBtn">➕ أضف مهمة</button>
-        </div>
-        <div id="taskSuggestion" class="task-suggestion">💡 اكتب مهمة وسأقترح وقتاً لها</div>
-        <div class="scrollable-list">
-            <ul class="task-list" id="taskList">
-                <li style="color:var(--text-secondary); justify-content:center; padding:20px;" id="noTasksMsg">
-                    ✨ لا توجد مهام بعد، أضف مهمتك الأولى!
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- PANEL 3: HABITS -->
-    <div class="panel" id="panel-3">
-        <button class="panel-close" onclick="hidePanel(3)">✕</button>
-        <div class="panel-title" id="panel3Title">🌱 العادات اليومية</div>
-        <div class="panel-desc" id="panel3Desc">✅ تتبع عاداتك اليومية. اضغط على العادة لتسجيل إنجازها.</div>
-        <div class="scrollable-list">
-            <div class="habit-grid" id="habitGrid">
-                <div class="habit-item" data-habit="water" onclick="toggleHabit('water')">
-                    <span class="habit-icon">💧</span>
-                    <div class="habit-name" id="habitWaterName">شرب الماء</div>
-                    <div class="habit-check" id="habit-water">✓</div>
-                </div>
-                <div class="habit-item" data-habit="sleep" onclick="toggleHabit('sleep')">
-                    <span class="habit-icon">😴</span>
-                    <div class="habit-name" id="habitSleepName">النوم الكافي</div>
-                    <div class="habit-check" id="habit-sleep">✓</div>
-                </div>
-                <div class="habit-item" data-habit="exercise" onclick="toggleHabit('exercise')">
-                    <span class="habit-icon">🏃</span>
-                    <div class="habit-name" id="habitExerciseName">رياضة</div>
-                    <div class="habit-check" id="habit-exercise">✓</div>
-                </div>
-                <div class="habit-item" data-habit="read" onclick="toggleHabit('read')">
-                    <span class="habit-icon">📖</span>
-                    <div class="habit-name" id="habitReadName">قراءة</div>
-                    <div class="habit-check" id="habit-read">✓</div>
-                </div>
-                <div class="habit-item" data-habit="prayer" onclick="toggleHabit('prayer')">
-                    <span class="habit-icon">🕌</span>
-                    <div class="habit-name" id="habitPrayerName">صلاة النوافل</div>
-                    <div class="habit-check" id="habit-prayer">✓</div>
-                </div>
-                <div class="habit-item" data-habit="fast" onclick="toggleHabit('fast')">
-                    <span class="habit-icon">🌙</span>
-                    <div class="habit-name" id="habitFastName">صيام التطوع</div>
-                    <div class="habit-check" id="habit-fast">✓</div>
-                </div>
-                <div class="habit-item" data-habit="dhikr" onclick="toggleHabit('dhikr')">
-                    <span class="habit-icon">📿</span>
-                    <div class="habit-name" id="habitDhikrName">أذكار الصباح</div>
-                    <div class="habit-check" id="habit-dhikr">✓</div>
-                </div>
-                <div class="habit-item" data-habit="charity" onclick="toggleHabit('charity')">
-                    <span class="habit-icon">🤲</span>
-                    <div class="habit-name" id="habitCharityName">صدقة يومية</div>
-                    <div class="habit-check" id="habit-charity">✓</div>
+            <!-- PANEL 0: TIMERS -->
+            <div class="panel active" id="panel-0">
+                <div class="panel-title" id="panel0Title">⏱️ المؤقتات</div>
+                <div class="panel-desc" id="panel0Desc">📌 استخدم المؤقت لتنظيم وقتك. اختر صوت منبهك المفضل واضبط الوقت.</div>
+                <div class="timer-container">
+                    <div class="timer-display" id="timerDisplay">00:00:00</div>
+                    <div class="timer-controls">
+                        <button onclick="timerControl('start')" class="primary" id="timerStartBtn">▶️ بدء</button>
+                        <button onclick="timerControl('pause')" id="timerPauseBtn">⏸️ إيقاف</button>
+                        <button onclick="timerControl('reset')" class="danger" id="timerResetBtn">⏹️ إعادة</button>
+                        <button onclick="timerControl('addMin')" class="success" id="timerAddMinBtn">➕ دقيقة</button>
+                        <button onclick="timerControl('addSec')" class="success" id="timerAddSecBtn">➕ ثانية</button>
+                    </div>
+                    <div style="font-size:0.85rem; color:var(--text-secondary);" id="timerStatus">⏳ الحالة: <span class="highlight" id="timerStateText" style="font-weight:700;color:var(--accent-teal);">متوقف</span></div>
+                    <div style="text-align:center; font-size:0.85rem; color:var(--text-secondary); margin-top:10px;" id="alarmLabel">🔊 اختر صوت المنبه:</div>
+                    <div class="alarm-sounds" id="alarmSounds">
+                        <button data-sound="chime" class="active" id="alarmChime">🔔 جرس</button>
+                        <button data-sound="bell" id="alarmBell">🔔 ناقوس</button>
+                        <button data-sound="soft" id="alarmSoft">🎵 ناعم</button>
+                        <button data-sound="buzzer" id="alarmBuzzer">📳 تنبيه</button>
+                        <button data-sound="nature" id="alarmNature">🌿 طبيعة</button>
+                        <button data-sound="piano" id="alarmPiano">🎹 بيانو</button>
+                    </div>
+                    <div style="margin-top:8px; font-size:0.8rem; color:var(--text-secondary);">
+                        <span id="timerRemainingLabel">⏳ الوقت المتبقي:</span> <span id="timerRemaining">00:00</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div style="margin-top:14px; text-align:center; font-size:0.9rem; color:var(--text-secondary);">
-            <span id="habitsProgress">🎯 أنجزت <span id="habitsDone">0</span> من <span id="habitsTotal">8</span> عادات اليوم</span>
-        </div>
-    </div>
 
-    <div class="thankyou">
-        <span id="thankyouText">🙏 شكراً لك <strong>على استخدامك</strong> هذا التطبيق 🌟</span><br />
-        <span style="font-size:0.85rem;" id="thankyouSub">نسأل الله أن يبارك في وقتك وعملك</span>
+            <!-- PANEL 1: PRAYER -->
+            <div class="panel" id="panel-1">
+                <div class="panel-title" id="panel1Title">🕌 مواقيت الصلاة</div>
+                <div class="panel-desc" id="panel1Desc">📍 يتم تحديد المواقيت تلقائياً حسب موقعك. بارك الله في وقتك.</div>
+                <div class="prayer-location">
+                    <span>📍 <span id="prayerLocation">جاري تحديد الموقع...</span></span>
+                    <span style="margin-right:auto; font-size:0.75rem;" id="prayerDate"></span>
+                </div>
+                <div class="prayer-grid" id="prayerGrid">
+                    <div class="prayer-item"><div class="name" id="pFajrName">الفجر</div><div class="time" id="p-fajr">--:--</div></div>
+                    <div class="prayer-item"><div class="name" id="pDhuhrName">الظهر</div><div class="time" id="p-dhuhr">--:--</div></div>
+                    <div class="prayer-item"><div class="name" id="pAsrName">العصر</div><div class="time" id="p-asr">--:--</div></div>
+                    <div class="prayer-item"><div class="name" id="pMaghribName">المغرب</div><div class="time" id="p-maghrib">--:--</div></div>
+                    <div class="prayer-item"><div class="name" id="pIshaName">العشاء</div><div class="time" id="p-isha">--:--</div></div>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-secondary); margin-top:10px;" id="prayerUpdateNote">🔄 يتم التحديث تلقائياً عند تغيير الموقع</div>
+            </div>
+
+            <!-- PANEL 2: TASKS -->
+            <div class="panel" id="panel-2">
+                <div class="panel-title" id="panel2Title">📋 المهام اليومية</div>
+                <div class="panel-desc" id="panel2Desc">🧠 أضف مهامك وسيقترح التطبيق وقتاً مناسباً لها.</div>
+                <div class="task-input-row">
+                    <input type="text" id="taskInput" placeholder="مثال: أريد الذهاب إلى المستشفى" />
+                    <button onclick="addTask()" id="addTaskBtn">➕ أضف مهمة</button>
+                </div>
+                <div id="taskSuggestion" class="task-suggestion">💡 اكتب مهمة وسأقترح وقتاً لها</div>
+                <div class="scrollable-list">
+                    <ul class="task-list" id="taskList">
+                        <li style="color:var(--text-secondary); justify-content:center; padding:16px;" id="noTasksMsg">✨ لا توجد مهام بعد، أضف مهمتك الأولى!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PANEL 3: HABITS -->
+            <div class="panel" id="panel-3">
+                <div class="panel-title" id="panel3Title">🌱 العادات اليومية</div>
+                <div class="panel-desc" id="panel3Desc">✅ تتبع عاداتك اليومية. اضغط على العادة لتسجيل إنجازها.</div>
+                <div class="habit-grid" id="habitGrid">
+                    <div class="habit-item" onclick="toggleHabit('water')"><span class="habit-icon">💧</span><div class="habit-name" id="habitWaterName">شرب الماء</div><div class="habit-check" id="habit-water">✓</div></div>
+                    <div class="habit-item" onclick="toggleHabit('sleep')"><span class="habit-icon">😴</span><div class="habit-name" id="habitSleepName">النوم الكافي</div><div class="habit-check" id="habit-sleep">✓</div></div>
+                    <div class="habit-item" onclick="toggleHabit('exercise')"><span class="habit-icon">🏃</span><div class="habit-name" id="habitExerciseName">رياضة</div><div class="habit-check" id="habit-exercise">✓</div></div>
+                    <div class="habit-item" onclick="toggleHabit('read')"><span class="habit-icon">📖</span><div class="habit-name" id="habitReadName">قراءة</div><div class="habit-check" id="habit-read">✓</div></div>
+                    <div class="habit-item" onclick="toggleHabit('prayer')"><span class="habit-icon">🕌</span><div class="habit-name" id="habitPrayerName">صلاة النوافل</div><div class="habit-check" id="habit-prayer">✓</div></div>
+                    <div class="habit-item" onclick="toggleHabit('fast')"><span class="habit-icon">🌙</span><div class="habit-name" id="habitFastName">صيام التطوع</div><div class="habit-check" id="habit-fast">✓</div></div>
+                    <div class="habit-item" onclick="toggleHabit('dhikr')"><span class="habit-icon">📿</span><div class="habit-name" id="habitDhikrName">أذكار الصباح</div><div class="habit-check" id="habit-dhikr">✓</div></div>
+                    <div class="habit-item" onclick="toggleHabit('charity')"><span class="habit-icon">🤲</span><div class="habit-name" id="habitCharityName">صدقة يومية</div><div class="habit-check" id="habit-charity">✓</div></div>
+                </div>
+                <div style="margin-top:12px; text-align:center; font-size:0.85rem; color:var(--text-secondary);">
+                    <span id="habitsProgress">🎯 أنجزت <span id="habitsDone">0</span> من <span id="habitsTotal">8</span> عادات اليوم</span>
+                </div>
+            </div>
+
+            <!-- PANEL 4: DRINKS -->
+            <div class="panel" id="panel-4">
+                <div class="panel-title" id="panel4Title">🍹 المرطبات الصحية</div>
+                <div class="panel-desc" id="panel4Desc">🥤 تذكر أن تشرب كمية كافية من السوائل خلال اليوم.</div>
+                <div class="habit-grid">
+                    <div class="habit-item" onclick="toggleDrink('water')"><span class="habit-icon">💧</span><div class="habit-name" id="drinkWaterName">ماء</div><div class="habit-check" id="drink-water">✓</div></div>
+                    <div class="habit-item" onclick="toggleDrink('juice')"><span class="habit-icon">🧃</span><div class="habit-name" id="drinkJuiceName">عصير طبيعي</div><div class="habit-check" id="drink-juice">✓</div></div>
+                    <div class="habit-item" onclick="toggleDrink('tea')"><span class="habit-icon">🍵</span><div class="habit-name" id="drinkTeaName">شاي أخضر</div><div class="habit-check" id="drink-tea">✓</div></div>
+                    <div class="habit-item" onclick="toggleDrink('milk')"><span class="habit-icon">🥛</span><div class="habit-name" id="drinkMilkName">حليب</div><div class="habit-check" id="drink-milk">✓</div></div>
+                </div>
+                <div style="margin-top:12px; text-align:center; font-size:0.85rem; color:var(--text-secondary);">
+                    <span id="drinksProgress">🥤 شربت <span id="drinksDone">0</span> من <span id="drinksTotal">4</span> مشروبات اليوم</span>
+                </div>
+            </div>
+
+            <!-- PANEL 5: DHIKR -->
+            <div class="panel" id="panel-5">
+                <div class="panel-title" id="panel5Title">📿 الأذكار اليومية</div>
+                <div class="panel-desc" id="panel5Desc">🌟 حافظ على ذكر الله في كل وقت.</div>
+                <div class="habit-grid">
+                    <div class="habit-item" onclick="toggleDhikr('morning')"><span class="habit-icon">🌅</span><div class="habit-name" id="dhikrMorningName">أذكار الصباح</div><div class="habit-check" id="dhikr-morning">✓</div></div>
+                    <div class="habit-item" onclick="toggleDhikr('evening')"><span class="habit-icon">🌙</span><div class="habit-name" id="dhikrEveningName">أذكار المساء</div><div class="habit-check" id="dhikr-evening">✓</div></div>
+                    <div class="habit-item" onclick="toggleDhikr('sleep')"><span class="habit-icon">😴</span><div class="habit-name" id="dhikrSleepName">أذكار النوم</div><div class="habit-check" id="dhikr-sleep">✓</div></div>
+                    <div class="habit-item" onclick="toggleDhikr('waking')"><span class="habit-icon">🙏</span><div class="habit-name" id="dhikrWakingName">أذكار الاستيقاظ</div><div class="habit-check" id="dhikr-waking">✓</div></div>
+                </div>
+                <div style="margin-top:12px; text-align:center; font-size:0.85rem; color:var(--text-secondary);">
+                    <span id="dhikrProgress">📿 أتممت <span id="dhikrDone">0</span> من <span id="dhikrTotal">4</span> أذكار اليوم</span>
+                </div>
+            </div>
+
+            <!-- PANEL 6: READING -->
+            <div class="panel" id="panel-6">
+                <div class="panel-title" id="panel6Title">📖 القراءة اليومية</div>
+                <div class="panel-desc" id="panel6Desc">📚 خصص وقتاً للقراءة اليومية.</div>
+                <div class="habit-grid">
+                    <div class="habit-item" onclick="toggleReading('quran')"><span class="habit-icon">📖</span><div class="habit-name" id="readingQuranName">قراءة القرآن</div><div class="habit-check" id="reading-quran">✓</div></div>
+                    <div class="habit-item" onclick="toggleReading('book')"><span class="habit-icon">📚</span><div class="habit-name" id="readingBookName">قراءة كتاب</div><div class="habit-check" id="reading-book">✓</div></div>
+                    <div class="habit-item" onclick="toggleReading('article')"><span class="habit-icon">📰</span><div class="habit-name" id="readingArticleName">قراءة مقال</div><div class="habit-check" id="reading-article">✓</div></div>
+                </div>
+                <div style="margin-top:12px; text-align:center; font-size:0.85rem; color:var(--text-secondary);">
+                    <span id="readingProgress">📖 قرأت <span id="readingDone">0</span> من <span id="readingTotal">3</span> مواد اليوم</span>
+                </div>
+            </div>
+
+            <!-- PANEL 7: FITNESS -->
+            <div class="panel" id="panel-7">
+                <div class="panel-title" id="panel7Title">💪 الرياضة</div>
+                <div class="panel-desc" id="panel7Desc">🏋️ حافظ على نشاطك البدني يومياً.</div>
+                <div class="habit-grid">
+                    <div class="habit-item" onclick="toggleFitness('walk')"><span class="habit-icon">🚶</span><div class="habit-name" id="fitnessWalkName">مشي</div><div class="habit-check" id="fitness-walk">✓</div></div>
+                    <div class="habit-item" onclick="toggleFitness('run')"><span class="habit-icon">🏃</span><div class="habit-name" id="fitnessRunName">جري</div><div class="habit-check" id="fitness-run">✓</div></div>
+                    <div class="habit-item" onclick="toggleFitness('stretch')"><span class="habit-icon">🧘</span><div class="habit-name" id="fitnessStretchName">تمارين إطالة</div><div class="habit-check" id="fitness-stretch">✓</div></div>
+                    <div class="habit-item" onclick="toggleFitness('gym')"><span class="habit-icon">🏋️</span><div class="habit-name" id="fitnessGymName">تمارين قوة</div><div class="habit-check" id="fitness-gym">✓</div></div>
+                </div>
+                <div style="margin-top:12px; text-align:center; font-size:0.85rem; color:var(--text-secondary);">
+                    <span id="fitnessProgress">💪 أنجزت <span id="fitnessDone">0</span> من <span id="fitnessTotal">4</span> تمارين اليوم</span>
+                </div>
+            </div>
+
+            <div class="thankyou">
+                <span id="thankyouText">🙏 شكراً لك <strong>على استخدامك</strong> هذا التطبيق 🌟</span><br />
+                <span style="font-size:0.75rem;" id="thankyouSub">نسأل الله أن يبارك في وقتك وعملك</span>
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -948,8 +1002,9 @@
     let reminderInterval = null;
     let reminderVisible = false;
     let currentUser = 'صديقنا';
-    let currentLang = 'ar'; // 'ar' or 'en'
+    let currentLang = 'ar';
     let loginLang = 'ar';
+    let currentTheme = 'light';
 
     const reminders = [
         "🌿 لا تنسى صلاتك يا عزيزي",
@@ -968,7 +1023,6 @@
         "🎧 استمع إلى شيء مفيد",
         "✍️ اكتب شيئاً تشكره عليه"
     ];
-
     const remindersEn = [
         "🌿 Don't forget your prayer, dear",
         "💧 Drink a glass of water now",
@@ -988,7 +1042,7 @@
     ];
 
     // ============================================================
-    //  LANGUAGE STRINGS
+    //  LANGUAGE STRINGS (Full Translation)
     // ============================================================
     const lang = {
         ar: {
@@ -1008,14 +1062,14 @@
             greetingSub: '· لنستغل وقتنا معاً',
             logout: '🚪 خروج',
             langToggle: '🇬🇧 English',
-            square1: 'المؤقتات',
-            square1Badge: 'أصوات',
-            square2: 'مواقيت الصلاة',
-            square2Badge: 'تلقائي',
-            square3: 'المهام اليومية',
-            square3Badge: 'ذكية',
-            square4: 'العادات اليومية',
-            square4Badge: 'تتبع',
+            sideTimers: 'المؤقتات',
+            sidePrayer: 'مواقيت الصلاة',
+            sideTasks: 'المهام اليومية',
+            sideHabits: 'العادات اليومية',
+            sideDrinks: 'المرطبات',
+            sideDhikr: 'الأذكار',
+            sideReading: 'القراءة اليومية',
+            sideFitness: 'الرياضة',
             panel0Title: '⏱️ المؤقتات',
             panel0Desc: '📌 استخدم المؤقت لتنظيم وقتك. اختر صوت منبهك المفضل واضبط الوقت.',
             timerStart: '▶️ بدء',
@@ -1043,7 +1097,7 @@
             prayerIsha: 'العشاء',
             prayerUpdate: '🔄 يتم التحديث تلقائياً عند تغيير الموقع',
             panel2Title: '📋 المهام اليومية',
-            panel2Desc: '🧠 أضف مهامك وسيقترح التطبيق وقتاً مناسباً لها بناءً على ذكاء بسيط.',
+            panel2Desc: '🧠 أضف مهامك وسيقترح التطبيق وقتاً مناسباً لها.',
             taskPlaceholder: 'مثال: أريد الذهاب إلى المستشفى',
             addTask: '➕ أضف مهمة',
             taskSuggestion: '💡 اكتب مهمة وسأقترح وقتاً لها',
@@ -1059,6 +1113,33 @@
             habitDhikr: 'أذكار الصباح',
             habitCharity: 'صدقة يومية',
             habitsProgress: '🎯 أنجزت {done} من {total} عادات اليوم',
+            panel4Title: '🍹 المرطبات الصحية',
+            panel4Desc: '🥤 تذكر أن تشرب كمية كافية من السوائل خلال اليوم.',
+            drinkWater: 'ماء',
+            drinkJuice: 'عصير طبيعي',
+            drinkTea: 'شاي أخضر',
+            drinkMilk: 'حليب',
+            drinksProgress: '🥤 شربت {done} من {total} مشروبات اليوم',
+            panel5Title: '📿 الأذكار اليومية',
+            panel5Desc: '🌟 حافظ على ذكر الله في كل وقت.',
+            dhikrMorning: 'أذكار الصباح',
+            dhikrEvening: 'أذكار المساء',
+            dhikrSleep: 'أذكار النوم',
+            dhikrWaking: 'أذكار الاستيقاظ',
+            dhikrProgress: '📿 أتممت {done} من {total} أذكار اليوم',
+            panel6Title: '📖 القراءة اليومية',
+            panel6Desc: '📚 خصص وقتاً للقراءة اليومية.',
+            readingQuran: 'قراءة القرآن',
+            readingBook: 'قراءة كتاب',
+            readingArticle: 'قراءة مقال',
+            readingProgress: '📖 قرأت {done} من {total} مواد اليوم',
+            panel7Title: '💪 الرياضة',
+            panel7Desc: '🏋️ حافظ على نشاطك البدني يومياً.',
+            fitnessWalk: 'مشي',
+            fitnessRun: 'جري',
+            fitnessStretch: 'تمارين إطالة',
+            fitnessGym: 'تمارين قوة',
+            fitnessProgress: '💪 أنجزت {done} من {total} تمارين اليوم',
             thankyou: '🙏 شكراً لك <strong>على استخدامك</strong> هذا التطبيق 🌟',
             thankyouSub: 'نسأل الله أن يبارك في وقتك وعملك',
             reminderDefault: 'لا تنسى صلاتك يا عزيزي',
@@ -1073,7 +1154,8 @@
             alertEmail: 'الرجاء إدخال الإيميل وكلمة المرور',
             alertPhone: 'الرجاء إدخال رقم الهاتف ورمز التحقق',
             alertApple: 'الرجاء إدخال البريد الإلكتروني وكلمة المرور',
-            confirmLogout: 'هل تريد تسجيل الخروج؟'
+            confirmLogout: 'هل تريد تسجيل الخروج؟',
+            themeToggle: '🌙'
         },
         en: {
             splashTitle: '⏳ Make the Most of Your Time',
@@ -1092,16 +1174,16 @@
             greetingSub: '· Let\'s make the most of our time',
             logout: '🚪 Logout',
             langToggle: '🇸🇦 العربية',
-            square1: 'Timers',
-            square1Badge: 'Sounds',
-            square2: 'Prayer Times',
-            square2Badge: 'Auto',
-            square3: 'Daily Tasks',
-            square3Badge: 'Smart',
-            square4: 'Daily Habits',
-            square4Badge: 'Track',
+            sideTimers: 'Timers',
+            sidePrayer: 'Prayer Times',
+            sideTasks: 'Daily Tasks',
+            sideHabits: 'Daily Habits',
+            sideDrinks: 'Beverages',
+            sideDhikr: 'Dhikr',
+            sideReading: 'Daily Reading',
+            sideFitness: 'Fitness',
             panel0Title: '⏱️ Timers',
-            panel0Desc: '📌 Use the timer to organize your time. Choose your favorite alarm sound and set the time.',
+            panel0Desc: '📌 Use the timer to organize your time. Choose your favorite alarm sound.',
             timerStart: '▶️ Start',
             timerPause: '⏸️ Pause',
             timerReset: '⏹️ Reset',
@@ -1119,7 +1201,7 @@
             alarmPiano: '🎹 Piano',
             timerRemaining: '⏳ Time remaining:',
             panel1Title: '🕌 Prayer Times',
-            panel1Desc: '📍 Prayer times are determined automatically based on your location. May Allah bless your time.',
+            panel1Desc: '📍 Prayer times are determined based on your location. May Allah bless your time.',
             prayerFajr: 'Fajr',
             prayerDhuhr: 'Dhuhr',
             prayerAsr: 'Asr',
@@ -1127,7 +1209,7 @@
             prayerIsha: 'Isha',
             prayerUpdate: '🔄 Updates automatically when location changes',
             panel2Title: '📋 Daily Tasks',
-            panel2Desc: '🧠 Add your tasks and the app will suggest a suitable time based on simple intelligence.',
+            panel2Desc: '🧠 Add your tasks and the app will suggest a suitable time.',
             taskPlaceholder: 'Example: I need to go to the hospital',
             addTask: '➕ Add Task',
             taskSuggestion: '💡 Write a task and I\'ll suggest a time',
@@ -1143,6 +1225,33 @@
             habitDhikr: 'Morning Dhikr',
             habitCharity: 'Daily Charity',
             habitsProgress: '🎯 Completed {done} out of {total} habits today',
+            panel4Title: '🍹 Healthy Beverages',
+            panel4Desc: '🥤 Remember to drink enough fluids throughout the day.',
+            drinkWater: 'Water',
+            drinkJuice: 'Natural Juice',
+            drinkTea: 'Green Tea',
+            drinkMilk: 'Milk',
+            drinksProgress: '🥤 Had {done} out of {total} beverages today',
+            panel5Title: '📿 Daily Dhikr',
+            panel5Desc: '🌟 Keep remembering Allah at all times.',
+            dhikrMorning: 'Morning Dhikr',
+            dhikrEvening: 'Evening Dhikr',
+            dhikrSleep: 'Sleep Dhikr',
+            dhikrWaking: 'Waking Dhikr',
+            dhikrProgress: '📿 Completed {done} out of {total} dhikr today',
+            panel6Title: '📖 Daily Reading',
+            panel6Desc: '📚 Set aside time for daily reading.',
+            readingQuran: 'Read Quran',
+            readingBook: 'Read a Book',
+            readingArticle: 'Read an Article',
+            readingProgress: '📖 Read {done} out of {total} materials today',
+            panel7Title: '💪 Fitness',
+            panel7Desc: '🏋️ Stay physically active every day.',
+            fitnessWalk: 'Walking',
+            fitnessRun: 'Running',
+            fitnessStretch: 'Stretching',
+            fitnessGym: 'Strength Training',
+            fitnessProgress: '💪 Completed {done} out of {total} exercises today',
             thankyou: '🙏 Thank you <strong>for using</strong> this app 🌟',
             thankyouSub: 'May Allah bless your time and efforts',
             reminderDefault: 'Don\'t forget your prayer, dear',
@@ -1157,9 +1266,33 @@
             alertEmail: 'Please enter email and password',
             alertPhone: 'Please enter phone number and verification code',
             alertApple: 'Please enter email and password',
-            confirmLogout: 'Do you want to logout?'
+            confirmLogout: 'Do you want to logout?',
+            themeToggle: '🌙'
         }
     };
+
+    // ============================================================
+    //  THEME FUNCTIONS
+    // ============================================================
+    function toggleTheme() {
+        currentTheme = (currentTheme === 'light') ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        const icon = currentTheme === 'light' ? '🌙' : '☀️';
+        document.querySelectorAll('.theme-toggle').forEach(el => el.textContent = icon);
+        try { localStorage.setItem('theme', currentTheme); } catch(e) {}
+    }
+
+    function loadTheme() {
+        try {
+            const saved = localStorage.getItem('theme');
+            if (saved) {
+                currentTheme = saved;
+                document.documentElement.setAttribute('data-theme', currentTheme);
+                const icon = currentTheme === 'light' ? '🌙' : '☀️';
+                document.querySelectorAll('.theme-toggle').forEach(el => el.textContent = icon);
+            }
+        } catch(e) {}
+    }
 
     // ============================================================
     //  LANGUAGE FUNCTIONS
@@ -1189,6 +1322,7 @@
         document.getElementById('codeInput').placeholder = t.codePlaceholder;
         document.getElementById('appleEmailInput').placeholder = t.appleEmailPlaceholder;
         document.getElementById('applePasswordInput').placeholder = t.applePasswordPlaceholder;
+        document.getElementById('loginThemeToggle').textContent = t.themeToggle;
     }
 
     function toggleLanguage() {
@@ -1201,25 +1335,23 @@
         document.documentElement.lang = currentLang;
         document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
 
-        // Splash
         document.getElementById('splashTitle').textContent = t.splashTitle;
         document.getElementById('splashSub').textContent = t.splashSub;
-
-        // App Header
         document.getElementById('greetingText').textContent = t.greeting;
         document.getElementById('greetingSub').textContent = t.greetingSub;
         document.getElementById('logoutBtn').textContent = t.logout;
         document.getElementById('langToggleBtn').textContent = t.langToggle;
+        document.getElementById('themeToggleBtn').textContent = t.themeToggle;
 
-        // Squares
-        document.getElementById('square1Label').textContent = t.square1;
-        document.getElementById('square1Badge').textContent = t.square1Badge;
-        document.getElementById('square2Label').textContent = t.square2;
-        document.getElementById('square2Badge').textContent = t.square2Badge;
-        document.getElementById('square3Label').textContent = t.square3;
-        document.getElementById('square3Badge').textContent = t.square3Badge;
-        document.getElementById('square4Label').textContent = t.square4;
-        document.getElementById('square4Badge').textContent = t.square4Badge;
+        // Sidebar
+        document.getElementById('sideTimers').textContent = t.sideTimers;
+        document.getElementById('sidePrayer').textContent = t.sidePrayer;
+        document.getElementById('sideTasks').textContent = t.sideTasks;
+        document.getElementById('sideHabits').textContent = t.sideHabits;
+        document.getElementById('sideDrinks').textContent = t.sideDrinks;
+        document.getElementById('sideDhikr').textContent = t.sideDhikr;
+        document.getElementById('sideReading').textContent = t.sideReading;
+        document.getElementById('sideFitness').textContent = t.sideFitness;
 
         // Panel 0
         document.getElementById('panel0Title').textContent = t.panel0Title;
@@ -1229,7 +1361,7 @@
         document.getElementById('timerResetBtn').textContent = t.timerReset;
         document.getElementById('timerAddMinBtn').textContent = t.timerAddMin;
         document.getElementById('timerAddSecBtn').textContent = t.timerAddSec;
-        document.getElementById('timerStatus').innerHTML = t.timerStatus + ' <span class="highlight" id="timerStateText">' + (timerRunning ? t.timerRunning : t.timerStopped) + '</span>';
+        document.getElementById('timerStatus').innerHTML = t.timerStatus + ' <span class="highlight" id="timerStateText" style="font-weight:700;color:var(--accent-teal);">' + (timerRunning ? t.timerRunning : t.timerStopped) + '</span>';
         document.getElementById('alarmLabel').textContent = t.alarmLabel;
         document.getElementById('alarmChime').textContent = t.alarmChime;
         document.getElementById('alarmBell').textContent = t.alarmBell;
@@ -1268,33 +1400,63 @@
         document.getElementById('habitFastName').textContent = t.habitFast;
         document.getElementById('habitDhikrName').textContent = t.habitDhikr;
         document.getElementById('habitCharityName').textContent = t.habitCharity;
-        updateHabitProgressText();
 
-        // Thank you
+        // Panel 4
+        document.getElementById('panel4Title').textContent = t.panel4Title;
+        document.getElementById('panel4Desc').textContent = t.panel4Desc;
+        document.getElementById('drinkWaterName').textContent = t.drinkWater;
+        document.getElementById('drinkJuiceName').textContent = t.drinkJuice;
+        document.getElementById('drinkTeaName').textContent = t.drinkTea;
+        document.getElementById('drinkMilkName').textContent = t.drinkMilk;
+
+        // Panel 5
+        document.getElementById('panel5Title').textContent = t.panel5Title;
+        document.getElementById('panel5Desc').textContent = t.panel5Desc;
+        document.getElementById('dhikrMorningName').textContent = t.dhikrMorning;
+        document.getElementById('dhikrEveningName').textContent = t.dhikrEvening;
+        document.getElementById('dhikrSleepName').textContent = t.dhikrSleep;
+        document.getElementById('dhikrWakingName').textContent = t.dhikrWaking;
+
+        // Panel 6
+        document.getElementById('panel6Title').textContent = t.panel6Title;
+        document.getElementById('panel6Desc').textContent = t.panel6Desc;
+        document.getElementById('readingQuranName').textContent = t.readingQuran;
+        document.getElementById('readingBookName').textContent = t.readingBook;
+        document.getElementById('readingArticleName').textContent = t.readingArticle;
+
+        // Panel 7
+        document.getElementById('panel7Title').textContent = t.panel7Title;
+        document.getElementById('panel7Desc').textContent = t.panel7Desc;
+        document.getElementById('fitnessWalkName').textContent = t.fitnessWalk;
+        document.getElementById('fitnessRunName').textContent = t.fitnessRun;
+        document.getElementById('fitnessStretchName').textContent = t.fitnessStretch;
+        document.getElementById('fitnessGymName').textContent = t.fitnessGym;
+
         document.getElementById('thankyouText').innerHTML = t.thankyou;
         document.getElementById('thankyouSub').textContent = t.thankyouSub;
+        if (!reminderVisible) document.getElementById('reminderText').textContent = t.reminderDefault;
 
-        // Reminder default
-        if (!reminderVisible) {
-            document.getElementById('reminderText').textContent = t.reminderDefault;
-        }
-
-        // Location
         const locEl = document.getElementById('prayerLocation');
-        if (locEl.textContent.includes('جاري') || locEl.textContent.includes('Determining')) {
-            locEl.textContent = t.locationDefault;
-        }
-        if (locEl.textContent.includes('مكة') || locEl.textContent.includes('Makkah')) {
-            locEl.textContent = t.locationFallback;
-        }
+        if (locEl.textContent.includes('جاري') || locEl.textContent.includes('Determining')) locEl.textContent = t.locationDefault;
+        if (locEl.textContent.includes('مكة') || locEl.textContent.includes('Makkah')) locEl.textContent = t.locationFallback;
 
+        updateAllProgress();
         renderTasks();
         updateTimerStateText();
     }
 
     function updateTimerStateText() {
         const t = lang[currentLang];
-        document.getElementById('timerStateText').textContent = timerRunning ? t.timerRunning : t.timerStopped;
+        const el = document.getElementById('timerStateText');
+        if (el) el.textContent = timerRunning ? t.timerRunning : t.timerStopped;
+    }
+
+    function updateAllProgress() {
+        updateHabitProgressText();
+        updateDrinksProgress();
+        updateDhikrProgress();
+        updateReadingProgress();
+        updateFitnessProgress();
     }
 
     function updateHabitProgressText() {
@@ -1304,8 +1466,36 @@
         document.getElementById('habitsProgress').innerHTML = t.habitsProgress.replace('{done}', done).replace('{total}', total);
     }
 
+    function updateDrinksProgress() {
+        const t = lang[currentLang];
+        const done = document.getElementById('drinksDone').textContent;
+        const total = document.getElementById('drinksTotal').textContent;
+        document.getElementById('drinksProgress').innerHTML = t.drinksProgress.replace('{done}', done).replace('{total}', total);
+    }
+
+    function updateDhikrProgress() {
+        const t = lang[currentLang];
+        const done = document.getElementById('dhikrDone').textContent;
+        const total = document.getElementById('dhikrTotal').textContent;
+        document.getElementById('dhikrProgress').innerHTML = t.dhikrProgress.replace('{done}', done).replace('{total}', total);
+    }
+
+    function updateReadingProgress() {
+        const t = lang[currentLang];
+        const done = document.getElementById('readingDone').textContent;
+        const total = document.getElementById('readingTotal').textContent;
+        document.getElementById('readingProgress').innerHTML = t.readingProgress.replace('{done}', done).replace('{total}', total);
+    }
+
+    function updateFitnessProgress() {
+        const t = lang[currentLang];
+        const done = document.getElementById('fitnessDone').textContent;
+        const total = document.getElementById('fitnessTotal').textContent;
+        document.getElementById('fitnessProgress').innerHTML = t.fitnessProgress.replace('{done}', done).replace('{total}', total);
+    }
+
     // ============================================================
-    //  SPLASH → SOUND → LOGIN
+    //  SPLASH → LOGIN
     // ============================================================
     let splashEl = document.getElementById('splash');
     let loginEl = document.getElementById('login');
@@ -1337,7 +1527,7 @@
             gain2.connect(ctx.destination);
             osc2.start(ctx.currentTime + 0.3);
             osc2.stop(ctx.currentTime + 1.6);
-        } catch (e) { /* fallback silent */ }
+        } catch (e) {}
     }
 
     setTimeout(() => {
@@ -1347,6 +1537,7 @@
             splashEl.style.display = 'none';
             loginEl.classList.add('visible');
             updateLoginLanguage();
+            loadTheme();
         }, 1400);
     }, 2800);
 
@@ -1367,10 +1558,7 @@
     function loginWithEmail() {
         const email = document.getElementById('emailInput').value.trim();
         const pass = document.getElementById('passwordInput').value.trim();
-        if (!email || !pass) {
-            alert(lang[currentLang].alertEmail);
-            return;
-        }
+        if (!email || !pass) { alert(lang[currentLang].alertEmail); return; }
         const name = email.split('@')[0] || 'مستخدم';
         currentUser = name;
         enterApp(name);
@@ -1379,10 +1567,7 @@
     function loginWithPhone() {
         const phone = document.getElementById('phoneInput').value.trim();
         const code = document.getElementById('codeInput').value.trim();
-        if (!phone || !code) {
-            alert(lang[currentLang].alertPhone);
-            return;
-        }
+        if (!phone || !code) { alert(lang[currentLang].alertPhone); return; }
         currentUser = 'مستخدم';
         enterApp('مستخدم');
     }
@@ -1390,10 +1575,7 @@
     function loginWithApple() {
         const email = document.getElementById('appleEmailInput').value.trim();
         const pass = document.getElementById('applePasswordInput').value.trim();
-        if (!email || !pass) {
-            alert(lang[currentLang].alertApple);
-            return;
-        }
+        if (!email || !pass) { alert(lang[currentLang].alertApple); return; }
         const name = email.split('@')[0] || 'أبل';
         currentUser = name;
         enterApp(name);
@@ -1415,9 +1597,8 @@
 
         updateClock();
         setInterval(updateClock, 1000);
-
         initPrayerTimes();
-        updateHabitCount();
+        updateAllCounts();
         startReminders();
         showPanel(0);
         document.getElementById('taskInput').addEventListener('input', suggestTaskTime);
@@ -1448,6 +1629,7 @@
             clearInterval(reminderInterval);
             closeReminder();
             updateLoginLanguage();
+            loadTheme();
         }
     }
 
@@ -1462,17 +1644,15 @@
     }
 
     // ============================================================
-    //  PANELS
+    //  SIDEBAR / PANELS
     // ============================================================
     function showPanel(idx) {
         document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
         const panel = document.getElementById('panel-' + idx);
         if (panel) panel.classList.add('active');
-        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function hidePanel(idx) {
-        document.getElementById('panel-' + idx).classList.remove('active');
+        const side = document.querySelector(`.sidebar-item[data-panel="${idx}"]`);
+        if (side) side.classList.add('active');
     }
 
     // ============================================================
@@ -1500,9 +1680,7 @@
                         timerControl('reset');
                         playAlarmSound();
                         if (navigator.vibrate) navigator.vibrate([300, 200, 300]);
-                        // Show alert with sound
-                        const msg = currentLang === 'ar' ? '⏰ الوقت انتهى!' : '⏰ Time is up!';
-                        alert(msg);
+                        alert(currentLang === 'ar' ? '⏰ الوقت انتهى!' : '⏰ Time is up!');
                     }
                 }, 1000);
                 updateTimerStateText();
@@ -1546,176 +1724,52 @@
             const now = ctx.currentTime;
             const duration = preview ? 0.3 : 0.8;
             const vol = preview ? 0.08 : 0.15;
-
             switch (type) {
-                case 'chime':
-                    [523, 659, 784, 1047].forEach((f, i) => {
-                        const o = ctx.createOscillator();
-                        const g = ctx.createGain();
-                        o.type = 'sine';
-                        o.frequency.value = f;
-                        g.gain.setValueAtTime(vol * 0.7, now + i * 0.1);
-                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + duration);
-                        o.connect(g);
-                        g.connect(ctx.destination);
-                        o.start(now + i * 0.1);
-                        o.stop(now + i * 0.1 + duration);
-                    });
-                    break;
-                case 'bell':
-                    [440, 554, 659].forEach((f, i) => {
-                        const o = ctx.createOscillator();
-                        const g = ctx.createGain();
-                        o.type = 'square';
-                        o.frequency.value = f;
-                        g.gain.setValueAtTime(vol * 0.5, now + i * 0.15);
-                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.15 + duration);
-                        o.connect(g);
-                        g.connect(ctx.destination);
-                        o.start(now + i * 0.15);
-                        o.stop(now + i * 0.15 + duration);
-                    });
-                    break;
-                case 'soft':
-                    [330, 392, 523, 659].forEach((f, i) => {
-                        const o = ctx.createOscillator();
-                        const g = ctx.createGain();
-                        o.type = 'sine';
-                        o.frequency.value = f;
-                        g.gain.setValueAtTime(vol * 0.6, now + i * 0.08);
-                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + duration * 1.2);
-                        o.connect(g);
-                        g.connect(ctx.destination);
-                        o.start(now + i * 0.08);
-                        o.stop(now + i * 0.08 + duration * 1.2);
-                    });
-                    break;
-                case 'buzzer':
-                    const o = ctx.createOscillator();
-                    const g = ctx.createGain();
-                    o.type = 'sawtooth';
-                    o.frequency.value = 180;
-                    g.gain.setValueAtTime(vol * 0.6, now);
-                    g.gain.exponentialRampToValueAtTime(0.001, now + duration * 2);
-                    o.connect(g);
-                    g.connect(ctx.destination);
-                    o.start(now);
-                    o.stop(now + duration * 2);
-                    break;
-                case 'nature':
-                    [440, 880, 440, 880].forEach((f, i) => {
-                        const o = ctx.createOscillator();
-                        const g = ctx.createGain();
-                        o.type = 'sine';
-                        o.frequency.value = f;
-                        g.gain.setValueAtTime(vol * 0.3, now + i * 0.25);
-                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.25 + 0.3);
-                        o.connect(g);
-                        g.connect(ctx.destination);
-                        o.start(now + i * 0.25);
-                        o.stop(now + i * 0.25 + 0.3);
-                    });
-                    break;
-                case 'piano':
-                    [262, 330, 392, 523, 659, 784].forEach((f, i) => {
-                        const o = ctx.createOscillator();
-                        const g = ctx.createGain();
-                        o.type = 'sine';
-                        o.frequency.value = f;
-                        g.gain.setValueAtTime(vol * 0.5, now + i * 0.07);
-                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.07 + 0.25);
-                        o.connect(g);
-                        g.connect(ctx.destination);
-                        o.start(now + i * 0.07);
-                        o.stop(now + i * 0.07 + 0.25);
-                    });
-                    break;
-                default:
-                    const o2 = ctx.createOscillator();
-                    const g2 = ctx.createGain();
-                    o2.type = 'sine';
-                    o2.frequency.value = 880;
-                    g2.gain.setValueAtTime(vol, now);
-                    g2.gain.exponentialRampToValueAtTime(0.001, now + duration);
-                    o2.connect(g2);
-                    g2.connect(ctx.destination);
-                    o2.start(now);
-                    o2.stop(now + duration);
+                case 'chime': [523,659,784,1047].forEach((f,i) => { const o=ctx.createOscillator(),g=ctx.createGain(); o.type='sine'; o.frequency.value=f; g.gain.setValueAtTime(vol*0.7,now+i*0.1); g.gain.exponentialRampToValueAtTime(0.001,now+i*0.1+duration); o.connect(g); g.connect(ctx.destination); o.start(now+i*0.1); o.stop(now+i*0.1+duration); }); break;
+                case 'bell': [440,554,659].forEach((f,i) => { const o=ctx.createOscillator(),g=ctx.createGain(); o.type='square'; o.frequency.value=f; g.gain.setValueAtTime(vol*0.5,now+i*0.15); g.gain.exponentialRampToValueAtTime(0.001,now+i*0.15+duration); o.connect(g); g.connect(ctx.destination); o.start(now+i*0.15); o.stop(now+i*0.15+duration); }); break;
+                case 'soft': [330,392,523,659].forEach((f,i) => { const o=ctx.createOscillator(),g=ctx.createGain(); o.type='sine'; o.frequency.value=f; g.gain.setValueAtTime(vol*0.6,now+i*0.08); g.gain.exponentialRampToValueAtTime(0.001,now+i*0.08+duration*1.2); o.connect(g); g.connect(ctx.destination); o.start(now+i*0.08); o.stop(now+i*0.08+duration*1.2); }); break;
+                case 'buzzer': { const o=ctx.createOscillator(),g=ctx.createGain(); o.type='sawtooth'; o.frequency.value=180; g.gain.setValueAtTime(vol*0.6,now); g.gain.exponentialRampToValueAtTime(0.001,now+duration*2); o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now+duration*2); } break;
+                case 'nature': [440,880,440,880].forEach((f,i) => { const o=ctx.createOscillator(),g=ctx.createGain(); o.type='sine'; o.frequency.value=f; g.gain.setValueAtTime(vol*0.3,now+i*0.25); g.gain.exponentialRampToValueAtTime(0.001,now+i*0.25+0.3); o.connect(g); g.connect(ctx.destination); o.start(now+i*0.25); o.stop(now+i*0.25+0.3); }); break;
+                case 'piano': [262,330,392,523,659,784].forEach((f,i) => { const o=ctx.createOscillator(),g=ctx.createGain(); o.type='sine'; o.frequency.value=f; g.gain.setValueAtTime(vol*0.5,now+i*0.07); g.gain.exponentialRampToValueAtTime(0.001,now+i*0.07+0.25); o.connect(g); g.connect(ctx.destination); o.start(now+i*0.07); o.stop(now+i*0.07+0.25); }); break;
+                default: { const o=ctx.createOscillator(),g=ctx.createGain(); o.type='sine'; o.frequency.value=880; g.gain.setValueAtTime(vol,now); g.gain.exponentialRampToValueAtTime(0.001,now+duration); o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now+duration); }
             }
-        } catch (e) { /* silent */ }
+        } catch(e) {}
     }
 
     // ============================================================
     //  PRAYER TIMES
     // ============================================================
-    let userLat = 21.4225;
-    let userLon = 39.8262;
-    let userCity = 'مكة المكرمة';
+    let userLat = 21.4225, userLon = 39.8262;
 
     function initPrayerTimes() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                pos => {
-                    userLat = pos.coords.latitude;
-                    userLon = pos.coords.longitude;
-                    getCityName(userLat, userLon);
-                    calculatePrayerTimes();
-                },
-                err => {
-                    calculatePrayerTimes();
-                    document.getElementById('prayerLocation').textContent = lang[currentLang].locationFallback;
-                }, { timeout: 8000 }
+                pos => { userLat = pos.coords.latitude; userLon = pos.coords.longitude; calculatePrayerTimes(); },
+                err => { calculatePrayerTimes(); document.getElementById('prayerLocation').textContent = lang[currentLang].locationFallback; },
+                { timeout: 8000 }
             );
         } else {
             calculatePrayerTimes();
             document.getElementById('prayerLocation').textContent = lang[currentLang].locationFallback;
         }
-        setInterval(() => { calculatePrayerTimes(); }, 300000);
-    }
-
-    function getCityName(lat, lon) {
-        try {
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&accept-language=ar`)
-                .then(r => r.json())
-                .then(data => {
-                    const place = data.address?.city || data.address?.town || data.address?.village || 'موقعك';
-                    userCity = place;
-                    document.getElementById('prayerLocation').textContent = '📍 ' + place;
-                })
-                .catch(() => {});
-        } catch (e) {}
+        setInterval(calculatePrayerTimes, 300000);
     }
 
     function calculatePrayerTimes() {
         const date = new Date();
-        const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
-        const lat = userLat;
-        const lon = userLon;
-        const tz = -date.getTimezoneOffset() / 60;
-
-        const solarDeclination = 23.44 * Math.sin((360 / 365) * (dayOfYear - 81) * Math.PI / 180);
-        const hourAngleSunset = Math.acos(Math.tan(lat * Math.PI / 180) * Math.tan(solarDeclination * Math.PI / 180));
-        const sunsetUTC = 12 - hourAngleSunset * 180 / (15 * Math.PI) - lon / 15;
-        const sunriseUTC = 12 + hourAngleSunset * 180 / (15 * Math.PI) - lon / 15;
-
-        const fajrAngle = 18;
-        const ishaAngle = 18;
-
-        const fajrUTC = sunriseUTC - (fajrAngle / 15);
-        const dhuhrUTC = 12 - lon / 15 + 0.0167;
-        const asrUTC = dhuhrUTC + (1 / 15) * Math.acos((Math.sin(0.0) - Math.sin(lat * Math.PI / 180) * Math.sin(solarDeclination *
-            Math.PI / 180)) / (Math.cos(lat * Math.PI / 180) * Math.cos(solarDeclination * Math.PI / 180))) * 180 / Math.PI;
+        const dayOfYear = Math.floor((date - new Date(date.getFullYear(),0,0)) / 86400000);
+        const lat = userLat, lon = userLon, tz = -date.getTimezoneOffset() / 60;
+        const solarDeclination = 23.44 * Math.sin((360/365)*(dayOfYear-81)*Math.PI/180);
+        const hourAngleSunset = Math.acos(Math.tan(lat*Math.PI/180)*Math.tan(solarDeclination*Math.PI/180));
+        const sunsetUTC = 12 - hourAngleSunset*180/(15*Math.PI) - lon/15;
+        const sunriseUTC = 12 + hourAngleSunset*180/(15*Math.PI) - lon/15;
+        const fajrUTC = sunriseUTC - 18/15;
+        const dhuhrUTC = 12 - lon/15 + 0.0167;
+        const asrUTC = dhuhrUTC + (1/15)*Math.acos((Math.sin(0)-Math.sin(lat*Math.PI/180)*Math.sin(solarDeclination*Math.PI/180))/(Math.cos(lat*Math.PI/180)*Math.cos(solarDeclination*Math.PI/180)))*180/Math.PI;
         const maghribUTC = sunsetUTC;
-        const ishaUTC = sunsetUTC + (ishaAngle / 15);
+        const ishaUTC = sunsetUTC + 18/15;
 
-        function toLocal(utc) {
-            let h = utc + tz;
-            while (h < 0) h += 24;
-            while (h >= 24) h -= 24;
-            const hr = Math.floor(h);
-            const mn = Math.floor((h - hr) * 60);
-            return String(hr).padStart(2, '0') + ':' + String(mn).padStart(2, '0');
-        }
+        function toLocal(utc) { let h = utc + tz; while(h<0) h+=24; while(h>=24) h-=24; const hr=Math.floor(h), mn=Math.floor((h-hr)*60); return String(hr).padStart(2,'0')+':'+String(mn).padStart(2,'0'); }
 
         document.getElementById('p-fajr').textContent = toLocal(fajrUTC);
         document.getElementById('p-dhuhr').textContent = toLocal(dhuhrUTC);
@@ -1723,39 +1777,28 @@
         document.getElementById('p-maghrib').textContent = toLocal(maghribUTC);
         document.getElementById('p-isha').textContent = toLocal(ishaUTC);
 
-        const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('prayerDate').textContent = date.toLocaleDateString(currentLang === 'ar' ? 'ar-SA' : 'en-US', opts);
-
+        const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+        document.getElementById('prayerDate').textContent = date.toLocaleDateString(currentLang==='ar'?'ar-SA':'en-US', opts);
         highlightCurrentPrayer();
     }
 
     function highlightCurrentPrayer() {
         const now = new Date();
-        const h = now.getHours();
-        const m = now.getMinutes();
-        const total = h * 60 + m;
-
-        const prayers = ['p-fajr', 'p-dhuhr', 'p-asr', 'p-maghrib', 'p-isha'];
-        let currentIdx = 0;
-        let minDiff = Infinity;
-
-        prayers.forEach((id, i) => {
-            const timeStr = document.getElementById(id).textContent;
-            if (timeStr && timeStr !== '--:--') {
-                const [ph, pm] = timeStr.split(':').map(Number);
-                const pt = ph * 60 + pm;
-                let diff = pt - total;
-                if (diff < 0) diff += 1440;
-                if (diff < minDiff) {
-                    minDiff = diff;
-                    currentIdx = i;
-                }
+        const total = now.getHours()*60 + now.getMinutes();
+        const ids = ['p-fajr','p-dhuhr','p-asr','p-maghrib','p-isha'];
+        let idx=0, minDiff=Infinity;
+        ids.forEach((id,i) => {
+            const t = document.getElementById(id).textContent;
+            if(t && t!=='--:--') {
+                const [h,m] = t.split(':').map(Number);
+                let diff = h*60+m - total;
+                if(diff<0) diff += 1440;
+                if(diff<minDiff) { minDiff=diff; idx=i; }
             }
         });
-
-        document.querySelectorAll('.prayer-item').forEach(el => el.classList.remove('current'));
+        document.querySelectorAll('.prayer-item').forEach(el=>el.classList.remove('current'));
         const items = document.querySelectorAll('.prayer-item');
-        if (items[currentIdx]) items[currentIdx].classList.add('current');
+        if(items[idx]) items[idx].classList.add('current');
     }
 
     // ============================================================
@@ -1767,33 +1810,24 @@
         const input = document.getElementById('taskInput').value.trim();
         const el = document.getElementById('taskSuggestion');
         const t = lang[currentLang];
-        if (!input) {
-            el.textContent = t.taskSuggestion;
-            return;
-        }
-
+        if (!input) { el.textContent = t.taskSuggestion; return; }
         const keywords = {
-            'مستشفى': '8:00 صباحاً', 'دكتور': '8:00 صباحاً', 'حلاق': '9:00 صباحاً',
-            'صالون': '9:00 صباحاً', 'دراسة': '7:00 مساءً', 'درس': '7:00 مساءً',
-            'مذاكرة': '7:00 مساءً', 'نوم': '10:00 مساءً', 'أنام': '10:00 مساءً',
-            'رياضة': '6:00 مساءً', 'جيم': '6:00 مساءً', 'مشي': '5:00 مساءً',
-            'عمل': '8:00 صباحاً', 'شغل': '8:00 صباحاً', 'اجتماع': '10:00 صباحاً',
-            'مقابلة': '11:00 صباحاً', 'غداء': '1:00 ظهراً', 'عشاء': '8:00 مساءً',
-            'فطور': '7:00 صباحاً', 'قراءة': '9:00 مساءً', 'كتاب': '9:00 مساءً'
+            'مستشفى':'8:00 صباحاً','دكتور':'8:00 صباحاً','حلاق':'9:00 صباحاً',
+            'صالون':'9:00 صباحاً','دراسة':'7:00 مساءً','درس':'7:00 مساءً',
+            'مذاكرة':'7:00 مساءً','نوم':'10:00 مساءً','أنام':'10:00 مساءً',
+            'رياضة':'6:00 مساءً','جيم':'6:00 مساءً','مشي':'5:00 مساءً',
+            'عمل':'8:00 صباحاً','شغل':'8:00 صباحاً','اجتماع':'10:00 صباحاً',
+            'مقابلة':'11:00 صباحاً','غداء':'1:00 ظهراً','عشاء':'8:00 مساءً',
+            'فطور':'7:00 صباحاً','قراءة':'9:00 مساءً','كتاب':'9:00 مساءً'
         };
-
-        let suggestion = currentLang === 'ar' ? '⏰ أقترح: ' : '⏰ I suggest: ';
+        let suggestion = currentLang==='ar' ? '⏰ أقترح: ' : '⏰ I suggest: ';
         let found = false;
-        for (const [key, val] of Object.entries(keywords)) {
-            if (input.includes(key)) {
-                suggestion += val;
-                found = true;
-                break;
-            }
+        for (const [key,val] of Object.entries(keywords)) {
+            if (input.includes(key)) { suggestion += val; found = true; break; }
         }
         if (!found) {
-            const rand = ['8:00 صباحاً', '9:00 صباحاً', '10:00 صباحاً', '1:00 ظهراً', '4:00 مساءً', '7:00 مساءً', '9:00 مساءً'];
-            suggestion += rand[Math.floor(Math.random() * rand.length)] + (currentLang === 'ar' ? ' (اقتراح تلقائي)' : ' (auto-suggest)');
+            const rand = ['8:00 صباحاً','9:00 صباحاً','10:00 صباحاً','1:00 ظهراً','4:00 مساءً','7:00 مساءً','9:00 مساءً'];
+            suggestion += rand[Math.floor(Math.random()*rand.length)] + (currentLang==='ar' ? ' (اقتراح تلقائي)' : ' (auto-suggest)');
         }
         el.textContent = '💡 ' + suggestion;
     }
@@ -1802,22 +1836,20 @@
         const input = document.getElementById('taskInput');
         const text = input.value.trim();
         if (!text) return;
-
         let suggestedTime = '--:--';
         const keywords = {
-            'مستشفى': '8:00 صباحاً', 'دكتور': '8:00 صباحاً', 'حلاق': '9:00 صباحاً',
-            'دراسة': '7:00 مساءً', 'نوم': '10:00 مساءً', 'رياضة': '6:00 مساءً',
-            'عمل': '8:00 صباحاً', 'اجتماع': '10:00 صباحاً', 'غداء': '1:00 ظهراً',
-            'عشاء': '8:00 مساءً', 'فطور': '7:00 صباحاً', 'قراءة': '9:00 مساءً'
+            'مستشفى':'8:00 صباحاً','دكتور':'8:00 صباحاً','حلاق':'9:00 صباحاً',
+            'دراسة':'7:00 مساءً','نوم':'10:00 مساءً','رياضة':'6:00 مساءً',
+            'عمل':'8:00 صباحاً','اجتماع':'10:00 صباحاً','غداء':'1:00 ظهراً',
+            'عشاء':'8:00 مساءً','فطور':'7:00 صباحاً','قراءة':'9:00 مساءً'
         };
-        for (const [key, val] of Object.entries(keywords)) {
+        for (const [key,val] of Object.entries(keywords)) {
             if (text.includes(key)) { suggestedTime = val; break; }
         }
         if (suggestedTime === '--:--') {
-            const rand = ['8:00 صباحاً', '9:00 صباحاً', '10:00 صباحاً', '1:00 ظهراً', '4:00 مساءً', '7:00 مساءً', '9:00 مساءً'];
-            suggestedTime = rand[Math.floor(Math.random() * rand.length)];
+            const rand = ['8:00 صباحاً','9:00 صباحاً','10:00 صباحاً','1:00 ظهراً','4:00 مساءً','7:00 مساءً','9:00 مساءً'];
+            suggestedTime = rand[Math.floor(Math.random()*rand.length)];
         }
-
         tasks.push({ text, time: suggestedTime, done: false });
         renderTasks();
         input.value = '';
@@ -1828,8 +1860,7 @@
         const list = document.getElementById('taskList');
         const t = lang[currentLang];
         if (tasks.length === 0) {
-            list.innerHTML =
-                `<li style="color:var(--text-secondary); justify-content:center; padding:20px;">${t.noTasks}</li>`;
+            list.innerHTML = `<li style="color:var(--text-secondary);justify-content:center;padding:16px;">${t.noTasks}</li>`;
             return;
         }
         list.innerHTML = '';
@@ -1849,111 +1880,145 @@
             del.className = 'task-delete';
             del.textContent = '✕';
             del.onclick = () => { deleteTask(i); };
-            li.appendChild(check);
-            li.appendChild(textSpan);
-            li.appendChild(timeSpan);
-            li.appendChild(del);
+            li.appendChild(check); li.appendChild(textSpan); li.appendChild(timeSpan); li.appendChild(del);
             list.appendChild(li);
         });
     }
 
-    function toggleTask(i) {
-        tasks[i].done = !tasks[i].done;
-        renderTasks();
-    }
-
-    function deleteTask(i) {
-        tasks.splice(i, 1);
-        renderTasks();
-    }
-
-    document.getElementById('taskInput').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') addTask();
-    });
+    function toggleTask(i) { tasks[i].done = !tasks[i].done; renderTasks(); }
+    function deleteTask(i) { tasks.splice(i,1); renderTasks(); }
+    document.getElementById('taskInput').addEventListener('keydown', (e) => { if(e.key==='Enter') addTask(); });
 
     // ============================================================
-    //  HABITS
+    //  HABITS / DRINKS / DHIKR / READING / FITNESS
     // ============================================================
-    let habits = {
-        water: false, sleep: false, exercise: false, read: false,
-        prayer: false, fast: false, dhikr: false, charity: false
-    };
+    let habits = { water:false, sleep:false, exercise:false, read:false, prayer:false, fast:false, dhikr:false, charity:false };
+    let drinks = { water:false, juice:false, tea:false, milk:false };
+    let dhikr = { morning:false, evening:false, sleep:false, waking:false };
+    let reading = { quran:false, book:false, article:false };
+    let fitness = { walk:false, run:false, stretch:false, gym:false };
 
     function toggleHabit(name) {
         habits[name] = !habits[name];
         const el = document.getElementById('habit-' + name);
-        if (habits[name]) {
-            el.classList.add('done');
-            el.textContent = '✓';
-        } else {
-            el.classList.remove('done');
-            el.textContent = '✓';
-        }
+        if (habits[name]) { el.classList.add('done'); el.textContent = '✓'; } else { el.classList.remove('done'); el.textContent = '✓'; }
         updateHabitCount();
-        try { localStorage.setItem('habits', JSON.stringify(habits)); } catch (e) {}
+        try { localStorage.setItem('habits', JSON.stringify(habits)); } catch(e) {}
+    }
+
+    function toggleDrink(name) {
+        drinks[name] = !drinks[name];
+        const el = document.getElementById('drink-' + name);
+        if (drinks[name]) { el.classList.add('done'); el.textContent = '✓'; } else { el.classList.remove('done'); el.textContent = '✓'; }
+        updateDrinksCount();
+        try { localStorage.setItem('drinks', JSON.stringify(drinks)); } catch(e) {}
+    }
+
+    function toggleDhikr(name) {
+        dhikr[name] = !dhikr[name];
+        const el = document.getElementById('dhikr-' + name);
+        if (dhikr[name]) { el.classList.add('done'); el.textContent = '✓'; } else { el.classList.remove('done'); el.textContent = '✓'; }
+        updateDhikrCount();
+        try { localStorage.setItem('dhikr', JSON.stringify(dhikr)); } catch(e) {}
+    }
+
+    function toggleReading(name) {
+        reading[name] = !reading[name];
+        const el = document.getElementById('reading-' + name);
+        if (reading[name]) { el.classList.add('done'); el.textContent = '✓'; } else { el.classList.remove('done'); el.textContent = '✓'; }
+        updateReadingCount();
+        try { localStorage.setItem('reading', JSON.stringify(reading)); } catch(e) {}
+    }
+
+    function toggleFitness(name) {
+        fitness[name] = !fitness[name];
+        const el = document.getElementById('fitness-' + name);
+        if (fitness[name]) { el.classList.add('done'); el.textContent = '✓'; } else { el.classList.remove('done'); el.textContent = '✓'; }
+        updateFitnessCount();
+        try { localStorage.setItem('fitness', JSON.stringify(fitness)); } catch(e) {}
     }
 
     function updateHabitCount() {
-        const total = Object.keys(habits).length;
-        const done = Object.values(habits).filter(v => v).length;
+        const total = Object.keys(habits).length, done = Object.values(habits).filter(v=>v).length;
         document.getElementById('habitsDone').textContent = done;
         document.getElementById('habitsTotal').textContent = total;
         updateHabitProgressText();
     }
 
+    function updateDrinksCount() {
+        const total = Object.keys(drinks).length, done = Object.values(drinks).filter(v=>v).length;
+        document.getElementById('drinksDone').textContent = done;
+        document.getElementById('drinksTotal').textContent = total;
+        updateDrinksProgress();
+    }
+
+    function updateDhikrCount() {
+        const total = Object.keys(dhikr).length, done = Object.values(dhikr).filter(v=>v).length;
+        document.getElementById('dhikrDone').textContent = done;
+        document.getElementById('dhikrTotal').textContent = total;
+        updateDhikrProgress();
+    }
+
+    function updateReadingCount() {
+        const total = Object.keys(reading).length, done = Object.values(reading).filter(v=>v).length;
+        document.getElementById('readingDone').textContent = done;
+        document.getElementById('readingTotal').textContent = total;
+        updateReadingProgress();
+    }
+
+    function updateFitnessCount() {
+        const total = Object.keys(fitness).length, done = Object.values(fitness).filter(v=>v).length;
+        document.getElementById('fitnessDone').textContent = done;
+        document.getElementById('fitnessTotal').textContent = total;
+        updateFitnessProgress();
+    }
+
+    function updateAllCounts() {
+        updateHabitCount(); updateDrinksCount(); updateDhikrCount(); updateReadingCount(); updateFitnessCount();
+    }
+
+    // Load saved data
     try {
         const saved = localStorage.getItem('habits');
-        if (saved) {
-            const parsed = JSON.parse(saved);
-            for (const key in parsed) {
-                if (key in habits) {
-                    habits[key] = parsed[key];
-                    const el = document.getElementById('habit-' + key);
-                    if (parsed[key]) {
-                        el.classList.add('done');
-                        el.textContent = '✓';
-                    } else {
-                        el.classList.remove('done');
-                        el.textContent = '✓';
-                    }
-                }
-            }
-            updateHabitCount();
-        }
-    } catch (e) {}
+        if (saved) { const parsed=JSON.parse(saved); for(const k in parsed) { if(k in habits) { habits[k]=parsed[k]; const el=document.getElementById('habit-'+k); if(parsed[k]) { el.classList.add('done'); el.textContent='✓'; } else { el.classList.remove('done'); el.textContent='✓'; } } } updateHabitCount(); }
+    } catch(e) {}
+    try {
+        const saved = localStorage.getItem('drinks');
+        if (saved) { const parsed=JSON.parse(saved); for(const k in parsed) { if(k in drinks) { drinks[k]=parsed[k]; const el=document.getElementById('drink-'+k); if(parsed[k]) { el.classList.add('done'); el.textContent='✓'; } else { el.classList.remove('done'); el.textContent='✓'; } } } updateDrinksCount(); }
+    } catch(e) {}
+    try {
+        const saved = localStorage.getItem('dhikr');
+        if (saved) { const parsed=JSON.parse(saved); for(const k in parsed) { if(k in dhikr) { dhikr[k]=parsed[k]; const el=document.getElementById('dhikr-'+k); if(parsed[k]) { el.classList.add('done'); el.textContent='✓'; } else { el.classList.remove('done'); el.textContent='✓'; } } } updateDhikrCount(); }
+    } catch(e) {}
+    try {
+        const saved = localStorage.getItem('reading');
+        if (saved) { const parsed=JSON.parse(saved); for(const k in parsed) { if(k in reading) { reading[k]=parsed[k]; const el=document.getElementById('reading-'+k); if(parsed[k]) { el.classList.add('done'); el.textContent='✓'; } else { el.classList.remove('done'); el.textContent='✓'; } } } updateReadingCount(); }
+    } catch(e) {}
+    try {
+        const saved = localStorage.getItem('fitness');
+        if (saved) { const parsed=JSON.parse(saved); for(const k in parsed) { if(k in fitness) { fitness[k]=parsed[k]; const el=document.getElementById('fitness-'+k); if(parsed[k]) { el.classList.add('done'); el.textContent='✓'; } else { el.classList.remove('done'); el.textContent='✓'; } } } updateFitnessCount(); }
+    } catch(e) {}
 
     // ============================================================
     //  REMINDERS
     // ============================================================
     function startReminders() {
-        setTimeout(() => { showRandomReminder(); }, 10000);
-        reminderInterval = setInterval(() => {
-            showRandomReminder();
-        }, getRandomInterval());
-    }
-
-    function getRandomInterval() {
-        return 180000 + Math.random() * 120000;
+        setTimeout(showRandomReminder, 10000);
+        reminderInterval = setInterval(showRandomReminder, 180000 + Math.random()*120000);
     }
 
     function showRandomReminder() {
         if (reminderVisible) return;
-        const list = currentLang === 'ar' ? reminders : remindersEn;
-        const text = list[Math.floor(Math.random() * list.length)];
+        const list = currentLang==='ar' ? reminders : remindersEn;
+        const text = list[Math.floor(Math.random()*list.length)];
         document.getElementById('reminderText').textContent = text;
         const popup = document.getElementById('reminder-popup');
         popup.classList.add('show');
         reminderVisible = true;
-
         clearTimeout(popup._autoHide);
-        popup._autoHide = setTimeout(() => {
-            closeReminder();
-        }, 12000);
-
+        popup._autoHide = setTimeout(closeReminder, 12000);
         clearInterval(reminderInterval);
-        reminderInterval = setInterval(() => {
-            showRandomReminder();
-        }, getRandomInterval());
+        reminderInterval = setInterval(showRandomReminder, 180000 + Math.random()*120000);
     }
 
     function closeReminder() {
@@ -1966,14 +2031,8 @@
     // ============================================================
     //  INIT
     // ============================================================
-    setInterval(() => {
-        if (appEl.classList.contains('visible')) {
-            highlightCurrentPrayer();
-        }
-    }, 60000);
-
+    setInterval(() => { if(appEl.classList.contains('visible')) highlightCurrentPrayer(); }, 60000);
     console.log('🌟 تطبيق "استغل وقتك بنفسك" جاهز!');
-    console.log('💡 جميع المميزات مجانية بالكامل - مع دعم اللغات');
 </script>
 </body>
 </html>
